@@ -578,7 +578,7 @@ const SURYA_A = [
    photo: (선택) 저작권 없는 사진 URL — 있으면 사진, 없으면 스틱 피겨 표시 */
 const LEVELS = [
   {
-    id: "primary", tab: "초급",
+    id: "primary", tab: "초보자",
     series: "프라이머리 시리즈 · Yoga Chikitsa (요가 치료)",
     intro: "몸을 정화하고 정렬하는 기초 시리즈. 아쉬탕가의 모든 수련자는 여기서 시작합니다.",
     caution: null,
@@ -760,7 +760,7 @@ const LEVELS = [
     ],
   },
   {
-    id: "intermediate", tab: "중급",
+    id: "intermediate", tab: "중급자",
     series: "인터미디엇 시리즈 · Nadi Shodhana (신경 정화)",
     intro: "깊은 후굴과 다리를 머리 뒤로 넘기는 자세, 암밸런스가 더해집니다. 프라이머리 전체를 안정적으로 수련한 뒤에 진행합니다.",
     caution: "인터미디엇은 전통적으로 지도자의 허락 아래 한 자세씩 더해 갑니다. 혼자 수련한다면 카포타사나·에카파다 시르사사나 같은 깊은 자세는 충분한 준비 없이 시도하지 마세요.",
@@ -862,7 +862,7 @@ const LEVELS = [
     ],
   },
   {
-    id: "advanced", tab: "상급",
+    id: "advanced", tab: "상급자",
     series: "어드밴스드 시리즈 · Sthira Bhaga (힘과 우아함)",
     intro: "어드밴스드 A(3rd)·B(4th)의 대표 자세들입니다. 오랜 세월에 걸쳐 도달하는 영역으로, 방향을 보여주는 이정표로 소개합니다.",
     caution: "이 레벨의 자세들은 반드시 자격 있는 지도자와 함께 진행하세요. 혼자 시도하면 손목·어깨·척추에 심각한 부상을 입을 수 있습니다. 아래 설명은 참고용입니다.",
@@ -1018,8 +1018,10 @@ function PoseSearch({ lang, onPick }) {
 }
 
 /* ── 수련 모드 (호흡 타이머) ── */
-function PracticeMode({ level, lang, onExit }) {
+function PracticeMode({ level: initialLevel, lang, onExit }) {
   const T = STR[lang];
+  const [levelId, setLevelId] = useState(initialLevel.id);
+  const level = LEVELS.find((l) => l.id === levelId);
   const seq = useMemo(() => {
     const surya = SURYA_A.map((s) => ({
       fig: s.fig, photo: s.photo,
@@ -1039,6 +1041,7 @@ function PracticeMode({ level, lang, onExit }) {
   const [breath, setBreath] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [pace, setPace] = useState(5); // 초/호흡
+  const switchLevel = (id) => { setLevelId(id); setIdx(0); setBreath(0); setPlaying(true); };
 
   const cur = seq[idx];
   const next = seq[idx + 1];
@@ -1080,8 +1083,18 @@ function PracticeMode({ level, lang, onExit }) {
         <div style={{ height: "100%", width: `${((idx + breath / cur.target) / seq.length) * 100}%`, background: C.amber, transition: "width .5s" }} />
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 24px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 24px", flexWrap: "wrap", gap: 10 }}>
         <p style={{ fontSize: 13, color: C.sub }}>{idx + 1} / {seq.length} · {T.ofPractice(lvMeta(level, lang).tab)}</p>
+        <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          {LEVELS.map((l) => (
+            <button key={l.id} role="tab" aria-selected={levelId === l.id}
+              className={`lvl ${levelId === l.id ? "on" : ""}`}
+              style={{ padding: "6px 14px", fontSize: 12.5 }}
+              onClick={() => switchLevel(l.id)}>
+              {lvMeta(l, lang).tab}
+            </button>
+          ))}
+        </div>
         <button onClick={onExit} className="pbtn" style={{ fontSize: 13 }}>{T.finishBtn}</button>
       </div>
 
