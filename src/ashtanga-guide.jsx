@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, { useState, useMemo, useEffect, useCallback, useRef } from "react";
 
 /* ─────────────────────────────────────────────
    아쉬탕가 가이드 — 심야 수련 톤
@@ -952,7 +952,7 @@ const ALL_POSES = LEVELS.flatMap((l) =>
   l.sections.flatMap((s) => s.poses.map((p) => ({ p, levelId: l.id })))
 );
 const norm = (t) => (t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-function PoseSearch({ lang, onPick }) {
+function PoseSearch({ lang, onPick, compact }) {
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
   const T = STR[lang];
@@ -965,7 +965,7 @@ function PoseSearch({ lang, onPick }) {
   }, [q]);
   const showList = open && q.trim().length > 0;
   return (
-    <div style={{ position: "relative", maxWidth: 420, marginBottom: 18 }}>
+    <div style={{ position: "relative", maxWidth: compact ? undefined : 420, marginBottom: compact ? 0 : 18 }}>
       <input
         type="search"
         value={q}
@@ -975,7 +975,7 @@ function PoseSearch({ lang, onPick }) {
         placeholder={T.searchPh}
         aria-label={T.searchPh}
         style={{
-          width: "100%", padding: "11px 18px", paddingInlineStart: 42, borderRadius: 999,
+          width: "100%", padding: compact ? "8px 16px" : "11px 18px", paddingInlineStart: 42, borderRadius: 999,
           border: `1px solid ${C.line}`, background: C.card, color: C.ink,
           font: "inherit", fontSize: 14, fontWeight: 300, outline: "none",
         }}
@@ -1373,14 +1373,28 @@ export default function AshtangaGuide() {
     [done, level]
   );
   const toggle = (k) => setDone((d) => ({ ...d, [k]: !d[k] }));
-  const changeLevel = (id) => { setLevelId(id); setActive("surya"); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  const mainRef = useRef(null);
+  const changeLevel = (id) => { setLevelId(id); setActive("surya"); mainRef.current?.scrollTo({ top: 0, behavior: "smooth" }); };
   const go = (id) => {
     setActive(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+  /* 콘텐츠 스크롤 위치를 따라 좌측 내비 하이라이트 */
+  useEffect(() => {
+    const root = mainRef.current;
+    if (!root) return;
+    const obs = new IntersectionObserver((es) => {
+      es.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { root, rootMargin: "-15% 0px -75% 0px" });
+    ["surya", ...level.sections.map((s) => s.id)].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
+  }, [level]);
 
   return (
-    <div dir={lang === "ar" ? "rtl" : "ltr"} style={{ background: C.bg, color: C.ink, minHeight: "100vh", fontFamily: "'IBM Plex Sans KR', sans-serif" }}>
+    <div dir={lang === "ar" ? "rtl" : "ltr"} style={{ background: C.bg, color: C.ink, height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: "'IBM Plex Sans KR', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; }
@@ -1416,8 +1430,9 @@ export default function AshtangaGuide() {
         @keyframes breatheAnim { 0%,100%{ transform: scale(0.82); opacity:.75 } 50%{ transform: scale(1.06); opacity:1 } }
         .breathe { animation-name: breatheAnim; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
         @media (max-width: 760px) {
-          .layout { flex-direction:column; }
-          .rail { position:static !important; width:100% !important; display:flex; overflow-x:auto; gap:4px; padding-bottom:8px; }
+          .layout { flex-direction:column; gap:0 !important; }
+          .rail { width:100% !important; display:flex; flex-direction:row; overflow-x:auto; overflow-y:hidden !important; gap:4px; padding:8px 12px !important; border-bottom:1px solid ${C.line}; }
+          .railprog { display:none; }
           .navbtn { white-space:nowrap; width:auto; }
           .card, .cardbtn { flex-direction:column; align-items:center; text-align:center; }
           .surya { overflow-x:auto; }
@@ -1428,18 +1443,29 @@ export default function AshtangaGuide() {
         }
       `}</style>
 
-      {/* 헤더 */}
-      <header style={{ maxWidth: 1040, margin: "0 auto", padding: "64px 24px 8px", position: "relative" }}>
-        <div aria-hidden="true" style={{
-          position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)",
-          width: 520, height: 320, borderRadius: "50%", pointerEvents: "none",
-          background: "radial-gradient(ellipse, rgba(217,160,91,0.09) 0%, transparent 65%)",
-        }} />
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
-          <p style={{ color: C.amber, fontWeight: 600, letterSpacing: "0.22em", fontSize: 12.5 }}>
-            <span className="candle live" style={{ marginRight: 10, verticalAlign: "middle" }} />
-            ASHTANGA VINYASA YOGA
+      {/* 상단 고정 바 */}
+      <header style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 40 }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "10px 20px 8px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+          <p className="display" style={{ color: C.amber, fontWeight: 700, letterSpacing: "0.12em", fontSize: 14.5, whiteSpace: "nowrap" }}>
+            <span className="candle live" style={{ marginRight: 9, verticalAlign: "middle" }} />
+            ASHTANGA SHALA
           </p>
+          <div style={{ flex: 1, minWidth: 170, maxWidth: 460 }}>
+            <PoseSearch lang={lang} onPick={(p, lvl) => { setLevelId(lvl); setDetail(p); }} compact />
+          </div>
+          <button className="pbtn big" style={{ padding: "8px 16px", fontSize: 13 }} onClick={() => setPractice(true)}>{T.startPractice}</button>
+          <button
+            className="mode pbtn"
+            onClick={() => setBeginner((b) => !b)}
+            style={{
+              padding: "8px 14px", fontSize: 13,
+              borderColor: beginner ? "rgba(217,160,91,0.5)" : C.line,
+              background: beginner ? C.amberDim : C.card,
+              color: beginner ? C.amber : C.sub,
+            }}
+          >
+            {beginner ? T.helpOn : T.helpOff}
+          </button>
           <div style={{ position: "relative" }}>
             <button className="lvl" onClick={() => setLangOpen((o) => !o)}
               aria-haspopup="listbox" aria-expanded={langOpen} aria-label={T.langLabel}
@@ -1477,73 +1503,30 @@ export default function AshtangaGuide() {
             )}
           </div>
         </div>
-        <h1 className="display" style={{ fontSize: "clamp(30px, 5vw, 50px)", lineHeight: 1.3, margin: "16px 0 16px", fontWeight: 400 }}>
-          {T.heroT1}<br />{T.heroT2}
-        </h1>
-        <p style={{ color: C.sub, maxWidth: 560, lineHeight: 1.8, fontWeight: 300 }}>
-          {T.heroDesc}
-        </p>
-
-        {/* 수련 기본 3요소 */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12, margin: "32px 0" }}>
-          {T.pillars.map(([t, d]) => (
-            <div key={t} style={{ background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 12, padding: "18px 20px" }}>
-              <p className="display" style={{ fontWeight: 700, marginBottom: 8, color: C.amber, fontSize: 15 }}>{t}</p>
-              <p style={{ fontSize: 13.5, color: C.sub, lineHeight: 1.7, fontWeight: 300 }}>{d}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* 자세 검색 */}
-        <PoseSearch lang={lang} onPick={(p, lvl) => { setLevelId(lvl); setDetail(p); }} />
-
-        {/* 레벨 탭 */}
-        <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-          {LEVELS.map((l) => (
-            <button key={l.id} role="tab" aria-selected={levelId === l.id}
-              className={`lvl ${levelId === l.id ? "on" : ""}`} onClick={() => changeLevel(l.id)}>
-              {lvMeta(l, lang).tab}
-            </button>
-          ))}
-        </div>
-        <p className="display" style={{ fontSize: 17, color: C.ink, marginBottom: 4 }}>{LV.series}</p>
-        <p style={{ color: C.sub, fontSize: 14, lineHeight: 1.8, fontWeight: 300, maxWidth: 640, marginBottom: 18 }}>{LV.intro}</p>
-
-        {LV.caution && (
-          <div role="note" style={{
-            border: `1px solid rgba(201,123,107,0.45)`, background: "rgba(201,123,107,0.08)",
-            borderRadius: 12, padding: "14px 18px", maxWidth: 640, marginBottom: 18,
-            color: C.danger, fontSize: 13.5, lineHeight: 1.7,
-          }}>
-            ⚠︎ {LV.caution}
+        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 20px 10px", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 6 }}>
+            {LEVELS.map((l) => (
+              <button key={l.id} role="tab" aria-selected={levelId === l.id}
+                className={`lvl ${levelId === l.id ? "on" : ""}`}
+                style={{ padding: "6px 16px", fontSize: 13 }}
+                onClick={() => changeLevel(l.id)}>
+                {lvMeta(l, lang).tab}
+              </button>
+            ))}
           </div>
-        )}
-
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-          <button className="pbtn big" onClick={() => setPractice(true)}>{T.startPractice}</button>
-          <button
-            className="mode pbtn"
-            onClick={() => setBeginner((b) => !b)}
-            style={{
-              borderColor: beginner ? "rgba(217,160,91,0.5)" : C.line,
-              background: beginner ? C.amberDim : C.card,
-              color: beginner ? C.amber : C.sub,
-            }}
-          >
-            {beginner ? T.helpOn : T.helpOff}
-          </button>
+          <p className="display" style={{ fontSize: 13, color: C.sub, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{LV.series}</p>
         </div>
       </header>
 
-      {/* 본문 */}
-      <div className="layout" style={{ maxWidth: 1040, margin: "0 auto", padding: "40px 24px 80px", display: "flex", gap: 40 }}>
+      {/* 본문: 좌측 내비 고정 + 콘텐츠 독립 스크롤 */}
+      <div className="layout" style={{ flex: 1, display: "flex", overflow: "hidden", width: "100%", maxWidth: 1180, margin: "0 auto", gap: 20 }}>
         {/* 사이드 레일 */}
-        <nav className="rail" style={{ width: 210, flexShrink: 0, position: "sticky", top: 24, alignSelf: "flex-start" }}>
+        <nav className="rail" style={{ width: 210, flexShrink: 0, overflowY: "auto", padding: "20px 6px 20px 14px" }}>
           <button className={`navbtn ${active === "surya" ? "on" : ""}`} onClick={() => go("surya")}>{T.suryaNav}</button>
           {level.sections.map((s) => (
             <button key={s.id} className={`navbtn ${active === s.id ? "on" : ""}`} onClick={() => go(s.id)}>{secMeta(s, lang).title}</button>
           ))}
-          <div style={{ padding: "18px 14px 0" }}>
+          <div className="railprog" style={{ padding: "18px 14px 0" }}>
             <div style={{ height: 5, background: C.line, borderRadius: 3, overflow: "hidden" }}>
               <div style={{
                 height: "100%", width: `${(doneCount / levelTotal) * 100}%`, background: C.amber,
@@ -1555,7 +1538,33 @@ export default function AshtangaGuide() {
         </nav>
 
         {/* 콘텐츠 */}
-        <main style={{ flex: 1, minWidth: 0 }}>
+        <main ref={mainRef} style={{ flex: 1, minWidth: 0, overflowY: "auto", padding: "26px 24px 80px" }}>
+          {/* 소개 (컴팩트) */}
+          <section style={{ marginBottom: 44 }}>
+            <h1 className="display" style={{ fontSize: "clamp(20px, 3vw, 28px)", lineHeight: 1.45, marginBottom: 8, fontWeight: 400 }}>
+              {T.heroT1} {T.heroT2}
+            </h1>
+            <p style={{ color: C.sub, maxWidth: 640, lineHeight: 1.7, fontWeight: 300, fontSize: 14 }}>{T.heroDesc}</p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10, marginTop: 16 }}>
+              {T.pillars.map(([t, d]) => (
+                <div key={t} style={{ background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 10, padding: "12px 14px" }}>
+                  <p className="display" style={{ fontWeight: 700, marginBottom: 5, color: C.amber, fontSize: 13.5 }}>{t}</p>
+                  <p style={{ fontSize: 12.5, color: C.sub, lineHeight: 1.6, fontWeight: 300 }}>{d}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ color: C.sub, fontSize: 13.5, lineHeight: 1.7, fontWeight: 300, maxWidth: 640, marginTop: 16 }}>{LV.intro}</p>
+            {LV.caution && (
+              <div role="note" style={{
+                border: `1px solid rgba(201,123,107,0.45)`, background: "rgba(201,123,107,0.08)",
+                borderRadius: 12, padding: "12px 16px", maxWidth: 640, marginTop: 12,
+                color: C.danger, fontSize: 13, lineHeight: 1.7,
+              }}>
+                ⚠︎ {LV.caution}
+              </div>
+            )}
+          </section>
+
           {/* 태양경배 */}
           <section id="surya" style={{ marginBottom: 64 }}>
             <h2 className="display" style={{ fontSize: 26, marginBottom: 6, fontWeight: 400 }}>{T.suryaTitle}</h2>
