@@ -1194,7 +1194,7 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
         <div style={{ flexShrink: 0, padding: "24px 28px 14px", borderBottom: `1px solid ${C.line}` }}>
         <div style={{ display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" }}>
           <div style={{ background: C.bg, borderRadius: 14, padding: 8 }}>
-            <PoseVisual pose={pose} size={130} glow />
+            <PoseVisual pose={pose} size={180} glow />
           </div>
           <div style={{ flex: 1, minWidth: 200 }}>
             <h3 className="display" style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.4 }}>{L.name}</h3>
@@ -1656,7 +1656,7 @@ export default function AshtangaGuide() {
                   return (
                     <article key={k} className="card">
                       <button className="cardbtn" onClick={() => setDetail(p)} aria-label={L.name}>
-                        <PoseVisual pose={p} />
+                        <PoseVisual pose={p} size={140} />
                         <div style={{ flex: 1 }}>
                           <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
                             <h3 className="display" style={{ fontSize: 19, fontWeight: 700 }}>{L.name}</h3>
