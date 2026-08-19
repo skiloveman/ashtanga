@@ -1231,7 +1231,7 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
 
 /* ── 정보 페이지 (애드센스 승인 필수: 소개·개인정보처리방침·이용약관·문의) ──
    배포 시 각 페이지는 별도 URL(/about, /privacy, /terms, /contact)로 라우팅하는 것을 권장합니다.
-   [사이트명]·[이메일]·[날짜] 플레이스홀더는 배포 전에 실제 값으로 교체하세요. */
+   사이트명 Ashtanga Shala · 문의 skiloveman@gmail.com · 시행일 2026-08-20 적용됨 */
 const PAGES = {
   ko: {
     about: { t: "소개", ps: [
@@ -1240,15 +1240,15 @@ const PAGES = {
       "모든 콘텐츠는 직접 작성·제작되었습니다. 오류를 발견하시면 문의 페이지를 통해 알려 주세요.",
     ]},
     privacy: { t: "개인정보처리방침", ps: [
-      "시행일: [날짜]. 본 방침은 [사이트명](이하 '사이트')의 개인정보 처리에 관한 내용을 담고 있습니다.",
+      "시행일: 2026년 8월 20일. 본 방침은 아쉬탕가 샬라(Ashtanga Shala, 이하 '사이트')의 개인정보 처리에 관한 내용을 담고 있습니다.",
       "1. 수집하는 정보 — 사이트는 회원가입 없이 이용할 수 있으며, 이름·이메일 등 개인 식별 정보를 직접 수집하지 않습니다. 서비스 이용 과정에서 접속 기록, 브라우저 종류, 기기 정보가 자동으로 수집될 수 있습니다.",
       "2. 쿠키와 광고 — 사이트는 Google AdSense를 통해 광고를 게재합니다. Google을 포함한 제3자 광고 사업자는 쿠키를 사용하여 이용자의 이전 방문 기록을 바탕으로 광고를 게재할 수 있습니다. Google의 광고 쿠키 사용으로 이용자에게 맞춤형 광고가 표시될 수 있으며, 이용자는 Google 광고 설정(adssettings.google.com)에서 맞춤 광고를 해제할 수 있습니다. 또한 www.aboutads.info 에서 제3자 광고 사업자의 쿠키 사용을 일괄 거부할 수 있습니다.",
       "3. 분석 도구 — 서비스 개선을 위해 방문자 통계 도구(예: Google Analytics)를 사용할 수 있으며, 이 과정에서 익명화된 이용 데이터가 수집됩니다.",
       "4. 아동의 개인정보 — 사이트는 만 14세 미만 아동의 개인정보를 고의로 수집하지 않습니다.",
-      "5. 문의 — 개인정보 관련 문의는 [이메일]로 연락해 주세요. 본 방침은 법령이나 서비스 변경에 따라 개정될 수 있으며, 개정 시 본 페이지에 게시합니다.",
+      "5. 문의 — 개인정보 관련 문의는 skiloveman@gmail.com 으로 연락해 주세요. 본 방침은 법령이나 서비스 변경에 따라 개정될 수 있으며, 개정 시 본 페이지에 게시합니다.",
     ]},
     terms: { t: "이용약관", ps: [
-      "1. 목적 — 본 약관은 [사이트명]이 제공하는 콘텐츠 이용 조건을 규정합니다. 사이트를 이용함으로써 본 약관에 동의하는 것으로 간주됩니다.",
+      "1. 목적 — 본 약관은 아쉬탕가 샬라(Ashtanga Shala)가 제공하는 콘텐츠 이용 조건을 규정합니다. 사이트를 이용함으로써 본 약관에 동의하는 것으로 간주됩니다.",
       "2. 의료 면책 — 사이트의 모든 내용은 일반적인 정보 제공 목적이며 의학적 조언, 진단, 치료를 대신하지 않습니다. 요가 수련은 신체적 부상의 위험을 수반합니다. 새로운 운동을 시작하기 전 반드시 의사와 상담하시고, 수련 중 통증이나 이상을 느끼면 즉시 중단하세요. 사이트 이용으로 발생한 부상에 대해 운영자는 책임을 지지 않습니다.",
       "3. 지식재산권 — 사이트의 텍스트, 일러스트, 디자인 등 모든 콘텐츠의 저작권은 운영자에게 있으며, 사전 동의 없는 복제·배포를 금합니다.",
       "4. 광고 — 사이트에는 제3자(Google AdSense) 광고가 게재됩니다. 광고를 통해 연결되는 외부 사이트의 콘텐츠에 대해 운영자는 책임을 지지 않습니다.",
@@ -1256,7 +1256,7 @@ const PAGES = {
     ]},
     contact: { t: "문의", ps: [
       "콘텐츠 오류 제보, 제휴 제안, 개인정보 관련 문의는 아래 이메일로 보내 주세요.",
-      "이메일: [이메일] — 영업일 기준 3일 이내에 답변드리도록 하겠습니다.",
+      "이메일: skiloveman@gmail.com — 영업일 기준 3일 이내에 답변드리도록 하겠습니다.",
       "광고 및 제휴 관련 문의도 같은 주소로 받고 있습니다.",
     ]},
   },
@@ -1267,15 +1267,15 @@ const PAGES = {
       "All content is originally written and produced. If you spot an error, please let us know via the Contact page.",
     ]},
     privacy: { t: "Privacy Policy", ps: [
-      "Effective date: [DATE]. This policy describes how [SITE NAME] ('the Site') handles information.",
+      "Effective date: August 20, 2026. This policy describes how Ashtanga Shala ('the Site') handles information.",
       "1. Information we collect — The Site requires no registration and does not directly collect personally identifying information such as names or email addresses. Standard technical data (access logs, browser type, device information) may be collected automatically.",
       "2. Cookies and advertising — The Site displays ads through Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve personalized ads. You may opt out of personalized advertising by visiting Google Ads Settings (adssettings.google.com), and opt out of some third-party vendors' cookie use at www.aboutads.info.",
       "3. Analytics — We may use visitor analytics tools (e.g., Google Analytics), which collect anonymized usage data to help improve the service.",
       "4. Children's privacy — The Site does not knowingly collect personal information from children under 13 (or the applicable age in your jurisdiction).",
-      "5. Contact — For privacy inquiries, email [EMAIL]. This policy may be updated as laws or the service change; revisions will be posted on this page.",
+      "5. Contact — For privacy inquiries, email skiloveman@gmail.com. This policy may be updated as laws or the service change; revisions will be posted on this page.",
     ]},
     terms: { t: "Terms of Use", ps: [
-      "1. Purpose — These terms govern the use of content provided by [SITE NAME]. By using the Site you agree to these terms.",
+      "1. Purpose — These terms govern the use of content provided by Ashtanga Shala. By using the Site you agree to these terms.",
       "2. Medical disclaimer — All content is for general information only and is not medical advice, diagnosis, or treatment. Yoga practice carries a risk of physical injury. Consult a physician before beginning any new exercise program, and stop immediately if you feel pain or discomfort. The operator accepts no liability for injuries arising from use of the Site.",
       "3. Intellectual property — All text, illustrations, and design on the Site are the property of the operator. Reproduction or distribution without prior consent is prohibited.",
       "4. Advertising — The Site displays third-party (Google AdSense) advertisements. The operator is not responsible for the content of external sites reached through ads.",
@@ -1283,7 +1283,7 @@ const PAGES = {
     ]},
     contact: { t: "Contact", ps: [
       "For content corrections, partnership proposals, or privacy inquiries, please email us.",
-      "Email: [EMAIL] — we aim to reply within three business days.",
+      "Email: skiloveman@gmail.com — we aim to reply within three business days.",
       "Advertising and partnership inquiries are welcome at the same address.",
     ]},
   },
@@ -1639,7 +1639,7 @@ export default function AshtangaGuide() {
               ))}
             </nav>
             <p style={{ fontSize: 12, marginTop: 18, opacity: 0.75 }}>{T.medNote}</p>
-            <p style={{ fontSize: 12, marginTop: 6, opacity: 0.6 }}>© {new Date().getFullYear()} [사이트명 / SITE NAME]. All rights reserved.</p>
+            <p style={{ fontSize: 12, marginTop: 6, opacity: 0.6 }}>© {new Date().getFullYear()} Ashtanga Shala. All rights reserved.</p>
           </footer>
         </main>
       </div>
