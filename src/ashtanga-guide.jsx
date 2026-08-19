@@ -153,6 +153,7 @@ const STR = {
     medNote: "본 사이트의 모든 내용은 일반적인 정보 제공을 위한 것으로, 의학적 조언을 대신하지 않습니다. 새로운 운동을 시작하기 전에는 의사와 상담하세요.",
     cookieMsg: "이 사이트는 서비스 개선과 광고 게재(Google AdSense)를 위해 쿠키를 사용합니다. 계속 이용하시면 쿠키 사용에 동의하는 것으로 간주됩니다.",
     okL: "확인", langLabel: "언어 선택", langWord: "언어",
+    searchPh: "자세 이름 검색…", searchNone: "검색 결과가 없습니다",
     pageNav: { about: "소개", privacy: "개인정보처리방침", terms: "이용약관", contact: "문의" },
   },
   en: {
@@ -181,6 +182,7 @@ const STR = {
     medNote: "All content on this site is for general information only and is not a substitute for medical advice. Consult a physician before beginning any new exercise program.",
     cookieMsg: "This site uses cookies to improve the service and to serve ads via Google AdSense. By continuing to use the site, you consent to the use of cookies.",
     okL: "OK", langLabel: "Select language", langWord: "Language",
+    searchPh: "Search poses…", searchNone: "No poses found",
     pageNav: { about: "About", privacy: "Privacy Policy", terms: "Terms of Use", contact: "Contact" },
   },
   es: {
@@ -208,6 +210,7 @@ const STR = {
     medNote: "Todo el contenido de este sitio es informativo y no sustituye el consejo médico. Consulta a un médico antes de comenzar un nuevo programa de ejercicio.",
     cookieMsg: "Este sitio utiliza cookies para mejorar el servicio y mostrar anuncios de Google AdSense. Al continuar navegando, aceptas su uso.",
     okL: "Aceptar", langLabel: "Seleccionar idioma", langWord: "Idioma",
+    searchPh: "Buscar posturas…", searchNone: "Sin resultados",
     tabs: { primary: "Principiante", intermediate: "Intermedio", advanced: "Avanzado" },
     pageNav: { about: "Acerca de", privacy: "Política de privacidad", terms: "Términos de uso", contact: "Contacto" },
   },
@@ -236,6 +239,7 @@ const STR = {
     medNote: "本サイトの内容は一般的な情報提供を目的としており、医学的助言に代わるものではありません。新しい運動を始める前に医師にご相談ください。",
     cookieMsg: "本サイトはサービス向上と広告配信（Google AdSense）のためにCookieを使用します。継続してご利用いただくことで、Cookieの使用に同意したものとみなされます。",
     okL: "OK", langLabel: "言語を選択", langWord: "言語",
+    searchPh: "ポーズを検索…", searchNone: "見つかりません",
     tabs: { primary: "初級", intermediate: "中級", advanced: "上級" },
     pageNav: { about: "サイトについて", privacy: "プライバシーポリシー", terms: "利用規約", contact: "お問い合わせ" },
   },
@@ -264,6 +268,7 @@ const STR = {
     medNote: "Alle Inhalte dienen nur der allgemeinen Information und ersetzen keinen ärztlichen Rat. Sprich vor Beginn eines neuen Trainings mit einem Arzt.",
     cookieMsg: "Diese Website verwendet Cookies zur Verbesserung des Dienstes und zur Anzeigenschaltung über Google AdSense. Durch die weitere Nutzung stimmst du der Verwendung von Cookies zu.",
     okL: "OK", langLabel: "Sprache wählen", langWord: "Sprache",
+    searchPh: "Haltungen suchen…", searchNone: "Keine Treffer",
     tabs: { primary: "Anfänger", intermediate: "Mittelstufe", advanced: "Fortgeschritten" },
     pageNav: { about: "Über uns", privacy: "Datenschutzerklärung", terms: "Nutzungsbedingungen", contact: "Kontakt" },
   },
@@ -292,6 +297,7 @@ const STR = {
     medNote: "Le contenu de ce site est fourni à titre informatif et ne remplace pas un avis médical. Consultez un médecin avant de commencer un nouveau programme d'exercice.",
     cookieMsg: "Ce site utilise des cookies pour améliorer le service et diffuser des annonces via Google AdSense. En poursuivant votre navigation, vous acceptez l'utilisation des cookies.",
     okL: "OK", langLabel: "Choisir la langue", langWord: "Langue",
+    searchPh: "Rechercher une posture…", searchNone: "Aucun résultat",
     tabs: { primary: "Débutant", intermediate: "Intermédiaire", advanced: "Avancé" },
     pageNav: { about: "À propos", privacy: "Politique de confidentialité", terms: "Conditions d'utilisation", contact: "Contact" },
   },
@@ -320,6 +326,7 @@ const STR = {
     medNote: "本站所有内容仅供一般信息参考，不能替代医疗建议。开始新的运动计划前请咨询医生。",
     cookieMsg: "本站使用 Cookie 以改进服务并通过 Google AdSense 投放广告。继续使用即表示您同意使用 Cookie。",
     okL: "确定", langLabel: "选择语言", langWord: "语言",
+    searchPh: "搜索体式…", searchNone: "没有找到体式",
     tabs: { primary: "初级", intermediate: "中级", advanced: "高级" },
     pageNav: { about: "关于本站", privacy: "隐私政策", terms: "使用条款", contact: "联系我们" },
   },
@@ -348,6 +355,7 @@ const STR = {
     medNote: "Todo o conteúdo deste site é apenas informativo e não substitui aconselhamento médico. Consulte um médico antes de iniciar um novo programa de exercícios.",
     cookieMsg: "Este site usa cookies para melhorar o serviço e exibir anúncios via Google AdSense. Ao continuar navegando, você concorda com o uso de cookies.",
     okL: "OK", langLabel: "Selecionar idioma", langWord: "Idioma",
+    searchPh: "Buscar posturas…", searchNone: "Nenhum resultado",
     tabs: { primary: "Iniciante", intermediate: "Intermediário", advanced: "Avançado" },
     pageNav: { about: "Sobre", privacy: "Política de Privacidade", terms: "Termos de Uso", contact: "Contato" },
   },
@@ -376,6 +384,7 @@ const STR = {
     medNote: "इस साइट की सभी सामग्री केवल सामान्य जानकारी के लिए है और चिकित्सीय सलाह का विकल्प नहीं है। कोई नया व्यायाम शुरू करने से पहले चिकित्सक से परामर्श करें।",
     cookieMsg: "यह साइट सेवा सुधार और Google AdSense के माध्यम से विज्ञापन दिखाने के लिए कुकीज़ का उपयोग करती है। साइट का उपयोग जारी रखकर आप कुकीज़ के उपयोग से सहमत होते हैं।",
     okL: "ठीक है", langLabel: "भाषा चुनें", langWord: "भाषा",
+    searchPh: "आसन खोजें…", searchNone: "कोई परिणाम नहीं",
     tabs: { primary: "प्रारंभिक", intermediate: "मध्यम", advanced: "उन्नत" },
     pageNav: { about: "परिचय", privacy: "गोपनीयता नीति", terms: "उपयोग की शर्तें", contact: "संपर्क" },
   },
@@ -404,6 +413,7 @@ const STR = {
     medNote: "جميع محتويات هذا الموقع لأغراض المعلومات العامة فقط ولا تُغني عن الاستشارة الطبية. استشر طبيبًا قبل بدء أي برنامج رياضي جديد.",
     cookieMsg: "يستخدم هذا الموقع ملفات تعريف الارتباط لتحسين الخدمة وعرض إعلانات Google AdSense. باستمرارك في الاستخدام فإنك توافق على ذلك.",
     okL: "موافق", langLabel: "اختر اللغة", langWord: "اللغة",
+    searchPh: "ابحث عن وضعية…", searchNone: "لا توجد نتائج",
     tabs: { primary: "مبتدئ", intermediate: "متوسط", advanced: "متقدم" },
     pageNav: { about: "حول الموقع", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", contact: "اتصل بنا" },
   },
@@ -855,6 +865,78 @@ const parseBreaths = (b) => {
   return m ? Math.min(parseInt(m[0], 10), 10) : 5;
 };
 
+/* ── 자세 이름 검색 ──
+   전 레벨의 자세를 산스크리트(sk)·한국어(ko)·영어(EN) 이름으로 검색.
+   결과 클릭 → 해당 레벨로 전환 + 상세 모달 열기 (onPick) */
+const ALL_POSES = LEVELS.flatMap((l) =>
+  l.sections.flatMap((s) => s.poses.map((p) => ({ p, levelId: l.id })))
+);
+const norm = (t) => (t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+function PoseSearch({ lang, onPick }) {
+  const [q, setQ] = useState("");
+  const [open, setOpen] = useState(false);
+  const T = STR[lang];
+  const results = useMemo(() => {
+    const n = norm(q.trim());
+    if (!n) return [];
+    return ALL_POSES.filter(({ p }) =>
+      norm(p.sk).includes(n) || norm(p.ko).includes(n) || norm(EN[p.sk]?.n).includes(n)
+    ).slice(0, 8);
+  }, [q]);
+  const showList = open && q.trim().length > 0;
+  return (
+    <div style={{ position: "relative", maxWidth: 420, marginBottom: 18 }}>
+      <input
+        type="search"
+        value={q}
+        onChange={(e) => { setQ(e.target.value); setOpen(true); }}
+        onFocus={() => setOpen(true)}
+        onKeyDown={(e) => { if (e.key === "Escape") setOpen(false); }}
+        placeholder={T.searchPh}
+        aria-label={T.searchPh}
+        style={{
+          width: "100%", padding: "11px 18px", paddingInlineStart: 42, borderRadius: 999,
+          border: `1px solid ${C.line}`, background: C.card, color: C.ink,
+          font: "inherit", fontSize: 14, fontWeight: 300, outline: "none",
+        }}
+      />
+      <span aria-hidden="true" style={{
+        position: "absolute", insetInlineStart: 16, top: "50%",
+        transform: "translateY(-50%)", color: C.sub, fontSize: 14, pointerEvents: "none",
+      }}>🔍</span>
+      {showList && (
+        <>
+          <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 48 }} />
+          <div role="listbox" aria-label={T.searchPh} style={{
+            position: "absolute", top: "calc(100% + 8px)", insetInlineStart: 0, insetInlineEnd: 0,
+            zIndex: 49, background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 14,
+            boxShadow: "0 14px 36px rgba(0,0,0,0.5)", maxHeight: 430, overflowY: "auto",
+            padding: "6px 0",
+          }}>
+            {results.length === 0 && (
+              <p style={{ padding: "12px 18px", fontSize: 13.5, color: C.sub, fontWeight: 300 }}>{T.searchNone}</p>
+            )}
+            {results.map(({ p, levelId }) => (
+              <button key={`${levelId}-${p.sk}`} className="langopt" role="option" aria-selected="false"
+                onClick={() => { setOpen(false); setQ(""); onPick(p, levelId); }}
+                style={{ paddingTop: 7, paddingBottom: 7 }}>
+                <PoseVisual pose={p} size={40} />
+                <span style={{ flex: 1, textAlign: "start", minWidth: 0 }}>
+                  <span style={{ display: "block", fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{loc(p, lang).name}</span>
+                  <span style={{ display: "block", fontSize: 11.5, color: C.sub, fontStyle: "italic" }}>{p.sk}</span>
+                </span>
+                <span className="chip" style={{ marginRight: 0, flexShrink: 0 }}>
+                  {lvMeta(LEVELS.find((l) => l.id === levelId), lang).tab}
+                </span>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 /* ── 수련 모드 (호흡 타이머) ── */
 function PracticeMode({ level, lang, onExit }) {
   const T = STR[lang];
@@ -1304,6 +1386,9 @@ export default function AshtangaGuide() {
             </div>
           ))}
         </div>
+
+        {/* 자세 검색 */}
+        <PoseSearch lang={lang} onPick={(p, lvl) => { setLevelId(lvl); setDetail(p); }} />
 
         {/* 레벨 탭 */}
         <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
