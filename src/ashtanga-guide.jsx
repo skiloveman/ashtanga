@@ -448,6 +448,10 @@ const STR = {
   },
 };
 
+/* localStorage 헬퍼 — 수련 기록(완료 체크)과 설정을 저장합니다 */
+const lsGet = (k, d) => { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* 프라이빗 모드 등 */ } };
+
 /* 언어 목록 (드롭다운) */
 const LANGS = [
   { c: "en", cc: "US", n: "English" },
@@ -1383,10 +1387,14 @@ function CookieBar({ lang, onOk }) {
 }
 
 export default function AshtangaGuide() {
-  const [lang, setLang] = useState("en");
-  const [beginner, setBeginner] = useState(true);
-  const [done, setDone] = useState({});
-  const [levelId, setLevelId] = useState("primary");
+  const [lang, setLang] = useState(() => { const v = lsGet("lang", "en"); return STR[v] ? v : "en"; });
+  const [beginner, setBeginner] = useState(() => lsGet("tips", true) !== false);
+  const [done, setDone] = useState(() => { const v = lsGet("done", {}); return v && typeof v === "object" ? v : {}; });
+  const [levelId, setLevelId] = useState(() => { const v = lsGet("level", "primary"); return LEVELS.some((l) => l.id === v) ? v : "primary"; });
+  useEffect(() => lsSet("done", done), [done]);
+  useEffect(() => lsSet("lang", lang), [lang]);
+  useEffect(() => lsSet("tips", beginner), [beginner]);
+  useEffect(() => lsSet("level", levelId), [levelId]);
   const [active, setActive] = useState("surya");
   const [detail, setDetail] = useState(null);
   const [practice, setPractice] = useState(false);
@@ -1585,7 +1593,21 @@ export default function AshtangaGuide() {
                 boxShadow: doneCount > 0 ? "0 0 8px rgba(217,160,91,0.6)" : "none", transition: "width .3s",
               }} />
             </div>
-            <p style={{ fontSize: 12, color: C.sub, marginTop: 10 }}>{T.progress(LV.tab, doneCount, levelTotal)}</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 10 }}>
+              <p style={{ fontSize: 12, color: C.sub, flex: 1 }}>{T.progress(LV.tab, doneCount, levelTotal)}</p>
+              {doneCount > 0 && (
+                <button
+                  onClick={() => setDone((d) => {
+                    const nd = { ...d };
+                    level.sections.forEach((s) => s.poses.forEach((p) => { delete nd[`${s.id}-${p.sk}`]; }));
+                    return nd;
+                  })}
+                  aria-label={lang !== "ko" ? "Reset progress" : "수련 기록 초기화"}
+                  title={lang !== "ko" ? "Reset progress" : "수련 기록 초기화"}
+                  style={{ background: "none", border: "none", color: C.sub, cursor: "pointer", fontSize: 15, padding: 2, lineHeight: 1 }}
+                >↺</button>
+              )}
+            </div>
           </div>
         </nav>
 
