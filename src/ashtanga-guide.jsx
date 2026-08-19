@@ -1120,14 +1120,14 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
       {/* 중앙 */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24, textAlign: "center" }}>
         {/* 호흡 원 + 피겨 */}
-        <div style={{ position: "relative", width: 240, height: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ position: "relative", width: "min(320px, 80vw)", height: "min(320px, 80vw)", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div className={playing ? "breathe" : ""} style={{
             position: "absolute", inset: 0, borderRadius: "50%",
             background: "radial-gradient(circle, rgba(217,160,91,0.16) 0%, rgba(217,160,91,0.03) 60%, transparent 75%)",
             border: "1px solid rgba(217,160,91,0.25)",
             animationDuration: `${pace}s`,
           }} />
-          <PoseVisual pose={cur} size={170} glow />
+          <PoseVisual pose={cur} size={250} glow />
         </div>
 
         <h2 className="display" style={{ fontSize: "clamp(20px, 4vw, 30px)", marginTop: 20, fontWeight: 400 }}>{cur.ko}</h2>
