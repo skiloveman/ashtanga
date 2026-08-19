@@ -7,18 +7,37 @@ import React, { useState, useMemo, useEffect, useCallback, useRef } from "react"
    · 호흡 타이머 수련 모드 (자동 진행)
    ───────────────────────────────────────────── */
 
-const C = {
-  bg: "#12171E", card: "#1A212B", cardEdge: "#242E3A",
-  ink: "#E9E6DC", sub: "#8B95A0",
-  amber: "#D9A05B", amberDim: "rgba(217,160,91,0.12)",
-  jade: "#9DBBAA", line: "#2A3441", danger: "#C97B6B",
+/* 테마 팔레트 — applyTheme()가 C/FIG_C 값을 통째로 바꿔치기합니다 */
+const THEMES = {
+  dark: {
+    bg: "#12171E", card: "#1A212B", cardEdge: "#242E3A",
+    ink: "#E9E6DC", sub: "#8B95A0",
+    amber: "#D9A05B", amberDim: "rgba(217,160,91,0.12)",
+    jade: "#9DBBAA", line: "#2A3441", danger: "#C97B6B",
+  },
+  light: {
+    bg: "#F6F3EB", card: "#FFFFFF", cardEdge: "#E7E1D2",
+    ink: "#2B2F35", sub: "#68737E",
+    amber: "#B27A39", amberDim: "rgba(178,122,57,0.12)",
+    jade: "#5E8571", line: "#E0DACB", danger: "#B05A48",
+  },
 };
+const C = { ...THEMES.dark };
 
 /* ── 디테일 인체형 피겨 SVG ── */
 const FIG_C = {
   skin: "#EFE8D8", skin2: "#D9CDB4",
   pants: "#7FABA6", pants2: "#67918D",
   top: "#D9A05B", top2: "#C08B4E", hair: "#8A7360",
+};
+const FIG_THEMES = {
+  dark: { skin: "#EFE8D8", skin2: "#D9CDB4" },
+  light: { skin: "#DFCCA4", skin2: "#CBB68B" },
+};
+const applyTheme = (t) => {
+  Object.assign(C, THEMES[t]);
+  Object.assign(FIG_C, FIG_THEMES[t]);
+  if (typeof document !== "undefined") document.body.style.background = C.bg;
 };
 const Fig = ({ d, size = 96, glow = false }) => (
   <svg viewBox="0 0 100 100" width={size} height={size} aria-hidden="true">
@@ -1075,7 +1094,7 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
 
   return (
     <div role="dialog" aria-modal="true" aria-label="수련 모드" style={{
-      position: "fixed", inset: 0, zIndex: 60, background: "#0C1015",
+      position: "fixed", inset: 0, zIndex: 60, background: C.bg,
       display: "flex", flexDirection: "column", color: C.ink,
     }}>
       {/* 진행 바 */}
@@ -1163,13 +1182,16 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
     }}>
       <div role="dialog" aria-modal="true" aria-label={pose.ko} onClick={(e) => e.stopPropagation()} style={{
         background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 18,
-        maxWidth: 640, width: "100%", maxHeight: "86vh", overflowY: "auto", padding: 28, position: "relative",
+        maxWidth: 640, width: "100%", maxHeight: "86vh", position: "relative",
+        display: "flex", flexDirection: "column", overflow: "hidden",
       }}>
         <button onClick={onClose} aria-label={T.closeL} style={{
           position: "absolute", top: 14, right: 14, background: "none", border: "none",
-          color: C.sub, fontSize: 20, cursor: "pointer", padding: 6,
+          color: C.sub, fontSize: 20, cursor: "pointer", padding: 6, zIndex: 1,
         }}>✕</button>
 
+        {/* 고정 헤더 — 사진·이름·칩은 스크롤해도 유지 */}
+        <div style={{ flexShrink: 0, padding: "24px 28px 14px", borderBottom: `1px solid ${C.line}` }}>
         <div style={{ display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" }}>
           <div style={{ background: C.bg, borderRadius: 14, padding: 8 }}>
             <PoseVisual pose={pose} size={130} glow />
@@ -1187,8 +1209,11 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
         {pose.photo && pose.photoBy && (
           <p style={{ fontSize: 10.5, color: C.sub, opacity: 0.65, marginTop: 8 }}>📷 {pose.photoBy} · Wikimedia Commons</p>
         )}
+        </div>
 
-        <p style={{ fontSize: 14, lineHeight: 1.8, fontWeight: 300, marginTop: 18 }}>{L.desc}</p>
+        {/* 스크롤 본문 */}
+        <div style={{ overflowY: "auto", padding: "0 28px 28px" }}>
+        <p style={{ fontSize: 14, lineHeight: 1.8, fontWeight: 300, marginTop: 16 }}>{L.desc}</p>
 
         {L.steps && (
           <div style={{ marginTop: 22 }}>
@@ -1241,6 +1266,7 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
             🌙 {L.tip}
           </p>
         )}
+        </div>
       </div>
     </div>
   );
@@ -1346,7 +1372,7 @@ function CookieBar({ lang, onOk }) {
   return (
     <div role="region" aria-label="cookie notice" style={{
       position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 45,
-      background: "rgba(18,23,30,0.97)", borderTop: `1px solid ${C.cardEdge}`,
+      background: C.card, borderTop: `1px solid ${C.cardEdge}`,
       padding: "14px 20px", display: "flex", gap: 14, alignItems: "center",
       justifyContent: "center", flexWrap: "wrap",
     }}>
@@ -1367,6 +1393,18 @@ export default function AshtangaGuide() {
   const [page, setPage] = useState(null);
   const [cookieOk, setCookieOk] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    let t = "dark";
+    try { t = localStorage.getItem("theme") || "dark"; } catch { /* SSR/사파리 프라이빗 등 */ }
+    applyTheme(t);
+    return t;
+  });
+  const toggleTheme = () => setTheme((t) => {
+    const n = t === "dark" ? "light" : "dark";
+    applyTheme(n);
+    try { localStorage.setItem("theme", n); } catch { /* 무시 */ }
+    return n;
+  });
 
   const T = STR[lang];
   const level = LEVELS.find((l) => l.id === levelId);
@@ -1437,6 +1475,8 @@ export default function AshtangaGuide() {
           .layout { flex-direction:column; gap:0 !important; }
           .rail { width:100% !important; display:flex; flex-direction:row; overflow-x:auto; overflow-y:hidden !important; gap:4px; padding:8px 12px !important; border-bottom:1px solid ${C.line}; }
           .railprog { display:none; }
+          .railtop { display:flex !important; padding:0 !important; gap:6px !important; }
+          .railtop .pbtn { white-space:nowrap; }
           .navbtn { white-space:nowrap; width:auto; }
           .card, .cardbtn { flex-direction:column; align-items:center; text-align:center; }
           .surya { overflow-x:auto; }
@@ -1457,20 +1497,7 @@ export default function AshtangaGuide() {
           <div style={{ flex: 1, minWidth: 170, maxWidth: 460 }}>
             <PoseSearch lang={lang} onPick={(p, lvl) => { setLevelId(lvl); setDetail(p); }} compact />
           </div>
-          <button className="pbtn big" style={{ padding: "8px 16px", fontSize: 13 }} onClick={() => setPractice(true)}>{T.startPractice}</button>
-          <button
-            className="mode pbtn"
-            onClick={() => setBeginner((b) => !b)}
-            style={{
-              padding: "8px 14px", fontSize: 13,
-              borderColor: beginner ? "rgba(217,160,91,0.5)" : C.line,
-              background: beginner ? C.amberDim : C.card,
-              color: beginner ? C.amber : C.sub,
-            }}
-          >
-            {beginner ? T.helpOn : T.helpOff}
-          </button>
-          <div style={{ position: "relative" }}>
+          <div style={{ marginInlineStart: "auto", position: "relative" }}>
             <button className="lvl" onClick={() => setLangOpen((o) => !o)}
               aria-haspopup="listbox" aria-expanded={langOpen} aria-label={T.langLabel}
               style={{ padding: "7px 14px", fontSize: 12.5, display: "flex", alignItems: "center", gap: 7 }}>
@@ -1506,6 +1533,12 @@ export default function AshtangaGuide() {
               </>
             )}
           </div>
+          <button className="pbtn" onClick={toggleTheme}
+            aria-label={theme === "dark" ? "Light mode" : "Dark mode"}
+            aria-pressed={theme === "light"}
+            style={{ padding: "6px 12px", fontSize: 14, lineHeight: 1 }}>
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
         </div>
         <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 20px 10px", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
           <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 6 }}>
@@ -1526,6 +1559,21 @@ export default function AshtangaGuide() {
       <div className="layout" style={{ flex: 1, display: "flex", overflow: "hidden", width: "100%", maxWidth: 1180, margin: "0 auto", gap: 20 }}>
         {/* 사이드 레일 */}
         <nav className="rail" style={{ width: 210, flexShrink: 0, overflowY: "auto", padding: "20px 6px 20px 14px" }}>
+          <div className="railtop" style={{ display: "grid", gap: 8, padding: "0 2px 16px" }}>
+            <button className="pbtn big" style={{ fontSize: 13.5, padding: "10px 14px", textAlign: "center" }} onClick={() => setPractice(true)}>{T.startPractice}</button>
+            <button
+              className="mode pbtn"
+              onClick={() => setBeginner((b) => !b)}
+              style={{
+                padding: "8px 14px", fontSize: 13, textAlign: "center",
+                borderColor: beginner ? "rgba(217,160,91,0.5)" : C.line,
+                background: beginner ? C.amberDim : C.card,
+                color: beginner ? C.amber : C.sub,
+              }}
+            >
+              {beginner ? T.helpOn : T.helpOff}
+            </button>
+          </div>
           <button className={`navbtn ${active === "surya" ? "on" : ""}`} onClick={() => go("surya")}>{T.suryaNav}</button>
           {level.sections.map((s) => (
             <button key={s.id} className={`navbtn ${active === s.id ? "on" : ""}`} onClick={() => go(s.id)}>{secMeta(s, lang).title}</button>
