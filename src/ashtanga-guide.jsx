@@ -73,7 +73,7 @@ const PoseVisual = ({ pose, size = 96, glow = false }) => {
         onError={() => setFailed(true)}
         loading="lazy"
         style={{
-          width: size, height: size, objectFit: "cover", borderRadius: 12,
+          width: size, height: size, objectFit: "contain", background: "#fff", borderRadius: 12,
           border: `1px solid ${C.cardEdge}`, flexShrink: 0,
           ...(glow ? { boxShadow: "0 0 14px rgba(157,187,170,0.35)" } : {}),
         }}
