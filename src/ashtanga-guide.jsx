@@ -38,7 +38,7 @@ const applyTheme = (t) => {
   if (typeof document !== "undefined") document.body.style.background = C.bg;
 };
 const Fig = ({ d, size = 96, glow = false }) => (
-  <svg viewBox="0 0 100 100" width={size} height={size} aria-hidden="true">
+  <svg className="pv" viewBox="0 0 100 100" width={size} height={size} aria-hidden="true">
     <line x1="8" y1="90" x2="92" y2="90" stroke={C.line} strokeWidth="2" />
     <g style={glow ? { filter: "drop-shadow(0 0 7px rgba(217,160,91,0.35))" } : undefined}>
       {d.map((el, i) => {
@@ -68,6 +68,7 @@ const PoseVisual = ({ pose, size = 96, glow = false }) => {
   if (src && !failed) {
     return (
       <img
+        className="pv"
         src={src}
         alt={pose.ko || pose.name || ""}
         onError={() => setFailed(true)}
@@ -1137,7 +1138,7 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
         <div style={{ height: "100%", width: `${((idx + breath / cur.target) / seq.length) * 100}%`, background: C.amber, transition: "width .5s" }} />
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 24px", flexWrap: "wrap", gap: 10 }}>
+      <div className="phead" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 24px", flexWrap: "wrap", gap: 10 }}>
         <p style={{ fontSize: 13, color: C.sub }}>{idx + 1} / {seq.length} · {T.ofPractice(lvMeta(level, lang).tab)}</p>
         <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
           {LEVELS.map((l) => (
@@ -1153,9 +1154,9 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
       </div>
 
       {/* 중앙 */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24, textAlign: "center" }}>
+      <div className="pcenter" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24, textAlign: "center" }}>
         {/* 호흡 원 + 피겨 */}
-        <div style={{ position: "relative", width: "min(320px, 80vw)", height: "min(320px, 80vw)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div className="pviz" style={{ position: "relative", width: "min(320px, 80vw)", height: "min(320px, 80vw)", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div className={playing ? "breathe" : ""} style={{
             position: "absolute", inset: 0, borderRadius: "50%",
             background: "radial-gradient(circle, rgba(217,160,91,0.16) 0%, rgba(217,160,91,0.03) 60%, transparent 75%)",
@@ -1181,7 +1182,7 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
       </div>
 
       {/* 컨트롤 */}
-      <div style={{ display: "flex", gap: 10, justifyContent: "center", alignItems: "center", padding: "0 24px 28px", flexWrap: "wrap" }}>
+      <div className="pctrl" style={{ display: "flex", gap: 10, justifyContent: "center", alignItems: "center", padding: "0 24px 28px", flexWrap: "wrap" }}>
         <button className="pbtn" onClick={goPrev} aria-label={T.prevB}>{T.prevB}</button>
         <button className="pbtn big" onClick={() => setPlaying((p) => !p)} aria-label={playing ? T.pauseB : T.resumeB}>
           {playing ? T.pauseB : T.resumeB}
@@ -1211,11 +1212,11 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
   }, [onClose]);
 
   return (
-    <div onClick={onClose} style={{
+    <div onClick={onClose} className="ovl" style={{
       position: "fixed", inset: 0, zIndex: 50, background: "rgba(8,11,15,0.78)",
       display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
     }}>
-      <div role="dialog" aria-modal="true" aria-label={pose.ko} onClick={(e) => e.stopPropagation()} style={{
+      <div role="dialog" aria-modal="true" aria-label={pose.ko} className="sheet" onClick={(e) => e.stopPropagation()} style={{
         background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 18,
         maxWidth: 640, width: "100%", maxHeight: "86vh", position: "relative",
         display: "flex", flexDirection: "column", overflow: "hidden",
@@ -1226,7 +1227,7 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
         }}>✕</button>
 
         {/* 고정 헤더 — 사진·이름·칩은 스크롤해도 유지 */}
-        <div style={{ flexShrink: 0, padding: "24px 28px 14px", borderBottom: `1px solid ${C.line}` }}>
+        <div className="sheethead" style={{ flexShrink: 0, padding: "24px 28px 14px", borderBottom: `1px solid ${C.line}` }}>
         <div style={{ display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" }}>
           <div style={{ background: C.bg, borderRadius: 14, padding: 8 }}>
             <PoseVisual pose={pose} size={180} glow />
@@ -1243,7 +1244,7 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
         </div>
 
         {/* 스크롤 본문 */}
-        <div style={{ overflowY: "auto", padding: "0 28px 28px" }}>
+        <div className="sheetbody" style={{ overflowY: "auto", padding: "0 28px 28px" }}>
         <p style={{ fontSize: 14, lineHeight: 1.8, fontWeight: 300, marginTop: 16 }}>{L.desc}</p>
 
         {L.steps && (
@@ -1372,11 +1373,11 @@ function InfoPage({ pageKey, lang, onClose }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
   return (
-    <div onClick={onClose} style={{
+    <div onClick={onClose} className="ovl" style={{
       position: "fixed", inset: 0, zIndex: 55, background: "rgba(8,11,15,0.78)",
       display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
     }}>
-      <div role="dialog" aria-modal="true" aria-label={page.t} onClick={(e) => e.stopPropagation()} style={{
+      <div role="dialog" aria-modal="true" aria-label={page.t} className="sheet infopad" onClick={(e) => e.stopPropagation()} style={{
         background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 18,
         maxWidth: 680, width: "100%", maxHeight: "86vh", overflowY: "auto", padding: 32, position: "relative",
       }}>
@@ -1471,10 +1472,12 @@ export default function AshtangaGuide() {
   }, [level]);
 
   return (
-    <div dir={lang === "ar" ? "rtl" : "ltr"} style={{ background: C.bg, color: C.ink, height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: "'IBM Plex Sans KR', sans-serif" }}>
+    <div dir={lang === "ar" ? "rtl" : "ltr"} className="app" style={{ background: C.bg, color: C.ink, display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: "'IBM Plex Sans KR', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; }
+        /* 모바일 주소창 높이 변화 대응: dvh 지원 브라우저는 dvh 사용 */
+        .app { height: 100vh; height: 100dvh; }
         .display { font-family: 'Gowun Batang', serif; }
         .navbtn { background:none; border:none; cursor:pointer; text-align:left; width:100%;
           padding:10px 14px; border-radius:8px; font:inherit; color:${C.sub}; font-size:14px; }
@@ -1514,7 +1517,30 @@ export default function AshtangaGuide() {
           .railtop .pbtn { white-space:nowrap; }
           .navbtn { white-space:nowrap; width:auto; }
           .card, .cardbtn { flex-direction:column; align-items:center; text-align:center; }
-          .surya { overflow-x:auto; }
+          .surya { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+          /* 여백 축소 */
+          .hrow { padding:8px 12px 6px !important; }
+          .hrow2 { padding:0 12px 8px !important; }
+          .content { padding:20px 14px 70px !important; }
+          .card { padding:16px 14px !important; }
+          /* 자세 사진·피겨를 화면 폭에 맞게 확대 */
+          .card .pv { width:min(220px, 58vw) !important; height:min(220px, 58vw) !important; }
+          /* iOS 사파리 입력 포커스 시 자동 확대 방지 */
+          input[type="search"], select { font-size:16px !important; }
+          /* 모달 → 전체 폭 바텀시트 */
+          .ovl { padding:0 !important; align-items:flex-end !important; }
+          .sheet { max-width:100% !important; border-radius:18px 18px 0 0 !important;
+            border-left:none !important; border-right:none !important; border-bottom:none !important;
+            max-height:90vh !important; max-height:90dvh !important; }
+          .sheethead { padding:18px 16px 12px !important; }
+          .sheethead .pv { width:104px !important; height:104px !important; }
+          .sheetbody { padding:0 16px 24px !important; }
+          .infopad { padding:24px 16px 28px !important; }
+          /* 수련 모드 */
+          .phead { padding:10px 12px !important; }
+          .pcenter { padding:12px !important; }
+          .pviz .pv { width:min(250px, 60vw) !important; height:min(250px, 60vw) !important; }
+          .pctrl { padding:0 12px 20px !important; gap:8px !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           html { scroll-behavior:auto; }
@@ -1524,7 +1550,7 @@ export default function AshtangaGuide() {
 
       {/* 상단 고정 바 */}
       <header style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 40 }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "10px 20px 8px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+        <div className="hrow" style={{ maxWidth: 1180, margin: "0 auto", padding: "10px 20px 8px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           <p className="display" style={{ color: C.amber, fontWeight: 700, letterSpacing: "0.12em", fontSize: 14.5, whiteSpace: "nowrap" }}>
             <span className="candle live" style={{ marginRight: 9, verticalAlign: "middle" }} />
             ASHTANGA SHALA
@@ -1575,7 +1601,7 @@ export default function AshtangaGuide() {
             {theme === "dark" ? "☀️" : "🌙"}
           </button>
         </div>
-        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 20px 10px", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+        <div className="hrow2" style={{ maxWidth: 1180, margin: "0 auto", padding: "0 20px 10px", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
           <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 6 }}>
             {LEVELS.map((l) => (
               <button key={l.id} role="tab" aria-selected={levelId === l.id}
@@ -1639,7 +1665,7 @@ export default function AshtangaGuide() {
         </nav>
 
         {/* 콘텐츠 */}
-        <main ref={mainRef} style={{ flex: 1, minWidth: 0, overflowY: "auto", padding: "26px 24px 80px" }}>
+        <main ref={mainRef} className="content" style={{ flex: 1, minWidth: 0, overflowY: "auto", padding: "26px 24px 80px" }}>
           {/* 소개 (컴팩트) */}
           <section style={{ marginBottom: 44 }}>
             <h1 className="display" style={{ fontSize: "clamp(20px, 3vw, 28px)", lineHeight: 1.45, marginBottom: 8, fontWeight: 400 }}>
