@@ -2098,9 +2098,9 @@ export default function AshtangaGuide() {
           display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
           box-shadow:0 4px 14px rgba(0,0,0,0.35); text-decoration:none; }
         .foothead { font-size:13px; font-weight:700; color:${C.ink}; letter-spacing:0.03em;
-          margin-bottom:8px; padding-bottom:7px; border-bottom:1px solid ${C.line}; }
+          margin-bottom:6px; padding-bottom:6px; border-bottom:1px solid ${C.line}; }
         .footlink { background:none; border:none; cursor:pointer; font:inherit; font-size:12.5px;
-          color:${C.sub}; padding:4px 0; display:flex; align-items:center; gap:9px;
+          line-height:1.45; color:${C.sub}; padding:2px 0; display:flex; align-items:center; gap:9px;
           text-align:start; width:100%; }
         .footlink:hover { color:${C.ink}; }
         .footlink.hl { color:${C.amber}; font-weight:600; }
