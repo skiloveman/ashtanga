@@ -244,7 +244,7 @@ const STR = {
     okL: "확인", langLabel: "언어 선택", langWord: "언어",
     searchPh: "자세 이름 검색…", searchNone: "검색 결과가 없습니다",
     benefitsH: "몸에 주는 효과",
-    pageNav: { about: "소개", privacy: "개인정보처리방침", terms: "이용약관", contact: "문의" },
+    pageNav: { about: "사이트 소개 및 운영자 정보", privacy: "개인정보처리방침 (Privacy)", terms: "서비스 이용약관", legal: "책임의 한계 및 법적고지", adcookie: "광고 게재 및 쿠키 정책", contact: "문의" },
     footCats: "주요 카테고리", footLegal: "약관 및 개인정보 처리방침", footSupport: "1:1 문의 및 고객 지원",
     footSupportD: "콘텐츠 오류 제보, 제휴 제안, 개인정보 관련 문의는 언제든지 접수 가능합니다.",
     footContactBtn: "1:1 문의 및 제보하기", footPolicy: "Google 게시자 정책 준수 사이트",
@@ -284,7 +284,7 @@ const STR = {
     okL: "OK", langLabel: "Select language", langWord: "Language",
     searchPh: "Search poses…", searchNone: "No poses found",
     benefitsH: "Benefits",
-    pageNav: { about: "About", privacy: "Privacy Policy", terms: "Terms of Use", contact: "Contact" },
+    pageNav: { about: "About & Operator Info", privacy: "Privacy Policy", terms: "Terms of Service", legal: "Disclaimer & Legal Notice", adcookie: "Advertising & Cookie Policy", contact: "Contact" },
     footCats: "Categories", footLegal: "Legal & Privacy", footSupport: "Contact & Support",
     footSupportD: "Content corrections, partnership proposals, and privacy questions are welcome anytime.",
     footContactBtn: "Email us · 1:1 support", footPolicy: "Compliant with Google Publisher Policies",
@@ -324,7 +324,7 @@ const STR = {
     searchPh: "Buscar posturas…", searchNone: "Sin resultados",
     benefitsH: "Beneficios",
     tabs: { primary: "Primaria", intermediate: "Intermedia", advanced: "Avanzada" },
-    pageNav: { about: "Acerca de", privacy: "Política de privacidad", terms: "Términos de uso", contact: "Contacto" },
+    pageNav: { about: "Acerca del sitio y operador", privacy: "Política de privacidad", terms: "Términos del servicio", legal: "Responsabilidad y aviso legal", adcookie: "Política de publicidad y cookies", contact: "Contacto" },
     footCats: "Categorías", footLegal: "Legal y privacidad", footSupport: "Contacto y soporte",
     footSupportD: "Correcciones de contenido, propuestas de colaboración y consultas de privacidad son bienvenidas.",
     footContactBtn: "Escríbenos por correo", footPolicy: "Sitio conforme a las políticas para editores de Google",
@@ -364,7 +364,7 @@ const STR = {
     searchPh: "ポーズを検索…", searchNone: "見つかりません",
     benefitsH: "体への効果",
     tabs: { primary: "プライマリー", intermediate: "インターミディエイト", advanced: "アドバンス" },
-    pageNav: { about: "サイトについて", privacy: "プライバシーポリシー", terms: "利用規約", contact: "お問い合わせ" },
+    pageNav: { about: "サイト紹介・運営者情報", privacy: "プライバシーポリシー", terms: "サービス利用規約", legal: "免責事項・法的告知", adcookie: "広告掲載・Cookieポリシー", contact: "お問い合わせ" },
     footCats: "主なカテゴリー", footLegal: "規約とプライバシー", footSupport: "お問い合わせ・サポート",
     footSupportD: "内容の誤りのご報告、提携のご提案、プライバシーに関するお問い合わせを受け付けています。",
     footContactBtn: "メールでお問い合わせ", footPolicy: "Google パブリッシャー ポリシー準拠サイト",
@@ -404,7 +404,7 @@ const STR = {
     searchPh: "Haltungen suchen…", searchNone: "Keine Treffer",
     benefitsH: "Wirkung",
     tabs: { primary: "Primary", intermediate: "Intermediate", advanced: "Advanced" },
-    pageNav: { about: "Über uns", privacy: "Datenschutzerklärung", terms: "Nutzungsbedingungen", contact: "Kontakt" },
+    pageNav: { about: "Über die Website & Betreiber", privacy: "Datenschutzerklärung", terms: "Nutzungsbedingungen", legal: "Haftungsausschluss & Hinweise", adcookie: "Werbe- & Cookie-Richtlinie", contact: "Kontakt" },
     footCats: "Kategorien", footLegal: "Rechtliches & Datenschutz", footSupport: "Kontakt & Support",
     footSupportD: "Inhaltliche Korrekturen, Kooperationsanfragen und Datenschutzfragen sind jederzeit willkommen.",
     footContactBtn: "Per E-Mail kontaktieren", footPolicy: "Konform mit den Google-Publisher-Richtlinien",
@@ -444,7 +444,7 @@ const STR = {
     searchPh: "Rechercher une posture…", searchNone: "Aucun résultat",
     benefitsH: "Bienfaits",
     tabs: { primary: "Première série", intermediate: "Intermédiaire", advanced: "Avancée" },
-    pageNav: { about: "À propos", privacy: "Politique de confidentialité", terms: "Conditions d'utilisation", contact: "Contact" },
+    pageNav: { about: "À propos du site et de l'opérateur", privacy: "Politique de confidentialité", terms: "Conditions d'utilisation", legal: "Responsabilité et mentions légales", adcookie: "Publicité et cookies", contact: "Contact" },
     footCats: "Catégories", footLegal: "Mentions légales et confidentialité", footSupport: "Contact et assistance",
     footSupportD: "Corrections de contenu, propositions de partenariat et questions de confidentialité sont les bienvenues.",
     footContactBtn: "Nous contacter par e-mail", footPolicy: "Site conforme aux règles Google pour les éditeurs",
@@ -484,7 +484,7 @@ const STR = {
     searchPh: "搜索体式…", searchNone: "没有找到体式",
     benefitsH: "身体功效",
     tabs: { primary: "初级序列", intermediate: "中级序列", advanced: "高级序列" },
-    pageNav: { about: "关于本站", privacy: "隐私政策", terms: "使用条款", contact: "联系我们" },
+    pageNav: { about: "网站介绍与运营者信息", privacy: "隐私政策", terms: "服务条款", legal: "免责声明与法律告知", adcookie: "广告与 Cookie 政策", contact: "联系我们" },
     footCats: "主要栏目", footLegal: "条款与隐私", footSupport: "联系与支持",
     footSupportD: "欢迎随时提交内容纠错、合作提案及隐私相关咨询。",
     footContactBtn: "邮件联系我们", footPolicy: "符合 Google 发布商政策",
@@ -524,7 +524,7 @@ const STR = {
     searchPh: "Buscar posturas…", searchNone: "Nenhum resultado",
     benefitsH: "Benefícios",
     tabs: { primary: "Primária", intermediate: "Intermediária", advanced: "Avançada" },
-    pageNav: { about: "Sobre", privacy: "Política de Privacidade", terms: "Termos de Uso", contact: "Contato" },
+    pageNav: { about: "Sobre o site e o operador", privacy: "Política de Privacidade", terms: "Termos de Serviço", legal: "Isenção de responsabilidade", adcookie: "Política de anúncios e cookies", contact: "Contato" },
     footCats: "Categorias", footLegal: "Legal e privacidade", footSupport: "Contato e suporte",
     footSupportD: "Correções de conteúdo, propostas de parceria e dúvidas de privacidade são bem-vindas.",
     footContactBtn: "Fale conosco por e-mail", footPolicy: "Site em conformidade com as políticas do Google para editores",
@@ -564,7 +564,7 @@ const STR = {
     searchPh: "आसन खोजें…", searchNone: "कोई परिणाम नहीं",
     benefitsH: "शरीर को लाभ",
     tabs: { primary: "प्राइमरी", intermediate: "इंटरमीडिएट", advanced: "एडवांस्ड" },
-    pageNav: { about: "परिचय", privacy: "गोपनीयता नीति", terms: "उपयोग की शर्तें", contact: "संपर्क" },
+    pageNav: { about: "साइट परिचय और संचालक जानकारी", privacy: "गोपनीयता नीति", terms: "सेवा की शर्तें", legal: "दायित्व की सीमा और कानूनी सूचना", adcookie: "विज्ञापन और कुकी नीति", contact: "संपर्क" },
     footCats: "मुख्य श्रेणियाँ", footLegal: "नियम और गोपनीयता", footSupport: "संपर्क और सहायता",
     footSupportD: "सामग्री सुधार, साझेदारी प्रस्ताव और गोपनीयता से जुड़े प्रश्न कभी भी भेजें।",
     footContactBtn: "ईमेल से संपर्क करें", footPolicy: "Google प्रकाशक नीतियों के अनुरूप साइट",
@@ -604,7 +604,7 @@ const STR = {
     searchPh: "ابحث عن وضعية…", searchNone: "لا توجد نتائج",
     benefitsH: "الفوائد",
     tabs: { primary: "السلسلة الأولى", intermediate: "السلسلة المتوسطة", advanced: "السلسلة المتقدمة" },
-    pageNav: { about: "حول الموقع", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", contact: "اتصل بنا" },
+    pageNav: { about: "حول الموقع ومعلومات المشغّل", privacy: "سياسة الخصوصية", terms: "شروط الخدمة", legal: "حدود المسؤولية والإشعار القانوني", adcookie: "سياسة الإعلانات وملفات تعريف الارتباط", contact: "اتصل بنا" },
     footCats: "الأقسام الرئيسية", footLegal: "الشروط والخصوصية", footSupport: "التواصل والدعم",
     footSupportD: "نرحب دائمًا بتصحيحات المحتوى ومقترحات الشراكة واستفسارات الخصوصية.",
     footContactBtn: "راسلنا عبر البريد الإلكتروني", footPolicy: "موقع متوافق مع سياسات ناشري Google",
@@ -1549,63 +1549,259 @@ function PoseDetail({ pose, onClose, lang }) {
   );
 }
 
-/* ── 정보 페이지 (애드센스 승인 필수: 소개·개인정보처리방침·이용약관·문의) ──
-   배포 시 각 페이지는 별도 URL(/about, /privacy, /terms, /contact)로 라우팅하는 것을 권장합니다.
-   사이트명 Ashtanga Shala · 문의 skiloveman@naver.com · 시행일 2026-08-20 적용됨 */
+/* ── 정보 페이지 (애드센스 승인 필수: 소개·개인정보·약관·법적고지·광고쿠키·문의) ──
+   구조: { t: 제목, icon, sub: 부제, intro: 도입문, secs: [{ h: 소제목, ps: [문단] }] }
+   ko/en만 존재하며 그 외 언어는 en으로 폴백. 사이트명 Ashtanga Shala · 문의 skiloveman@naver.com */
 const PAGES = {
   ko: {
-    about: { t: "소개", ps: [
-      "이 사이트는 아쉬탕가 빈야사 요가를 혼자서도 안전하게 수련할 수 있도록 돕는 무료 가이드입니다. 프라이머리·인터미디엇·어드밴스드 시리즈의 전체 시퀀스를 자세별 진입 단계, 흔한 실수, 초보자를 위한 변형과 함께 정리했습니다.",
-      "아쉬탕가는 매번 같은 순서로 수련하는 전통 덕분에 독학이 가능한 몇 안 되는 요가 체계입니다. 다만 이 사이트는 자격 있는 지도자의 직접 지도를 대체하지 않으며, 특히 중급 이상의 자세는 반드시 지도자와 함께 수련하시길 권합니다.",
-      "모든 콘텐츠는 직접 작성·제작되었습니다. 오류를 발견하시면 문의 페이지를 통해 알려 주세요.",
-    ]},
-    privacy: { t: "개인정보처리방침", ps: [
-      "시행일: 2026년 8월 20일. 본 방침은 아쉬탕가 샬라(Ashtanga Shala, 이하 '사이트')의 개인정보 처리에 관한 내용을 담고 있습니다.",
-      "1. 수집하는 정보 — 사이트는 회원가입 없이 이용할 수 있으며, 이름·이메일 등 개인 식별 정보를 직접 수집하지 않습니다. 서비스 이용 과정에서 접속 기록, 브라우저 종류, 기기 정보가 자동으로 수집될 수 있습니다.",
-      "2. 쿠키와 광고 — 사이트는 Google AdSense를 통해 광고를 게재합니다. Google을 포함한 제3자 광고 사업자는 쿠키를 사용하여 이용자의 이전 방문 기록을 바탕으로 광고를 게재할 수 있습니다. Google의 광고 쿠키 사용으로 이용자에게 맞춤형 광고가 표시될 수 있으며, 이용자는 Google 광고 설정(adssettings.google.com)에서 맞춤 광고를 해제할 수 있습니다. 또한 www.aboutads.info 에서 제3자 광고 사업자의 쿠키 사용을 일괄 거부할 수 있습니다.",
-      "3. 분석 도구 — 서비스 개선을 위해 방문자 통계 도구(예: Google Analytics)를 사용할 수 있으며, 이 과정에서 익명화된 이용 데이터가 수집됩니다.",
-      "4. 아동의 개인정보 — 사이트는 만 14세 미만 아동의 개인정보를 고의로 수집하지 않습니다.",
-      "5. 문의 — 개인정보 관련 문의는 skiloveman@naver.com 으로 연락해 주세요. 본 방침은 법령이나 서비스 변경에 따라 개정될 수 있으며, 개정 시 본 페이지에 게시합니다.",
-    ]},
-    terms: { t: "이용약관", ps: [
-      "1. 목적 — 본 약관은 아쉬탕가 샬라(Ashtanga Shala)가 제공하는 콘텐츠 이용 조건을 규정합니다. 사이트를 이용함으로써 본 약관에 동의하는 것으로 간주됩니다.",
-      "2. 의료 면책 — 사이트의 모든 내용은 일반적인 정보 제공 목적이며 의학적 조언, 진단, 치료를 대신하지 않습니다. 요가 수련은 신체적 부상의 위험을 수반합니다. 새로운 운동을 시작하기 전 반드시 의사와 상담하시고, 수련 중 통증이나 이상을 느끼면 즉시 중단하세요. 사이트 이용으로 발생한 부상에 대해 운영자는 책임을 지지 않습니다.",
-      "3. 지식재산권 — 사이트의 텍스트, 일러스트, 디자인 등 모든 콘텐츠의 저작권은 운영자에게 있으며, 사전 동의 없는 복제·배포를 금합니다.",
-      "4. 광고 — 사이트에는 제3자(Google AdSense) 광고가 게재됩니다. 광고를 통해 연결되는 외부 사이트의 콘텐츠에 대해 운영자는 책임을 지지 않습니다.",
-      "5. 약관 변경 — 본 약관은 사전 고지 후 변경될 수 있습니다.",
-    ]},
-    contact: { t: "문의", ps: [
-      "콘텐츠 오류 제보, 제휴 제안, 개인정보 관련 문의는 아래 이메일로 보내 주세요.",
-      "이메일: skiloveman@naver.com — 영업일 기준 3일 이내에 답변드리도록 하겠습니다.",
-      "광고 및 제휴 관련 문의도 같은 주소로 받고 있습니다.",
-    ]},
+    about: {
+      t: "사이트 소개 및 운영자 정보 (About)", icon: "ℹ️",
+      sub: "아쉬탕가 샬라를 누가, 왜, 어떤 기준으로 만드는지와 콘텐츠 근거·수익 구조·연락처를 안내합니다.",
+      intro: "아쉬탕가 샬라는 회원가입도 설치도 없이 바로 쓰는 아쉬탕가 빈야사 요가 독습 가이드입니다. 프라이머리·인터미디엇·어드밴스드 시리즈의 전체 시퀀스와 자세별 진입 단계, 흔한 실수, 호흡 수, 드리쉬티(응시점), 초보자 대체 자세, 그리고 호흡을 세어 주는 수련 모드까지 한 곳에서 제공합니다.",
+      secs: [
+        { h: "운영 목적", ps: [
+          "아쉬탕가는 매번 같은 순서로 수련하는 몇 안 되는 요가 체계라 혼자 수련하기에 적합하지만, 시퀀스·호흡 수·응시점 같은 정보는 여러 곳에 흩어져 있습니다. 매일의 수련에 필요한 것을 한 화면으로 줄이는 것이 이 사이트의 목표입니다.",
+          "10개 언어를 지원하고, 자세별 진도 체크와 자동 호흡 타이머로 오늘 어디까지 수련했는지 기억해 줍니다.",
+        ]},
+        { h: "운영 주체", ps: [
+          "개인이 직접 기획·개발해 운영하는 개인 사이트이며, 특정 요가원·협회·기업과 제휴 관계가 없습니다. 광고 외에 이용자에게 어떤 비용도 청구하지 않고, 유료 강습이나 상품을 중개하거나 알선하지 않습니다.",
+        ]},
+        { h: "콘텐츠 근거와 갱신 방침", ps: [
+          "시퀀스 순서·호흡 수·드리쉬티는 스리 K. 파타비 조이스로부터 이어지는 아쉬탕가 마이소르 전통에서 통용되는 기준을 따르며, 모든 설명문·일러스트·사진·영상은 직접 작성·제작한 원저작물입니다.",
+          "내용의 오류를 발견하시면 1:1 문의로 알려주세요. 확인 후 바로 반영합니다.",
+        ]},
+        { h: "안전 안내", ps: [
+          "이 사이트는 자격 있는 지도자의 직접 지도를 대체하지 않습니다. 특히 인터미디엇 이상의 자세는 반드시 지도자와 함께 배우시길 권합니다.",
+        ]},
+        { h: "연락처", ps: [
+          "이메일: skiloveman@naver.com — 화면 오른쪽 아래 1:1 버튼으로도 접수할 수 있으며, 영업일 기준 3일 이내에 답변드립니다.",
+        ]},
+      ],
+    },
+    privacy: {
+      t: "개인정보처리방침 (Privacy)", icon: "🔒",
+      sub: "수집하는 정보와 쿠키·광고·분석 도구의 사용 방식, 이용자의 선택권을 안내합니다.",
+      intro: "시행일: 2026년 8월 20일. 본 방침은 아쉬탕가 샬라(Ashtanga Shala, 이하 '사이트')가 정보를 어떻게 다루는지 설명합니다. 법령이나 서비스 변경에 따라 개정될 수 있으며, 개정 시 본 페이지에 게시합니다.",
+      secs: [
+        { h: "수집하는 정보", ps: [
+          "사이트는 회원가입 없이 이용할 수 있으며, 이름·이메일 등 개인 식별 정보를 직접 수집하지 않습니다. 서비스 이용 과정에서 접속 기록, 브라우저 종류, 기기 정보 같은 표준 기술 데이터가 자동으로 수집될 수 있습니다.",
+          "수련 진도·언어·테마 같은 설정은 이용자의 브라우저(localStorage)에만 저장되며 서버로 전송되지 않습니다. 브라우저 데이터를 삭제하면 함께 삭제됩니다.",
+        ]},
+        { h: "1:1 문의 시 수집되는 정보", ps: [
+          "문의 폼으로 보내주신 성함·이메일·문의 내용은 답변 목적으로만 사용합니다. 메일 발송 처리 후 별도의 데이터베이스에 저장하지 않으며, 발송은 이메일 발송 대행사(Resend)를 통해 이루어집니다.",
+        ]},
+        { h: "쿠키와 광고", ps: [
+          "사이트는 Google AdSense를 통해 광고를 게재합니다. Google을 포함한 제3자 광고 사업자는 쿠키를 사용하여 이용자의 이전 방문 기록을 바탕으로 광고를 게재할 수 있습니다.",
+          "이용자는 Google 광고 설정(adssettings.google.com)에서 맞춤 광고를 해제할 수 있고, www.aboutads.info 에서 제3자 광고 사업자의 쿠키 사용을 일괄 거부할 수 있습니다. 자세한 내용은 '광고 게재 및 쿠키 정책' 페이지를 참고하세요.",
+        ]},
+        { h: "분석 도구", ps: [
+          "서비스 개선을 위해 방문자 통계 도구(예: Google Analytics)를 사용할 수 있으며, 이 과정에서 익명화된 이용 데이터가 수집됩니다.",
+        ]},
+        { h: "아동의 개인정보", ps: [
+          "사이트는 만 14세 미만(또는 해당 관할 기준 연령 미만) 아동의 개인정보를 고의로 수집하지 않습니다.",
+        ]},
+        { h: "문의", ps: [
+          "개인정보 관련 문의는 skiloveman@naver.com 으로 연락해 주세요.",
+        ]},
+      ],
+    },
+    terms: {
+      t: "서비스 이용약관", icon: "📄",
+      sub: "사이트 이용 조건과 저작권, 광고, 약관 변경에 관한 규정입니다.",
+      intro: "본 약관은 아쉬탕가 샬라(Ashtanga Shala)가 제공하는 콘텐츠의 이용 조건을 규정합니다. 사이트를 이용함으로써 본 약관에 동의하는 것으로 간주됩니다.",
+      secs: [
+        { h: "서비스의 성격", ps: [
+          "사이트는 아쉬탕가 요가 수련 정보를 무료로 제공하는 정보성 서비스입니다. 회원가입·결제 기능이 없으며, 모든 콘텐츠는 있는 그대로(as-is) 제공됩니다.",
+        ]},
+        { h: "지식재산권", ps: [
+          "사이트의 텍스트, 일러스트, 사진, 영상, 디자인 등 모든 콘텐츠의 저작권은 운영자에게 있습니다. 사전 서면 동의 없는 복제·배포·2차적 저작물 작성을 금합니다. 인용 시에는 출처(ashtanga-shala.pages.dev)를 명시해 주세요.",
+        ]},
+        { h: "광고", ps: [
+          "사이트에는 제3자(Google AdSense) 광고가 게재됩니다. 광고를 통해 연결되는 외부 사이트의 콘텐츠·거래에 대해 운영자는 책임을 지지 않습니다.",
+        ]},
+        { h: "서비스 변경과 중단", ps: [
+          "운영자는 사전 고지 없이 콘텐츠를 수정·보완하거나 서비스 제공을 일시 중단할 수 있습니다. 무료 서비스 특성상 이로 인한 손해에 대해 책임을 지지 않습니다.",
+        ]},
+        { h: "약관의 변경", ps: [
+          "본 약관은 변경될 수 있으며, 변경 시 본 페이지에 게시합니다. 게시 이후 사이트를 계속 이용하면 변경된 약관에 동의한 것으로 봅니다.",
+        ]},
+      ],
+    },
+    legal: {
+      t: "책임의 한계 및 법적고지", icon: "⚠️",
+      sub: "의료 면책과 이용자의 책임, 정보의 정확성에 관한 고지입니다.",
+      intro: "본 사이트의 모든 콘텐츠는 일반적인 정보 제공 목적이며, 의학적 조언·진단·치료를 대신하지 않습니다.",
+      secs: [
+        { h: "의료 면책", ps: [
+          "요가 수련은 신체적 부상의 위험을 수반합니다. 새로운 운동을 시작하기 전 반드시 의사와 상담하시고, 수련 중 통증이나 어지러움 등 이상을 느끼면 즉시 중단하세요.",
+          "임신 중이거나 고혈압·심장질환·관절 부상 등 기저 질환이 있는 경우, 수련 전 반드시 의료 전문가 및 자격 있는 지도자와 상담하시기 바랍니다.",
+        ]},
+        { h: "이용자의 책임", ps: [
+          "수련 여부와 강도는 이용자 스스로의 신체 상태 판단에 따라 결정해야 합니다. 사이트의 정보를 이용하여 발생한 부상이나 손해에 대해 운영자는 법적 책임을 지지 않습니다.",
+        ]},
+        { h: "정보의 정확성", ps: [
+          "콘텐츠의 정확성을 위해 노력하지만 완전성·최신성을 보증하지 않습니다. 전통과 지도자에 따라 시퀀스·호흡 수 등 세부 기준이 다를 수 있습니다.",
+        ]},
+        { h: "외부 링크", ps: [
+          "광고 등을 통해 연결되는 외부 사이트의 내용과 거래에 대해 운영자는 어떠한 책임도 지지 않습니다.",
+        ]},
+      ],
+    },
+    adcookie: {
+      t: "광고 게재 및 쿠키 정책", icon: "🍪",
+      sub: "Google AdSense 광고와 쿠키가 어떻게 사용되는지, 어떻게 거부할 수 있는지 안내합니다.",
+      intro: "사이트는 무료 운영을 위해 Google AdSense 광고를 게재하며, 이 과정에서 쿠키가 사용됩니다.",
+      secs: [
+        { h: "광고 쿠키", ps: [
+          "Google을 포함한 제3자 광고 사업자는 쿠키를 사용하여 이용자가 이 사이트와 다른 웹사이트에 방문한 기록을 바탕으로 광고를 게재합니다. Google의 광고 쿠키를 통해 이용자에게 맞춤형 광고가 표시될 수 있습니다.",
+        ]},
+        { h: "맞춤 광고 거부 방법", ps: [
+          "Google 광고 설정(adssettings.google.com)에서 맞춤 광고를 해제할 수 있습니다.",
+          "www.aboutads.info 를 방문하면 일부 제3자 광고 사업자의 쿠키 사용을 일괄 거부할 수 있습니다.",
+        ]},
+        { h: "사이트 자체 저장소", ps: [
+          "쿠키 안내 확인 여부, 언어, 테마, 수련 진도는 이용자의 브라우저(localStorage)에만 저장됩니다. 광고와 무관하며 서버로 전송되지 않습니다.",
+        ]},
+        { h: "광고 표시 원칙", ps: [
+          "광고는 수련 콘텐츠와 구분되어 표시되며, 광고 수익은 사이트 운영과 콘텐츠 제작에 사용됩니다.",
+        ]},
+      ],
+    },
+    contact: {
+      t: "문의", icon: "💬",
+      sub: "콘텐츠 오류 제보, 제휴 제안, 개인정보 관련 문의를 받습니다.",
+      intro: "화면 오른쪽 아래 1:1 버튼을 누르면 문의 폼이 열립니다. 이메일로 직접 보내셔도 됩니다.",
+      secs: [
+        { h: "이메일", ps: [
+          "skiloveman@naver.com — 영업일 기준 3일 이내에 답변드리도록 하겠습니다. 광고·제휴 관련 문의도 같은 주소로 받고 있습니다.",
+        ]},
+      ],
+    },
   },
   en: {
-    about: { t: "About", ps: [
-      "This site is a free guide to practicing Ashtanga Vinyasa Yoga safely on your own. It covers the complete Primary, Intermediate, and Advanced series, with entry steps, common mistakes, and beginner-friendly modifications for every pose.",
-      "Because Ashtanga follows the same sequence every time, it is one of the few yoga systems suited to self-practice. This site does not, however, replace the direct guidance of a qualified teacher — Intermediate poses and beyond should always be learned with one.",
-      "All content is originally written and produced. If you spot an error, please let us know via the Contact page.",
-    ]},
-    privacy: { t: "Privacy Policy", ps: [
-      "Effective date: August 20, 2026. This policy describes how Ashtanga Shala ('the Site') handles information.",
-      "1. Information we collect — The Site requires no registration and does not directly collect personally identifying information such as names or email addresses. Standard technical data (access logs, browser type, device information) may be collected automatically.",
-      "2. Cookies and advertising — The Site displays ads through Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve personalized ads. You may opt out of personalized advertising by visiting Google Ads Settings (adssettings.google.com), and opt out of some third-party vendors' cookie use at www.aboutads.info.",
-      "3. Analytics — We may use visitor analytics tools (e.g., Google Analytics), which collect anonymized usage data to help improve the service.",
-      "4. Children's privacy — The Site does not knowingly collect personal information from children under 13 (or the applicable age in your jurisdiction).",
-      "5. Contact — For privacy inquiries, email skiloveman@naver.com. This policy may be updated as laws or the service change; revisions will be posted on this page.",
-    ]},
-    terms: { t: "Terms of Use", ps: [
-      "1. Purpose — These terms govern the use of content provided by Ashtanga Shala. By using the Site you agree to these terms.",
-      "2. Medical disclaimer — All content is for general information only and is not medical advice, diagnosis, or treatment. Yoga practice carries a risk of physical injury. Consult a physician before beginning any new exercise program, and stop immediately if you feel pain or discomfort. The operator accepts no liability for injuries arising from use of the Site.",
-      "3. Intellectual property — All text, illustrations, and design on the Site are the property of the operator. Reproduction or distribution without prior consent is prohibited.",
-      "4. Advertising — The Site displays third-party (Google AdSense) advertisements. The operator is not responsible for the content of external sites reached through ads.",
-      "5. Changes — These terms may be revised with notice posted on this page.",
-    ]},
-    contact: { t: "Contact", ps: [
-      "For content corrections, partnership proposals, or privacy inquiries, please email us.",
-      "Email: skiloveman@naver.com — we aim to reply within three business days.",
-      "Advertising and partnership inquiries are welcome at the same address.",
-    ]},
+    about: {
+      t: "About & Operator Info", icon: "ℹ️",
+      sub: "Who makes Ashtanga Shala, why, on what basis — plus how it is funded and how to reach us.",
+      intro: "Ashtanga Shala is a self-practice guide to Ashtanga Vinyasa Yoga that needs no sign-up and no install. It gathers the complete Primary, Intermediate, and Advanced series in one place: entry steps, common mistakes, breath counts, drishti (gaze points), beginner modifications, and a breath-counting practice mode.",
+      secs: [
+        { h: "Why this site exists", ps: [
+          "Because Ashtanga repeats the same sequence every time, it is one of the few yoga systems suited to self-practice — yet the sequence, breath counts, and gaze points are scattered across many sources. This site's goal is to fit a day's practice onto one screen.",
+          "It supports ten languages and remembers your progress per pose, with an automatic breath timer for practice.",
+        ]},
+        { h: "Who runs it", ps: [
+          "It is a personal site planned, built, and operated by one individual, with no affiliation to any studio, association, or company. Beyond advertising, users are never charged, and no paid classes or products are brokered.",
+        ]},
+        { h: "Content basis and updates", ps: [
+          "Sequence order, breath counts, and drishti follow the conventions of the Ashtanga Mysore tradition descending from Sri K. Pattabhi Jois. All text, illustrations, photos, and videos are original work.",
+          "If you spot an error, please tell us through the 1:1 contact button — confirmed corrections are applied promptly.",
+        ]},
+        { h: "Safety note", ps: [
+          "This site does not replace the direct guidance of a qualified teacher. Intermediate poses and beyond should always be learned with one.",
+        ]},
+        { h: "Contact", ps: [
+          "Email: skiloveman@naver.com — also reachable via the 1:1 button at the bottom right; we aim to reply within three business days.",
+        ]},
+      ],
+    },
+    privacy: {
+      t: "Privacy Policy", icon: "🔒",
+      sub: "What information is collected, how cookies, ads, and analytics are used, and the choices you have.",
+      intro: "Effective date: August 20, 2026. This policy describes how Ashtanga Shala ('the Site') handles information. It may be updated as laws or the service change; revisions are posted on this page.",
+      secs: [
+        { h: "Information we collect", ps: [
+          "The Site requires no registration and does not directly collect personally identifying information such as names or email addresses. Standard technical data (access logs, browser type, device information) may be collected automatically.",
+          "Settings such as practice progress, language, and theme are stored only in your browser (localStorage) and are never sent to a server. Clearing browser data removes them.",
+        ]},
+        { h: "Information from 1:1 inquiries", ps: [
+          "The name, email, and message you submit through the contact form are used only to reply to you. They are not stored in any database after the email is dispatched; delivery is handled by an email service provider (Resend).",
+        ]},
+        { h: "Cookies and advertising", ps: [
+          "The Site displays ads through Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this and other websites.",
+          "You may opt out of personalized advertising at Google Ads Settings (adssettings.google.com), and opt out of some third-party vendors' cookie use at www.aboutads.info. See the 'Advertising & Cookie Policy' page for details.",
+        ]},
+        { h: "Analytics", ps: [
+          "We may use visitor analytics tools (e.g., Google Analytics), which collect anonymized usage data to help improve the service.",
+        ]},
+        { h: "Children's privacy", ps: [
+          "The Site does not knowingly collect personal information from children under 13 (or the applicable age in your jurisdiction).",
+        ]},
+        { h: "Contact", ps: [
+          "For privacy inquiries, email skiloveman@naver.com.",
+        ]},
+      ],
+    },
+    terms: {
+      t: "Terms of Service", icon: "📄",
+      sub: "The conditions of use, copyright, advertising, and how these terms may change.",
+      intro: "These terms govern the use of content provided by Ashtanga Shala. By using the Site you agree to them.",
+      secs: [
+        { h: "Nature of the service", ps: [
+          "The Site is a free informational service about Ashtanga yoga practice. There is no registration or payment feature, and all content is provided as-is.",
+        ]},
+        { h: "Intellectual property", ps: [
+          "All text, illustrations, photos, videos, and design on the Site are the property of the operator. Reproduction, distribution, or derivative works without prior written consent are prohibited. When quoting, please credit ashtanga-shala.pages.dev.",
+        ]},
+        { h: "Advertising", ps: [
+          "The Site displays third-party (Google AdSense) advertisements. The operator is not responsible for the content of, or transactions on, external sites reached through ads.",
+        ]},
+        { h: "Changes and interruptions to the service", ps: [
+          "The operator may revise content or suspend the service without prior notice. As a free service, no liability is accepted for losses arising from such changes.",
+        ]},
+        { h: "Changes to these terms", ps: [
+          "These terms may be revised, with notice posted on this page. Continued use of the Site after posting constitutes acceptance.",
+        ]},
+      ],
+    },
+    legal: {
+      t: "Disclaimer & Legal Notice", icon: "⚠️",
+      sub: "Medical disclaimer, user responsibility, and notes on accuracy.",
+      intro: "All content on this Site is for general information only and is not medical advice, diagnosis, or treatment.",
+      secs: [
+        { h: "Medical disclaimer", ps: [
+          "Yoga practice carries a risk of physical injury. Consult a physician before beginning any new exercise program, and stop immediately if you feel pain, dizziness, or discomfort.",
+          "If you are pregnant or have an underlying condition such as high blood pressure, heart disease, or joint injury, consult a medical professional and a qualified teacher before practicing.",
+        ]},
+        { h: "User responsibility", ps: [
+          "Whether and how intensely to practice is your own decision, based on your own physical condition. The operator accepts no legal liability for injuries or losses arising from use of the Site's information.",
+        ]},
+        { h: "Accuracy of information", ps: [
+          "We strive for accuracy but do not guarantee completeness or currency. Details such as sequence and breath counts can vary between traditions and teachers.",
+        ]},
+        { h: "External links", ps: [
+          "The operator accepts no responsibility for the content of, or transactions on, external sites reached through ads or links.",
+        ]},
+      ],
+    },
+    adcookie: {
+      t: "Advertising & Cookie Policy", icon: "🍪",
+      sub: "How Google AdSense ads and cookies are used here, and how to opt out.",
+      intro: "The Site shows Google AdSense ads to stay free to use, and cookies are used in the process.",
+      secs: [
+        { h: "Advertising cookies", ps: [
+          "Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. Google's advertising cookies enable personalized ads.",
+        ]},
+        { h: "How to opt out", ps: [
+          "You can opt out of personalized advertising at Google Ads Settings (adssettings.google.com).",
+          "At www.aboutads.info you can opt out of some third-party vendors' use of cookies in one place.",
+        ]},
+        { h: "The Site's own storage", ps: [
+          "Cookie-notice acknowledgement, language, theme, and practice progress are stored only in your browser (localStorage). They are unrelated to advertising and never sent to a server.",
+        ]},
+        { h: "How ads are displayed", ps: [
+          "Ads are displayed distinctly from practice content, and ad revenue funds the Site's operation and content production.",
+        ]},
+      ],
+    },
+    contact: {
+      t: "Contact", icon: "💬",
+      sub: "Content corrections, partnership proposals, and privacy inquiries are welcome.",
+      intro: "The 1:1 button at the bottom right opens a contact form. You can also email us directly.",
+      secs: [
+        { h: "Email", ps: [
+          "skiloveman@naver.com — we aim to reply within three business days. Advertising and partnership inquiries are welcome at the same address.",
+        ]},
+      ],
+    },
   },
 };
 
@@ -1622,19 +1818,50 @@ function InfoPage({ pageKey, lang, onClose }) {
       position: "fixed", inset: 0, zIndex: 55, background: "rgba(8,11,15,0.78)",
       display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
     }}>
-      <div role="dialog" aria-modal="true" aria-label={page.t} className="sheet infopad" onClick={(e) => e.stopPropagation()} style={{
+      <div role="dialog" aria-modal="true" aria-label={page.t} className="sheet" onClick={(e) => e.stopPropagation()} style={{
         background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 18,
-        maxWidth: 680, width: "100%", maxHeight: "86vh", overflowY: "auto", padding: 32, position: "relative",
+        maxWidth: 680, width: "100%", maxHeight: "86vh", position: "relative",
+        display: "flex", flexDirection: "column", overflow: "hidden",
       }}>
-        <button onClick={onClose} aria-label={T.closeL} style={{
-          position: "absolute", top: 14, right: 14, background: "none", border: "none",
-          color: C.sub, fontSize: 20, cursor: "pointer", padding: 6,
+        <button onClick={onClose} aria-label={T.closeL} className="sheetx" style={{
+          position: "absolute", top: 12, right: 12, zIndex: 2, cursor: "pointer",
+          width: 34, height: 34, borderRadius: "50%", padding: 0,
+          background: C.bg, border: `1px solid ${C.line}`, color: C.ink,
+          fontSize: 16, lineHeight: 1, display: "flex", alignItems: "center", justifyContent: "center",
         }}>✕</button>
-        <h3 className="display" style={{ fontSize: 24, fontWeight: 700, marginBottom: 18 }}>{page.t}</h3>
-        <div style={{ display: "grid", gap: 14 }}>
-          {page.ps.map((p, i) => (
-            <p key={i} style={{ fontSize: 13.5, lineHeight: 1.9, fontWeight: 300, color: C.ink }}>{p}</p>
+        {/* 헤더: 아이콘 + 제목 + 부제 */}
+        <div className="sheethead" style={{ flexShrink: 0, padding: "22px 28px 16px", borderBottom: `1px solid ${C.line}`, display: "flex", gap: 14, alignItems: "flex-start" }}>
+          <span aria-hidden="true" style={{
+            width: 42, height: 42, borderRadius: 12, background: C.amberDim, flexShrink: 0,
+            display: "flex", alignItems: "center", justifyContent: "center", fontSize: 19,
+          }}>{page.icon}</span>
+          <div style={{ minWidth: 0, paddingInlineEnd: 30 }}>
+            <h3 className="display" style={{ fontSize: 19, fontWeight: 700, lineHeight: 1.35 }}>{page.t}</h3>
+            {page.sub && <p style={{ fontSize: 12.5, color: C.sub, marginTop: 4, lineHeight: 1.6, fontWeight: 300 }}>{page.sub}</p>}
+          </div>
+        </div>
+        {/* 본문: 도입 카드 + 섹션 카드 */}
+        <div className="sheetbody" style={{ overflowY: "auto", padding: "18px 28px 22px", display: "grid", gap: 12, alignContent: "start" }}>
+          {page.intro && (
+            <p className="infosec" style={{
+              background: C.bg, border: `1px solid ${C.line}`, borderRadius: 12, padding: "14px 18px",
+              fontSize: 13.5, lineHeight: 1.9, fontWeight: 300, color: C.ink,
+            }}>{page.intro}</p>
+          )}
+          {(page.secs || []).map((s, i) => (
+            <div key={i} className="infosec" style={{ background: C.bg, border: `1px solid ${C.line}`, borderRadius: 12, padding: "14px 18px" }}>
+              <p style={{ fontSize: 14, fontWeight: 700, color: C.ink, marginBottom: 7 }}>{s.h}</p>
+              {s.ps.map((p, j) => (
+                <p key={j} style={{ fontSize: 13.5, lineHeight: 1.9, fontWeight: 300, color: C.sub, marginTop: j > 0 ? 8 : 0 }}>{p}</p>
+              ))}
+            </div>
           ))}
+        </div>
+        {/* 하단 바: 확인 */}
+        <div style={{ flexShrink: 0, borderTop: `1px solid ${C.line}`, padding: "12px 28px", display: "flex", justifyContent: "flex-end" }}>
+          <button className="pbtn" onClick={onClose} style={{ fontSize: 13.5, fontWeight: 600, padding: "9px 28px", background: C.amberDim, color: C.amber, borderColor: "rgba(217,160,91,0.5)" }}>
+            {T.okL}
+          </button>
         </div>
       </div>
     </div>
@@ -2313,7 +2540,8 @@ export default function AshtangaGuide() {
                 <button className="footlink hl" onClick={() => setPage("privacy")}><span aria-hidden="true">🔒</span>{T.pageNav.privacy}</button>
                 <button className="footlink" onClick={() => setPage("terms")}><span aria-hidden="true">📄</span>{T.pageNav.terms}</button>
                 <button className="footlink" onClick={() => setPage("about")}><span aria-hidden="true">🏛</span>{T.pageNav.about}</button>
-                <button className="footlink" onClick={() => setPage("contact")}><span aria-hidden="true">💬</span>{T.pageNav.contact}</button>
+                <button className="footlink" onClick={() => setPage("legal")}><span aria-hidden="true">⚠️</span>{T.pageNav.legal}</button>
+                <button className="footlink" onClick={() => setPage("adcookie")}><span aria-hidden="true">🍪</span>{T.pageNav.adcookie}</button>
               </nav>
               {/* 1:1 문의 */}
               <div>
