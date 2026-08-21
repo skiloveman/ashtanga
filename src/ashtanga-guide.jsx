@@ -1319,7 +1319,7 @@ function PoseSearch({ lang, onPick, compact }) {
 }
 
 /* ── 수련 모드 (호흡 타이머) ── */
-function PracticeMode({ level: initialLevel, lang, onExit }) {
+function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme }) {
   const T = STR[lang];
   const [levelId, setLevelId] = useState(initialLevel.id);
   const level = LEVELS.find((l) => l.id === levelId);
@@ -1396,7 +1396,14 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
             </button>
           ))}
         </div>
-        <button onClick={onExit} className="pbtn" style={{ fontSize: 13 }}>{T.finishBtn}</button>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <button onClick={onToggleTheme} className="pbtn"
+            aria-label={theme === "dark" ? "Light mode" : "Dark mode"} aria-pressed={theme === "light"}
+            style={{ fontSize: 14, padding: "6px 12px", lineHeight: 1 }}>
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
+          <button onClick={onExit} className="pbtn" style={{ fontSize: 13 }}>{T.finishBtn}</button>
+        </div>
       </div>
 
       {/* 중앙 */}
@@ -2584,7 +2591,7 @@ export default function AshtangaGuide() {
       </div>
 
       {detail && <PoseDetail pose={detail} lang={lang} onClose={() => setDetail(null)} />}
-      {practice && <PracticeMode level={level} lang={lang} onExit={() => setPractice(false)} />}
+      {practice && <PracticeMode level={level} lang={lang} theme={theme} onToggleTheme={toggleTheme} onExit={() => setPractice(false)} />}
       {page && <InfoPage pageKey={page} lang={lang} onClose={() => setPage(null)} />}
       {contactOpen && <ContactModal lang={lang} onClose={() => setContactOpen(false)} />}
       {!cookieOk && <CookieBar lang={lang} onOk={() => { setCookieOk(true); lsSet("cookieOk", true); }} />}
