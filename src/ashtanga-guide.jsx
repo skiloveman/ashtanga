@@ -712,20 +712,44 @@ const SURYA_A = [
   { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", cnt: "마침", cntEn: "Finish", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "/videos/surya-a-12.mp4" },
 ];
 
-/* 태양경배 A 전체 흐름 클립 (01~12 순서 재생) */
+/* 태양경배 A 전체 흐름 클립 (01~12 순서 재생) — d/dEn: 플레이어 옆에 표시되는 동작 설명 */
 const SURYA_CLIPS = [
-  { ko: "사마스티티 · 준비 호흡", en: "Samasthiti · settle in" },
-  { ko: "우르드바 하스타사나 · 마시며", en: "Urdhva Hastasana · inhale" },
-  { ko: "우타나사나 · 내쉬며", en: "Uttanasana · exhale" },
-  { ko: "아르다 우타나사나 · 마시며", en: "Ardha Uttanasana · inhale" },
-  { ko: "차투랑가 · 내쉬며", en: "Chaturanga · exhale" },
-  { ko: "업독 · 마시며", en: "Upward Dog · inhale" },
-  { ko: "다운독 · 내쉬며", en: "Downward Dog · exhale" },
-  { ko: "다운독 · 호흡 5회", en: "Downward Dog · 5 breaths" },
-  { ko: "점프 포워드 · 마시며", en: "Jump forward · inhale" },
-  { ko: "우타나사나 · 내쉬며", en: "Uttanasana · exhale" },
-  { ko: "우르드바 하스타사나 · 마시며", en: "Urdhva Hastasana · inhale" },
-  { ko: "사마스티티 · 내쉬며", en: "Samasthiti · exhale" },
+  { ko: "사마스티티 · 준비 호흡", en: "Samasthiti · settle in",
+    d: "매트 앞에 발을 모으고 곧게 섭니다. 어깨를 낮추고 우자이 호흡을 고르게 만들며 시작을 준비합니다.",
+    dEn: "Stand tall at the front of the mat, feet together. Settle the shoulders and even out the ujjayi breath." },
+  { ko: "우르드바 하스타사나 · 마시며", en: "Urdhva Hastasana · inhale",
+    d: "마시는 숨에 팔을 옆으로 크게 돌려 머리 위에서 합장하고, 시선은 엄지를 따라 올립니다.",
+    dEn: "Inhale, sweep the arms wide and join the palms overhead, the gaze following the thumbs." },
+  { ko: "우타나사나 · 내쉬며", en: "Uttanasana · exhale",
+    d: "내쉬며 골반부터 접어 손을 발 옆 바닥으로 내립니다. 무릎은 살짝 굽혀도 좋습니다.",
+    dEn: "Exhale, hinge at the hips and fold, hands to the floor beside the feet — soft knees are fine." },
+  { ko: "아르다 우타나사나 · 마시며", en: "Ardha Uttanasana · inhale",
+    d: "마시며 척추를 앞으로 길게 펴고 고개를 들어 시선을 앞으로 보냅니다. 손끝은 바닥에 남겨 둡니다.",
+    dEn: "Inhale, lengthen the spine forward and lift the gaze, fingertips staying on the floor." },
+  { ko: "차투랑가 · 내쉬며", en: "Chaturanga · exhale",
+    d: "내쉬며 뒤로 점프(또는 스텝)해 팔꿈치를 몸통에 붙인 채 낮은 판자로 내려옵니다.",
+    dEn: "Exhale, jump or step back and lower to a low plank, elbows hugging the ribs." },
+  { ko: "업독 · 마시며", en: "Upward Dog · inhale",
+    d: "마시며 발등을 바닥에 대고 가슴을 앞으로 밀어 올립니다. 허벅지는 바닥에서 띄웁니다.",
+    dEn: "Inhale, roll onto the tops of the feet and draw the chest up and through, thighs off the floor." },
+  { ko: "다운독 · 내쉬며", en: "Downward Dog · exhale",
+    d: "내쉬며 엉덩이를 뒤로 들어 올려 몸으로 삼각형을 만들고, 손바닥으로 바닥을 밀며 척추를 늘입니다.",
+    dEn: "Exhale, lift the hips back and up into a triangle, pressing the floor away to lengthen the spine." },
+  { ko: "다운독 · 호흡 5회", en: "Downward Dog · 5 breaths",
+    d: "이 자세로 다섯 번 깊게 호흡합니다. 뒤꿈치는 바닥 방향으로, 시선은 배꼽 쪽에 둡니다.",
+    dEn: "Stay for five deep breaths, heels reaching down, gaze toward the navel." },
+  { ko: "점프 포워드 · 마시며", en: "Jump forward · inhale",
+    d: "마시며 시선을 손 사이로 보내고 가볍게 점프(또는 걸어)해 발을 손 사이로 가져오며, 척추를 앞으로 편 아르다 우타나사나로 착지합니다.",
+    dEn: "Inhale, gaze between the hands and lightly jump or walk the feet forward, landing with a long spine in ardha uttanasana." },
+  { ko: "우타나사나 · 내쉬며", en: "Uttanasana · exhale",
+    d: "내쉬며 다시 깊게 접어 머리를 무겁게 떨어뜨립니다.",
+    dEn: "Exhale, fold deeply again, letting the head hang heavy." },
+  { ko: "우르드바 하스타사나 · 마시며", en: "Urdhva Hastasana · inhale",
+    d: "마시며 팔을 옆으로 펼치며 상체를 세워, 머리 위 합장으로 돌아옵니다.",
+    dEn: "Inhale, rise with wide arms back to palms joined overhead." },
+  { ko: "사마스티티 · 내쉬며", en: "Samasthiti · exhale",
+    d: "내쉬며 팔을 내려 처음의 사마스티티로 돌아옵니다. 한 번의 태양경배가 완성됩니다.",
+    dEn: "Exhale, release the arms and return to samasthiti — one round complete." },
 ];
 const suryaClipSrc = (i) => `/videos/surya-a-${String(i + 1).padStart(2, "0")}.mp4`;
 
@@ -1834,8 +1858,9 @@ export default function AshtangaGuide() {
               ) : (
                 <div style={{
                   background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 14,
-                  padding: 14, display: "flex", flexDirection: "column", alignItems: "center", gap: 10,
+                  padding: 14, display: "flex", gap: 18, flexWrap: "wrap", justifyContent: "center", alignItems: "flex-start",
                 }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, flex: "0 0 auto", width: "min(340px, 100%)" }}>
                   <video
                     key={flowClip}
                     src={suryaClipSrc(flowClip)}
@@ -1846,9 +1871,6 @@ export default function AshtangaGuide() {
                     onEnded={() => setFlowClip((c) => (c + 1 < SURYA_CLIPS.length ? c + 1 : c))}
                     style={{ width: "min(340px, 100%)", aspectRatio: "1 / 1", objectFit: "cover", borderRadius: 12, background: "#fff", border: `1px solid ${C.cardEdge}` }}
                   />
-                  <p style={{ fontSize: 13, fontWeight: 500 }}>
-                    {flowClip + 1} / {SURYA_CLIPS.length} · {lang === "ko" ? SURYA_CLIPS[flowClip].ko : SURYA_CLIPS[flowClip].en}
-                  </p>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
                     <button className="pbtn" style={{ fontSize: 12.5 }} onClick={() => setFlowClip((c) => Math.max(0, c - 1))}>
                       {lang === "ko" ? "이전" : "Prev"}
@@ -1862,6 +1884,30 @@ export default function AshtangaGuide() {
                     <button className="pbtn" style={{ fontSize: 12.5 }} onClick={() => setFlowOn(false)}>
                       {lang === "ko" ? "닫기" : "Close"}
                     </button>
+                  </div>
+                  </div>
+                  {/* 오른쪽: 12단계 동작 설명 — 현재 단계 강조, 클릭 시 해당 클립으로 이동 */}
+                  <div style={{ flex: 1, minWidth: 250, maxWidth: 460, display: "grid", gap: 2, alignContent: "start" }}>
+                    {SURYA_CLIPS.map((c, i) => {
+                      const on = i === flowClip;
+                      return (
+                        <button key={i} onClick={() => setFlowClip(i)}
+                          aria-current={on || undefined}
+                          style={{
+                            all: "unset", cursor: "pointer", borderRadius: 8, padding: "5px 10px",
+                            background: on ? C.amberDim : "transparent",
+                          }}>
+                          <span style={{ display: "block", fontSize: 12.5, fontWeight: on ? 700 : 400, color: on ? C.amber : C.sub }}>
+                            {i + 1}. {lang === "ko" ? c.ko : c.en}
+                          </span>
+                          {on && (
+                            <span style={{ display: "block", marginTop: 3, fontSize: 12.5, lineHeight: 1.6, color: C.ink, fontWeight: 300 }}>
+                              {lang === "ko" ? c.d : c.dEn}
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               )}
