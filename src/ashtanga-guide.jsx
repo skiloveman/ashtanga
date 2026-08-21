@@ -245,6 +245,9 @@ const STR = {
     searchPh: "자세 이름 검색…", searchNone: "검색 결과가 없습니다",
     benefitsH: "몸에 주는 효과",
     pageNav: { about: "소개", privacy: "개인정보처리방침", terms: "이용약관", contact: "문의" },
+    footCats: "주요 카테고리", footLegal: "약관 및 개인정보 처리방침", footSupport: "1:1 문의 및 고객 지원",
+    footSupportD: "콘텐츠 오류 제보, 제휴 제안, 개인정보 관련 문의는 언제든지 접수 가능합니다.",
+    footContactBtn: "1:1 문의 및 제보하기", footPolicy: "Google 게시자 정책 준수 사이트",
   },
   en: {
     heroT1: "In the stillness before sunrise,", heroT2: "a practice that follows the breath",
@@ -275,6 +278,9 @@ const STR = {
     searchPh: "Search poses…", searchNone: "No poses found",
     benefitsH: "Benefits",
     pageNav: { about: "About", privacy: "Privacy Policy", terms: "Terms of Use", contact: "Contact" },
+    footCats: "Categories", footLegal: "Legal & Privacy", footSupport: "Contact & Support",
+    footSupportD: "Content corrections, partnership proposals, and privacy questions are welcome anytime.",
+    footContactBtn: "Email us · 1:1 support", footPolicy: "Compliant with Google Publisher Policies",
   },
   es: {
     heroT1: "En la quietud antes del amanecer,", heroT2: "una práctica que sigue la respiración",
@@ -305,6 +311,9 @@ const STR = {
     benefitsH: "Beneficios",
     tabs: { primary: "Primaria", intermediate: "Intermedia", advanced: "Avanzada" },
     pageNav: { about: "Acerca de", privacy: "Política de privacidad", terms: "Términos de uso", contact: "Contacto" },
+    footCats: "Categorías", footLegal: "Legal y privacidad", footSupport: "Contacto y soporte",
+    footSupportD: "Correcciones de contenido, propuestas de colaboración y consultas de privacidad son bienvenidas.",
+    footContactBtn: "Escríbenos por correo", footPolicy: "Sitio conforme a las políticas para editores de Google",
   },
   ja: {
     heroT1: "夜明け前の静けさの中で、", heroT2: "呼吸に導かれる練習",
@@ -335,6 +344,9 @@ const STR = {
     benefitsH: "体への効果",
     tabs: { primary: "プライマリー", intermediate: "インターミディエイト", advanced: "アドバンス" },
     pageNav: { about: "サイトについて", privacy: "プライバシーポリシー", terms: "利用規約", contact: "お問い合わせ" },
+    footCats: "主なカテゴリー", footLegal: "規約とプライバシー", footSupport: "お問い合わせ・サポート",
+    footSupportD: "内容の誤りのご報告、提携のご提案、プライバシーに関するお問い合わせを受け付けています。",
+    footContactBtn: "メールでお問い合わせ", footPolicy: "Google パブリッシャー ポリシー準拠サイト",
   },
   de: {
     heroT1: "In der Stille vor Sonnenaufgang,", heroT2: "eine Praxis, die dem Atem folgt",
@@ -365,6 +377,9 @@ const STR = {
     benefitsH: "Wirkung",
     tabs: { primary: "Primary", intermediate: "Intermediate", advanced: "Advanced" },
     pageNav: { about: "Über uns", privacy: "Datenschutzerklärung", terms: "Nutzungsbedingungen", contact: "Kontakt" },
+    footCats: "Kategorien", footLegal: "Rechtliches & Datenschutz", footSupport: "Kontakt & Support",
+    footSupportD: "Inhaltliche Korrekturen, Kooperationsanfragen und Datenschutzfragen sind jederzeit willkommen.",
+    footContactBtn: "Per E-Mail kontaktieren", footPolicy: "Konform mit den Google-Publisher-Richtlinien",
   },
   fr: {
     heroT1: "Dans le calme d'avant l'aube,", heroT2: "une pratique guidée par le souffle",
@@ -395,6 +410,9 @@ const STR = {
     benefitsH: "Bienfaits",
     tabs: { primary: "Première série", intermediate: "Intermédiaire", advanced: "Avancée" },
     pageNav: { about: "À propos", privacy: "Politique de confidentialité", terms: "Conditions d'utilisation", contact: "Contact" },
+    footCats: "Catégories", footLegal: "Mentions légales et confidentialité", footSupport: "Contact et assistance",
+    footSupportD: "Corrections de contenu, propositions de partenariat et questions de confidentialité sont les bienvenues.",
+    footContactBtn: "Nous contacter par e-mail", footPolicy: "Site conforme aux règles Google pour les éditeurs",
   },
   zh: {
     heroT1: "在日出前的宁静中，", heroT2: "跟随呼吸的练习",
@@ -425,6 +443,9 @@ const STR = {
     benefitsH: "身体功效",
     tabs: { primary: "初级序列", intermediate: "中级序列", advanced: "高级序列" },
     pageNav: { about: "关于本站", privacy: "隐私政策", terms: "使用条款", contact: "联系我们" },
+    footCats: "主要栏目", footLegal: "条款与隐私", footSupport: "联系与支持",
+    footSupportD: "欢迎随时提交内容纠错、合作提案及隐私相关咨询。",
+    footContactBtn: "邮件联系我们", footPolicy: "符合 Google 发布商政策",
   },
   pt: {
     heroT1: "Na quietude antes do amanhecer,", heroT2: "uma prática que segue a respiração",
@@ -455,6 +476,9 @@ const STR = {
     benefitsH: "Benefícios",
     tabs: { primary: "Primária", intermediate: "Intermediária", advanced: "Avançada" },
     pageNav: { about: "Sobre", privacy: "Política de Privacidade", terms: "Termos de Uso", contact: "Contato" },
+    footCats: "Categorias", footLegal: "Legal e privacidade", footSupport: "Contato e suporte",
+    footSupportD: "Correções de conteúdo, propostas de parceria e dúvidas de privacidade são bem-vindas.",
+    footContactBtn: "Fale conosco por e-mail", footPolicy: "Site em conformidade com as políticas do Google para editores",
   },
   hi: {
     heroT1: "सूर्योदय से पहले की शांति में,", heroT2: "सांस के साथ चलने वाला अभ्यास",
@@ -485,6 +509,9 @@ const STR = {
     benefitsH: "शरीर को लाभ",
     tabs: { primary: "प्राइमरी", intermediate: "इंटरमीडिएट", advanced: "एडवांस्ड" },
     pageNav: { about: "परिचय", privacy: "गोपनीयता नीति", terms: "उपयोग की शर्तें", contact: "संपर्क" },
+    footCats: "मुख्य श्रेणियाँ", footLegal: "नियम और गोपनीयता", footSupport: "संपर्क और सहायता",
+    footSupportD: "सामग्री सुधार, साझेदारी प्रस्ताव और गोपनीयता से जुड़े प्रश्न कभी भी भेजें।",
+    footContactBtn: "ईमेल से संपर्क करें", footPolicy: "Google प्रकाशक नीतियों के अनुरूप साइट",
   },
   ar: {
     heroT1: "في سكون ما قبل الفجر،", heroT2: "ممارسة تتبع النَّفَس",
@@ -515,6 +542,9 @@ const STR = {
     benefitsH: "الفوائد",
     tabs: { primary: "السلسلة الأولى", intermediate: "السلسلة المتوسطة", advanced: "السلسلة المتقدمة" },
     pageNav: { about: "حول الموقع", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", contact: "اتصل بنا" },
+    footCats: "الأقسام الرئيسية", footLegal: "الشروط والخصوصية", footSupport: "التواصل والدعم",
+    footSupportD: "نرحب دائمًا بتصحيحات المحتوى ومقترحات الشراكة واستفسارات الخصوصية.",
+    footContactBtn: "راسلنا عبر البريد الإلكتروني", footPolicy: "موقع متوافق مع سياسات ناشري Google",
   },
 };
 
@@ -1675,6 +1705,16 @@ export default function AshtangaGuide() {
           font:inherit; font-size:14px; padding:10px 18px; border-radius:999px; }
         .pbtn:hover { border-color: rgba(217,160,91,0.5); }
         .pbtn.big { background:${C.amberDim}; border-color: rgba(217,160,91,0.55); color:${C.amber}; font-weight:600; padding:12px 26px; }
+        .fab { width:48px; height:48px; border-radius:50%; padding:0;
+          display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+          box-shadow:0 4px 14px rgba(0,0,0,0.35); text-decoration:none; }
+        .foothead { font-size:13px; font-weight:700; color:${C.ink}; letter-spacing:0.03em;
+          margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid ${C.line}; }
+        .footlink { background:none; border:none; cursor:pointer; font:inherit; font-size:12.5px;
+          color:${C.sub}; padding:5px 0; display:flex; align-items:center; gap:9px;
+          text-align:start; width:100%; }
+        .footlink:hover { color:${C.ink}; }
+        .footlink.hl { color:${C.amber}; font-weight:600; }
         /* 로고 폭 고정: 헤더 패딩 20 + 222 + 갭 12 = 254 → 레벨 탭이 본문 텍스트 라인(레일 210+갭 20+패딩 24)과 정렬 */
         .logo { width:222px; flex-shrink:0; }
         @keyframes flicker { 0%,100%{opacity:1} 50%{opacity:.65} }
@@ -1709,6 +1749,9 @@ export default function AshtangaGuide() {
           /* 가로 스크롤되는 헤더 안에서 드롭다운이 잘리지 않게 화면 기준으로 고정 */
           .langdrop { position:fixed !important; top:54px !important; inset-inline-end:10px !important; }
           .content { padding:20px 14px 70px !important; }
+          /* 푸터: 브랜드·문의는 전체 폭, 카테고리·약관은 2열 */
+          .footgrid { grid-template-columns:1fr 1fr !important; gap:20px !important; }
+          .footgrid > :first-child, .footgrid > :last-child { grid-column:1 / -1; }
           .card { padding:16px 14px !important; }
           /* 자세 사진·피겨를 화면 폭에 맞게 확대 */
           .card .pv { width:min(220px, 58vw) !important; height:min(220px, 58vw) !important; }
@@ -2065,21 +2108,72 @@ export default function AshtangaGuide() {
             </section>
           );})}
 
-          <footer style={{ borderTop: `1px solid ${C.line}`, paddingTop: 28, paddingBottom: 56, color: C.sub, fontSize: 13, lineHeight: 1.8, fontWeight: 300 }}>
-            <p className="display" style={{ fontSize: 16, color: C.ink, marginBottom: 8 }}>{T.footT}</p>
-            <p>{T.footB}</p>
-            <nav aria-label={lang !== "ko" ? "Site pages" : "사이트 페이지"} style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 22 }}>
-              {["about", "privacy", "terms", "contact"].map((k) => (
-                <button key={k} className="navbtn" style={{ width: "auto", padding: "8px 14px", fontSize: 12.5 }}
-                  onClick={() => setPage(k)}>
-                  {T.pageNav[k]}
-                </button>
-              ))}
-            </nav>
-            <p style={{ fontSize: 12, marginTop: 18, opacity: 0.75 }}>{T.medNote}</p>
-            <p style={{ fontSize: 12, marginTop: 6, opacity: 0.6 }}>© {new Date().getFullYear()} Ashtanga Shala. All rights reserved.</p>
+          <footer style={{ borderTop: `1px solid ${C.line}`, paddingTop: 32, paddingBottom: 56, color: C.sub, fontSize: 13, lineHeight: 1.8, fontWeight: 300 }}>
+            <div className="footgrid" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr 1.2fr 1.2fr", gap: 28 }}>
+              {/* 브랜드 */}
+              <div>
+                <p className="display" style={{ fontSize: 14.5, color: C.amber, fontWeight: 700, letterSpacing: "0.1em", marginBottom: 10, display: "flex", alignItems: "center" }}>
+                  <span className="candle" style={{ marginInlineEnd: 8 }} />ASHTANGA SHALA
+                </p>
+                <p style={{ fontSize: 12.5, lineHeight: 1.7 }}>{T.footB}</p>
+                <p style={{ fontSize: 12, color: C.jade, marginTop: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                  <span aria-hidden="true">🛡</span>{T.footPolicy}
+                </p>
+              </div>
+              {/* 주요 카테고리 */}
+              <nav aria-label={T.footCats}>
+                <p className="foothead display">{T.footCats}</p>
+                <button className="footlink" onClick={() => go("surya")}><span aria-hidden="true">🌅</span>{T.suryaNav}</button>
+                {level.sections.map((s, i) => (
+                  <button key={s.id} className="footlink" onClick={() => go(s.id)}>
+                    <span aria-hidden="true">{["🧍", "🧘", "🌙"][i] || "🧘"}</span>{secMeta(s, lang).title}
+                  </button>
+                ))}
+              </nav>
+              {/* 약관 및 정책 */}
+              <nav aria-label={T.footLegal}>
+                <p className="foothead display">{T.footLegal}</p>
+                <button className="footlink hl" onClick={() => setPage("privacy")}><span aria-hidden="true">🔒</span>{T.pageNav.privacy}</button>
+                <button className="footlink" onClick={() => setPage("terms")}><span aria-hidden="true">📄</span>{T.pageNav.terms}</button>
+                <button className="footlink" onClick={() => setPage("about")}><span aria-hidden="true">🏛</span>{T.pageNav.about}</button>
+                <button className="footlink" onClick={() => setPage("contact")}><span aria-hidden="true">💬</span>{T.pageNav.contact}</button>
+              </nav>
+              {/* 1:1 문의 */}
+              <div>
+                <p className="foothead display">{T.footSupport}</p>
+                <p style={{ fontSize: 12.5, lineHeight: 1.7 }}>{T.footSupportD}</p>
+                <a className="pbtn" href="mailto:skiloveman@gmail.com" style={{
+                  display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
+                  marginTop: 14, fontSize: 13, fontWeight: 600, textDecoration: "none",
+                  background: C.amberDim, color: C.amber, borderColor: "rgba(217,160,91,0.5)",
+                  padding: "10px 22px", width: "100%", boxSizing: "border-box",
+                }}>
+                  <span aria-hidden="true">✉</span>{T.footContactBtn}
+                </a>
+              </div>
+            </div>
+            <div style={{ borderTop: `1px solid ${C.line}`, marginTop: 26, paddingTop: 16, display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
+              <p style={{ fontSize: 12, opacity: 0.75 }}>{T.medNote}</p>
+              <p style={{ fontSize: 12, opacity: 0.6, whiteSpace: "nowrap" }}>© {new Date().getFullYear()} Ashtanga Shala. All rights reserved.</p>
+            </div>
           </footer>
         </main>
+      </div>
+
+      {/* 우하단 플로팅 버튼: 맨 위로 · 1:1 문의 (쿠키 바가 떠 있으면 그 위로 올림) */}
+      <div style={{
+        position: "fixed", bottom: cookieOk ? 18 : 120, insetInlineEnd: 18, zIndex: 44,
+        display: "flex", flexDirection: "column", gap: 10, transition: "bottom .3s",
+      }}>
+        <button className="pbtn fab" aria-label={lang === "ko" ? "맨 위로" : "Back to top"}
+          onClick={() => mainRef.current?.scrollTo({ top: 0, behavior: "smooth" })}>
+          <span aria-hidden="true" style={{ fontSize: 16, lineHeight: 1 }}>↑</span>
+          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.08em" }}>TOP</span>
+        </button>
+        <a className="pbtn fab" aria-label={T.pageNav.contact} href="mailto:skiloveman@gmail.com">
+          <span aria-hidden="true" style={{ fontSize: 15, lineHeight: 1 }}>💬</span>
+          <span style={{ fontSize: 9, fontWeight: 700 }}>1:1</span>
+        </a>
       </div>
 
       {detail && <PoseDetail pose={detail} lang={lang} onClose={() => setDetail(null)} />}
