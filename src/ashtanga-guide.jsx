@@ -1319,6 +1319,9 @@ function PoseSearch({ lang, onPick, compact }) {
 }
 
 /* ── 수련 모드 (호흡 타이머) ── */
+/* TTS용 BCP-47 코드 — 설명 원문이 ko/en뿐이라 자세 설명은 ko 외 언어에서 영어 음성으로 읽음 */
+const TTS_LANG = { ko: "ko-KR", en: "en-US", es: "es-ES", ja: "ja-JP", de: "de-DE", fr: "fr-FR", zh: "zh-CN", pt: "pt-BR", hi: "hi-IN", ar: "ar-SA" };
+
 function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme }) {
   const T = STR[lang];
   const [levelId, setLevelId] = useState(initialLevel.id);
@@ -1329,7 +1332,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       ko: `${T.sunSal} · ${lang !== "ko" ? s.nameEn : s.name}`,
       short: `${lang !== "ko" ? s.cntEn : s.cnt} · ${lang !== "ko" ? s.nameEn : s.name}`,
       sk: lang !== "ko" ? s.breathEn : s.breath, target: s.n, drishti: drishtiLoc("코끝", lang),
-      desc: T.suryaDesc,
+      desc: T.suryaDesc, ttsLang: TTS_LANG[lang] || "en-US",
     }));
     const poses = level.sections.flatMap((sec) =>
       sec.poses.map((p) => {
@@ -1338,6 +1341,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
           fig: p.fig, photo: poseImg(p.ko), ko: L.name, short: L.name, sk: p.sk,
           target: parseBreaths(p.breath), drishti: drishtiLoc(p.drishti, lang),
           desc: L.desc, tip: L.tip,
+          ttsLang: lang === "ko" ? "ko-KR" : "en-US", /* 자세 설명 원문은 ko/en뿐 */
         };
       })
     );
@@ -1380,6 +1384,25 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
   const goNext = () => { setIdx((i) => Math.min(seq.length - 1, i + 1)); setBreath(0); };
   const jumpTo = (i) => { setIdx(i); setBreath(0); };
   const finished = idx === seq.length - 1 && !playing && breath === 0;
+
+  /* 음성 안내 — 브라우저 내장 TTS로 자세 이름·설명·도움말을 읽어준다 */
+  const [voice, setVoice] = useState(false);
+  const speak = (item) => {
+    try {
+      const synth = window.speechSynthesis;
+      if (!synth || !item) return;
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance([item.ko, item.desc, item.tip].filter(Boolean).join(". "));
+      u.lang = item.ttsLang;
+      u.rate = 0.95;
+      const vs = synth.getVoices();
+      const v = vs.find((x) => x.lang === item.ttsLang) || vs.find((x) => x.lang.startsWith(item.ttsLang.split("-")[0]));
+      if (v) u.voice = v;
+      synth.speak(u);
+    } catch { /* 미지원 브라우저 */ }
+  };
+  useEffect(() => { if (voice) speak(cur); }, [cur, voice]); // 자세가 바뀌면 자동 낭독
+  useEffect(() => () => { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } }, []);
 
   /* 왼쪽 리스트에서 현재 자세가 항상 보이게 */
   const listRef = useRef(null);
@@ -1468,7 +1491,14 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         width: 290, flexShrink: 0, overflowY: "auto", padding: "18px 20px 24px",
         borderInlineStart: `1px solid ${C.line}`,
       }}>
-        <p className="display" style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4 }}>{cur.ko}</p>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+          <p className="display" style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4, flex: 1 }}>{cur.ko}</p>
+          <button className="pbtn" onClick={() => speak(cur)}
+            aria-label={lang === "ko" ? "설명 읽어주기" : "Read description aloud"}
+            style={{ fontSize: 13, padding: "5px 10px", lineHeight: 1, flexShrink: 0 }}>
+            🔊
+          </button>
+        </div>
         <p style={{ color: C.sub, fontSize: 12, fontStyle: "italic", marginTop: 3 }}>{cur.sk} · {T.drishtiChip(cur.drishti)}</p>
         {cur.desc && (
           <p style={{ fontSize: 13, lineHeight: 1.85, fontWeight: 300, color: C.ink, marginTop: 14 }}>{cur.desc}</p>
@@ -1500,6 +1530,16 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
             {T.paceOpts.map(([v, label]) => <option key={v} value={v}>{label}</option>)}
           </select>
         </label>
+        <button className="pbtn" aria-pressed={voice}
+          onClick={() => setVoice((v) => { const n = !v; if (!n) { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } } return n; })}
+          style={{
+            fontSize: 12.5,
+            borderColor: voice ? "rgba(217,160,91,0.5)" : C.line,
+            background: voice ? C.amberDim : C.card,
+            color: voice ? C.amber : C.sub,
+          }}>
+          {voice ? "🔊" : "🔇"} {lang === "ko" ? "음성 안내" : "Voice guide"}
+        </button>
       </div>
     </div>
   );
