@@ -224,7 +224,7 @@ const STR = {
       ["드리쉬티", "자세마다 정해진 응시점이 있습니다. 시선이 고정되면 마음도 고정됩니다."],
       ["반다", "아랫배(웃디야나)와 골반저(물라)를 가볍게 조여 몸의 중심을 지킵니다."],
     ],
-    startPractice: "🕯 수련 모드 시작", helpOn: "🌙 도움말 켜짐", helpOff: "도움말 꺼짐",
+    startPractice: "🕯 수련 모드 시작",
     suryaNav: "태양경배", suryaTitle: "수리야 나마스카라 A",
     suryaDesc: "어느 레벨이든 수련은 태양경배로 시작합니다. A를 5회, B를 3~5회. 동작 하나에 호흡 하나 — 이것이 빈야사입니다.",
     suryaBeg: " (처음엔 3회부터 시작해도 좋아요)",
@@ -254,7 +254,7 @@ const STR = {
       ["Drishti", "Each pose has a fixed gazing point. When the gaze steadies, the mind steadies."],
       ["Bandha", "Gently engage the lower belly (uddiyana) and pelvic floor (mula) to protect your center."],
     ],
-    startPractice: "🕯 Start Practice Mode", helpOn: "🌙 Tips on", helpOff: "Tips off",
+    startPractice: "🕯 Start Practice Mode",
     suryaNav: "Sun Salutation", suryaTitle: "Surya Namaskara A",
     suryaDesc: "Every level begins with Sun Salutations — five rounds of A, three to five of B. One movement, one breath: this is vinyasa.",
     suryaBeg: " (Three rounds is a fine start.)",
@@ -284,7 +284,7 @@ const STR = {
       ["Drishti", "Cada postura tiene un punto de mirada fijo. Cuando la mirada se aquieta, la mente se aquieta."],
       ["Bandha", "Activa suavemente el bajo vientre (uddiyana) y el suelo pélvico (mula) para proteger tu centro."],
     ],
-    startPractice: "🕯 Iniciar práctica", helpOn: "🌙 Consejos activados", helpOff: "Consejos desactivados",
+    startPractice: "🕯 Iniciar práctica",
     suryaNav: "Saludo al sol", suryaTitle: "Surya Namaskara A",
     suryaDesc: "Cada nivel comienza con saludos al sol: cinco rondas de A, de tres a cinco de B. Un movimiento, una respiración: esto es vinyasa.",
     suryaBeg: " (Tres rondas es un buen comienzo.)",
@@ -314,7 +314,7 @@ const STR = {
       ["ドリシュティ", "ポーズごとに決められた視点があります。視線が定まると、心も定まります。"],
       ["バンダ", "下腹部（ウディヤナ）と骨盤底（ムーラ）を軽く引き締め、体の中心を守ります。"],
     ],
-    startPractice: "🕯 練習モードを開始", helpOn: "🌙 ヒント表示中", helpOff: "ヒント非表示",
+    startPractice: "🕯 練習モードを開始",
     suryaNav: "太陽礼拝", suryaTitle: "スーリヤ・ナマスカーラ A",
     suryaDesc: "どのレベルも練習は太陽礼拝から始まります。Aを5回、Bを3〜5回。ひとつの動きにひとつの呼吸 — これがヴィンヤサです。",
     suryaBeg: "（最初は3回からでも大丈夫です）",
@@ -344,7 +344,7 @@ const STR = {
       ["Drishti", "Jede Haltung hat einen festen Blickpunkt. Wird der Blick ruhig, wird auch der Geist ruhig."],
       ["Bandha", "Aktiviere sanft den Unterbauch (Uddiyana) und den Beckenboden (Mula), um deine Mitte zu schützen."],
     ],
-    startPractice: "🕯 Übungsmodus starten", helpOn: "🌙 Hinweise an", helpOff: "Hinweise aus",
+    startPractice: "🕯 Übungsmodus starten",
     suryaNav: "Sonnengruß", suryaTitle: "Surya Namaskara A",
     suryaDesc: "Jede Stufe beginnt mit Sonnengrüßen — fünf Runden A, drei bis fünf Runden B. Eine Bewegung, ein Atemzug: das ist Vinyasa.",
     suryaBeg: " (Drei Runden sind ein guter Anfang.)",
@@ -374,7 +374,7 @@ const STR = {
       ["Drishti", "Chaque posture a un point de regard fixe. Quand le regard se pose, l'esprit se pose."],
       ["Bandha", "Engagez doucement le bas-ventre (uddiyana) et le périnée (mula) pour protéger votre centre."],
     ],
-    startPractice: "🕯 Lancer la pratique", helpOn: "🌙 Conseils activés", helpOff: "Conseils masqués",
+    startPractice: "🕯 Lancer la pratique",
     suryaNav: "Salutation au soleil", suryaTitle: "Surya Namaskara A",
     suryaDesc: "Chaque niveau commence par les salutations au soleil : cinq tours de A, trois à cinq de B. Un mouvement, une respiration : c'est le vinyasa.",
     suryaBeg: " (Trois tours suffisent pour commencer.)",
@@ -404,7 +404,7 @@ const STR = {
       ["凝视点", "每个体式都有固定的凝视点。目光安定，心也随之安定。"],
       ["收束法", "轻轻收紧下腹（乌迪亚纳）与盆底（穆拉），守护身体的中心。"],
     ],
-    startPractice: "🕯 开始练习模式", helpOn: "🌙 提示已开启", helpOff: "提示已关闭",
+    startPractice: "🕯 开始练习模式",
     suryaNav: "拜日式", suryaTitle: "拜日式 A（Surya Namaskara A）",
     suryaDesc: "无论哪个级别，练习都从拜日式开始。A做5遍，B做3到5遍。一个动作一次呼吸——这就是串联（vinyasa）。",
     suryaBeg: "（初学者从3遍开始也很好）",
@@ -434,7 +434,7 @@ const STR = {
       ["Drishti", "Cada postura tem um ponto de olhar fixo. Quando o olhar se firma, a mente se firma."],
       ["Bandha", "Ative suavemente o baixo ventre (uddiyana) e o assoalho pélvico (mula) para proteger seu centro."],
     ],
-    startPractice: "🕯 Iniciar prática", helpOn: "🌙 Dicas ativadas", helpOff: "Dicas desativadas",
+    startPractice: "🕯 Iniciar prática",
     suryaNav: "Saudação ao sol", suryaTitle: "Surya Namaskara A",
     suryaDesc: "Todo nível começa com saudações ao sol: cinco voltas de A, três a cinco de B. Um movimento, uma respiração: isto é vinyasa.",
     suryaBeg: " (Três voltas já é um bom começo.)",
@@ -464,7 +464,7 @@ const STR = {
       ["दृष्टि", "हर आसन का एक निश्चित दृष्टि-बिंदु होता है। दृष्टि स्थिर होती है तो मन भी स्थिर होता है।"],
       ["बंध", "निचले पेट (उड्डीयान) और श्रोणि तल (मूल) को हल्के से सक्रिय रखें ताकि शरीर का केंद्र सुरक्षित रहे।"],
     ],
-    startPractice: "🕯 अभ्यास मोड शुरू करें", helpOn: "🌙 सुझाव चालू", helpOff: "सुझाव बंद",
+    startPractice: "🕯 अभ्यास मोड शुरू करें",
     suryaNav: "सूर्य नमस्कार", suryaTitle: "सूर्य नमस्कार A",
     suryaDesc: "हर स्तर का अभ्यास सूर्य नमस्कार से शुरू होता है — A के पाँच चक्र, B के तीन से पाँच। एक गति, एक सांस: यही विन्यास है।",
     suryaBeg: " (शुरुआत में तीन चक्र भी पर्याप्त हैं।)",
@@ -494,7 +494,7 @@ const STR = {
       ["دريشتي", "لكل وضعية نقطة نظر ثابتة. حين يستقر النظر، يستقر الذهن."],
       ["باندا", "شدّ برفق أسفل البطن (أوديانا) وقاع الحوض (مولا) لحماية مركز الجسم."],
     ],
-    startPractice: "🕯 بدء وضع التمرين", helpOn: "🌙 النصائح مفعّلة", helpOff: "النصائح متوقفة",
+    startPractice: "🕯 بدء وضع التمرين",
     suryaNav: "تحية الشمس", suryaTitle: "سوريا ناماسكارا A",
     suryaDesc: "تبدأ الممارسة في كل مستوى بتحية الشمس: خمس جولات من A وثلاث إلى خمس من B. حركة واحدة، نَفَس واحد — هذا هو الفينياسا.",
     suryaBeg: " (ثلاث جولات بداية جيدة.)",
@@ -1345,7 +1345,7 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
 }
 
 /* ── 자세 상세 모달 ── */
-function PoseDetail({ pose, onClose, beginner, lang }) {
+function PoseDetail({ pose, onClose, lang }) {
   const T = STR[lang];
   const L = loc(pose, lang);
   useEffect(() => {
@@ -1432,7 +1432,7 @@ function PoseDetail({ pose, onClose, beginner, lang }) {
           </div>
         )}
 
-        {beginner && L.tip && (
+        {L.tip && (
           <p style={{
             fontSize: 13.5, lineHeight: 1.7, marginTop: 22, padding: "12px 16px",
             background: C.amberDim, borderLeft: `2px solid rgba(217,160,91,0.5)`,
@@ -1559,12 +1559,10 @@ function CookieBar({ lang, onOk }) {
 
 export default function AshtangaGuide() {
   const [lang, setLang] = useState(() => { const u = langFromPath(); if (u) return u; const v = lsGet("lang", "en"); return STR[v] ? v : "en"; });
-  const [beginner, setBeginner] = useState(() => lsGet("tips", true) !== false);
   const [done, setDone] = useState(() => { const v = lsGet("done", {}); return v && typeof v === "object" ? v : {}; });
   const [levelId, setLevelId] = useState(() => { const v = lsGet("level", "primary"); return LEVELS.some((l) => l.id === v) ? v : "primary"; });
   useEffect(() => lsSet("done", done), [done]);
   useEffect(() => { lsSet("lang", lang); syncLangPath(lang); syncSeoLinks(lang); }, [lang]);
-  useEffect(() => lsSet("tips", beginner), [beginner]);
   useEffect(() => lsSet("level", levelId), [levelId]);
   const [active, setActive] = useState("surya");
   const [detail, setDetail] = useState(null);
@@ -1641,6 +1639,14 @@ export default function AshtangaGuide() {
         .card { background:${C.card}; border:1px solid ${C.cardEdge}; border-radius:14px; padding:22px;
           display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; transition: border-color .25s; }
         .card:hover { border-color: rgba(217,160,91,0.35); }
+        /* 수련 마침 카드: 앰버 톤으로 완료 표시 */
+        .card.done { background: linear-gradient(rgba(217,160,91,0.10), rgba(217,160,91,0.10)), ${C.card};
+          border-color: rgba(217,160,91,0.5); }
+        .card.done:hover { border-color: rgba(217,160,91,0.7); }
+        .card.done h3 { color:${C.amber}; }
+        .card.done .cardbtn > div > p { color:${C.sub}; }
+        .card.done .pv { border-color: rgba(217,160,91,0.55); background:#F5E9D5;
+          box-shadow: 0 0 12px rgba(217,160,91,0.3); }
         .cardbtn { all:unset; cursor:pointer; display:flex; gap:20px; align-items:flex-start; flex:1; }
         .cardfoot { padding-inline-start: 160px; } /* 사진(140) + 간격(20) — 도움말을 제목 라인에 정렬 */
         .chip { display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px;
@@ -1652,6 +1658,8 @@ export default function AshtangaGuide() {
           font:inherit; font-size:14px; padding:10px 18px; border-radius:999px; }
         .pbtn:hover { border-color: rgba(217,160,91,0.5); }
         .pbtn.big { background:${C.amberDim}; border-color: rgba(217,160,91,0.55); color:${C.amber}; font-weight:600; padding:12px 26px; }
+        /* 로고 폭 고정: 헤더 패딩 20 + 222 + 갭 12 = 254 → 레벨 탭이 본문 텍스트 라인(레일 210+갭 20+패딩 24)과 정렬 */
+        .logo { width:222px; flex-shrink:0; }
         @keyframes flicker { 0%,100%{opacity:1} 50%{opacity:.65} }
         .candle.live { animation: flicker 3.2s ease-in-out infinite; }
         @keyframes breatheAnim { 0%,100%{ transform: scale(0.82); opacity:.75 } 50%{ transform: scale(1.06); opacity:1 } }
@@ -1666,6 +1674,11 @@ export default function AshtangaGuide() {
           .card, .cardbtn { flex-direction:column; align-items:center; text-align:center; }
           /* 세로 배치에선 wrap이 하단 행을 옆 열로 밀어내므로 해제하고, basis도 초기화 */
           .card { flex-wrap:nowrap; }
+          /* 동영상 보기·상세 보기: 사진과 겹치는 우상단 고정을 풀고 본문 아래(도움말 위)로 내림 */
+          .cardact { position:static !important; order:2; justify-content:center; width:100%; }
+          .cardbtn { order:1; }
+          .cardvid { order:3; }
+          .cardfoot { order:4; }
           .cardfoot { padding-inline-start: 0 !important; flex-basis:auto !important; width:100%;
             flex-wrap:wrap; justify-content:center; row-gap:8px; }
           .cardfoot > span { margin-inline-start: 0 !important; }
@@ -1673,7 +1686,8 @@ export default function AshtangaGuide() {
           .cardtitle { padding-inline-end: 0 !important; justify-content:center; }
           .surya { overflow-x:auto; -webkit-overflow-scrolling:touch; }
           /* 여백 축소 */
-          .hrow { padding:8px 12px !important; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+          .hrow { padding:8px 12px !important; gap:8px !important; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+          .logo { width:auto !important; }
           .hrow::-webkit-scrollbar { display:none; }
           /* 가로 스크롤되는 헤더 안에서 드롭다운이 잘리지 않게 화면 기준으로 고정 */
           .langdrop { position:fixed !important; top:54px !important; inset-inline-end:10px !important; }
@@ -1708,9 +1722,9 @@ export default function AshtangaGuide() {
       <header style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 40 }}>
         {/* 한 줄 헤더: 로고 · 레벨 탭 · 검색 · 언어 · 테마 (모바일은 가로 스크롤) */}
         <div className="hrow" style={{ maxWidth: 1180, margin: "0 auto", padding: "10px 20px", display: "flex", alignItems: "center", gap: 12, flexWrap: "nowrap" }}>
-          <p className="display" style={{ color: C.amber, fontWeight: 700, letterSpacing: "0.12em", fontSize: 14.5, whiteSpace: "nowrap" }}>
-            <span className="candle live" style={{ marginRight: 9, verticalAlign: "middle" }} />
-            ASHTANGA SHALA
+          <p className="display logo" style={{ color: C.amber, fontWeight: 700, letterSpacing: "0.12em", fontSize: 12, lineHeight: 1.35, whiteSpace: "nowrap", display: "flex", alignItems: "center" }}>
+            <span className="candle live" style={{ marginInlineEnd: 9, flexShrink: 0 }} />
+            <span>ASHTANGA<br />SHALA</span>
           </p>
           <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 6, flexShrink: 0 }}>
             {LEVELS.map((l) => (
@@ -1776,18 +1790,6 @@ export default function AshtangaGuide() {
         <nav className="rail" style={{ width: 210, flexShrink: 0, overflowY: "auto", padding: "20px 6px 20px 14px" }}>
           <div className="railtop" style={{ display: "grid", gap: 8, padding: "0 2px 16px" }}>
             <button className="pbtn big" style={{ fontSize: 13.5, padding: "10px 14px", textAlign: "center" }} onClick={() => setPractice(true)}>{T.startPractice}</button>
-            <button
-              className="mode pbtn"
-              onClick={() => setBeginner((b) => !b)}
-              style={{
-                padding: "8px 14px", fontSize: 13, textAlign: "center",
-                borderColor: beginner ? "rgba(217,160,91,0.5)" : C.line,
-                background: beginner ? C.amberDim : C.card,
-                color: beginner ? C.amber : C.sub,
-              }}
-            >
-              {beginner ? T.helpOn : T.helpOff}
-            </button>
           </div>
           <button className={`navbtn ${active === "surya" ? "on" : ""}`} onClick={() => go("surya")}>{T.suryaNav}</button>
           {level.sections.map((s) => (
@@ -1852,7 +1854,7 @@ export default function AshtangaGuide() {
             <h2 className="display" style={{ fontSize: 26, marginBottom: 6, fontWeight: 400 }}>{T.suryaTitle}</h2>
             <p style={{ color: C.sub, fontSize: 14, marginBottom: 22, fontWeight: 300, lineHeight: 1.7 }}>
               {T.suryaDesc}
-              {beginner && <span style={{ color: C.amber }}>{T.suryaBeg}</span>}
+              <span style={{ color: C.amber }}>{T.suryaBeg}</span>
             </p>
             {/* 전체 흐름 영상 — 열기 전에는 아무것도 로드하지 않음 */}
             <div style={{ marginBottom: 14 }}>
@@ -1968,9 +1970,9 @@ export default function AshtangaGuide() {
                   const k = `${sec.id}-${p.sk}`;
                   const L = loc(p, lang);
                   return (
-                    <article key={k} className="card" style={{ position: "relative" }}>
+                    <article key={k} className={`card${done[k] ? " done" : ""}`} style={{ position: "relative" }}>
                       {/* 우측 상단 액션: 자세잡기 · 상세 보기 */}
-                      <div style={{ position: "absolute", top: 10, insetInlineEnd: 10, zIndex: 2, display: "flex", gap: 6 }}>
+                      <div className="cardact" style={{ position: "absolute", top: 10, insetInlineEnd: 10, zIndex: 2, display: "flex", gap: 6 }}>
                         <button className="pbtn" onClick={() => setEntryVid(entryVid === k ? null : k)}
                           aria-expanded={entryVid === k}
                           style={{
@@ -2010,7 +2012,7 @@ export default function AshtangaGuide() {
                       )}
                       {/* 하단 행: 도움말(제목 라인에 정렬, 글자 폭만큼) + 수련 마침 체크(오른쪽 끝) */}
                       <div className="cardfoot" style={{ flexBasis: "100%", display: "flex", alignItems: "center", gap: 12, marginTop: 6 }}>
-                        {beginner && (
+                        {L.tip && (
                           <p style={{
                             width: "fit-content", fontSize: 13.5, lineHeight: 1.6, padding: "8px 14px",
                             background: C.amberDim, borderLeft: `2px solid rgba(217,160,91,0.5)`,
@@ -2062,7 +2064,7 @@ export default function AshtangaGuide() {
         </main>
       </div>
 
-      {detail && <PoseDetail pose={detail} beginner={beginner} lang={lang} onClose={() => setDetail(null)} />}
+      {detail && <PoseDetail pose={detail} lang={lang} onClose={() => setDetail(null)} />}
       {practice && <PracticeMode level={level} lang={lang} onExit={() => setPractice(false)} />}
       {page && <InfoPage pageKey={page} lang={lang} onClose={() => setPage(null)} />}
       {!cookieOk && <CookieBar lang={lang} onOk={() => setCookieOk(true)} />}

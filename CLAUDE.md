@@ -36,7 +36,7 @@ Single-page Ashtanga yoga guide (Korean-first, multilingual). React 18 + Vite, *
 
 5. **Components** — `PoseSearch` (searches `ALL_POSES` with diacritic-insensitive `norm`), `PracticeMode` (auto-advancing breath timer), `PoseDetail` (modal with steps/mistakes/benefits), `InfoPage`/`PAGES` (about/privacy/terms/contact pages required for AdSense approval), `CookieBar`, and the root `AshtangaGuide` (scroll-spy nav via IntersectionObserver).
 
-Persistence is localStorage only, via `lsGet`/`lsSet` (keys: `lang`, `tips`, `done`, `level`, `theme`), always wrapped in try/catch for private-mode Safari.
+Persistence is localStorage only, via `lsGet`/`lsSet` (keys: `lang`, `done`, `level`, `theme`), always wrapped in try/catch for private-mode Safari.
 
 `vite.config.js` sets `base: "/"` and runtime asset paths (`/photos/…`, `/videos/…`) are absolute — required so assets resolve from language paths like `/en/`. Don't introduce relative asset URLs.
 
