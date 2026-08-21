@@ -61,6 +61,17 @@ const Fig = ({ d, size = 96, glow = false }) => (
    예) public/photos/사마스티티.jpg → 사마스티티 자세에 표시 */
 const poseImg = (koName) =>
   koName ? `/photos/${encodeURIComponent(koName.split(" · ")[0].trim())}.jpg` : null; /* 언어 경로(/en/ 등) 아래에서도 동작하도록 절대 경로 */
+
+/* ── 자세잡기 동영상 (시작 자세 → 완성 자세) ──
+   public/videos/poses/<한글이름>.mp4 를 넣으면 해당 카드에 "자세잡기" 버튼이 자동으로 나타납니다.
+   probeVid: HEAD 요청으로 실제 파일 존재를 확인 (SPA 폴백이 200 HTML을 돌려주므로 content-type까지 검사) */
+const poseVid = (koName) =>
+  koName ? `/videos/poses/${encodeURIComponent(koName.split(" · ")[0].trim())}.mp4` : null;
+const vidProbeCache = {};
+const probeVid = (url) =>
+  (vidProbeCache[url] ??= fetch(url, { headers: { Range: "bytes=0-0" } })
+    .then((r) => r.ok && /video/i.test(r.headers.get("content-type") || ""))
+    .catch(() => false));
 const PoseVisual = ({ pose, size = 96, glow = false, video = false }) => {
   const src = pose.photo || poseImg(pose.ko || pose.name);
   const [failed, setFailed] = useState(false);
@@ -103,6 +114,40 @@ const PoseVisual = ({ pose, size = 96, glow = false, video = false }) => {
   }
   return <Fig d={pose.fig} size={size} glow={glow} />;
 };
+
+/* 자세잡기 동영상 패널 — 카드 안에서 펼쳐져 자동 재생, 종료 후 완성 자세에서 정지 */
+function EntryVideo({ src, lang, onClose }) {
+  const [failed, setFailed] = useState(false);
+  const ref = useRef(null);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "4px 16px 16px" }}>
+      {failed ? (
+        <p style={{ fontSize: 13, color: C.sub }}>
+          {lang === "ko" ? "이 자세의 동작 영상은 준비 중이에요." : "The entry video for this pose is coming soon."}
+        </p>
+      ) : (
+        <video
+          src={src}
+          autoPlay
+          playsInline
+          muted
+          ref={(el) => { ref.current = el; if (el) el.muted = true; }} /* React가 muted를 DOM에 안 쓰는 문제 대비 */
+          onError={() => setFailed(true)}
+          style={{ width: "min(380px, 100%)", borderRadius: 12, background: "#fff", border: `1px solid ${C.cardEdge}` }}
+        />
+      )}
+      <div style={{ display: "flex", gap: 8 }}>
+        {!failed && (
+          <button className="pbtn" style={{ fontSize: 12.5 }}
+            onClick={() => { const v = ref.current; if (v) { v.currentTime = 0; v.play(); } }}>
+            {lang === "ko" ? "다시 보기" : "Replay"}
+          </button>
+        )}
+        <button className="pbtn" style={{ fontSize: 12.5 }} onClick={onClose}>{lang === "ko" ? "닫기" : "Close"}</button>
+      </div>
+    </div>
+  );
+}
 
 /* 자세별 피겨 정의 — 아웃라인 카툰 (f: 면 색, o:0 = 외곽선 없음, k/w: 선 요소) */
 const F = {
@@ -1510,6 +1555,8 @@ export default function AshtangaGuide() {
   const [langOpen, setLangOpen] = useState(false);
   const [flowOn, setFlowOn] = useState(false); // 태양경배 전체 흐름 영상
   const [flowClip, setFlowClip] = useState(0);
+  const [entryVid, setEntryVid] = useState(null); // 펼쳐져 있는 "자세잡기" 영상의 완료 키
+  const [vidReady, setVidReady] = useState({}); // poseVid URL -> 파일 존재 확인됨
   const [theme, setTheme] = useState(() => {
     let t = "dark";
     try { t = localStorage.getItem("theme") || "dark"; } catch { /* SSR/사파리 프라이빗 등 */ }
@@ -1526,6 +1573,15 @@ export default function AshtangaGuide() {
   const T = STR[lang];
   const level = LEVELS.find((l) => l.id === levelId);
   const LV = lvMeta(level, lang);
+  useEffect(() => {
+    /* 현재 레벨 자세들의 자세잡기 영상 존재 여부를 확인해, 있는 카드에만 버튼을 보여줍니다 */
+    let on = true;
+    level.sections.forEach((sec) => sec.poses.forEach((p) => {
+      const u = poseVid(p.ko);
+      probeVid(u).then((ok) => { if (on && ok) setVidReady((m) => (m[u] ? m : { ...m, [u]: true })); });
+    }));
+    return () => { on = false; };
+  }, [level]);
   const levelTotal = level.sections.reduce((n, s) => n + s.poses.length, 0);
   const doneCount = useMemo(
     () => level.sections.reduce((n, s) => n + s.poses.filter((p) => done[`${s.id}-${p.sk}`]).length, 0),
@@ -1873,7 +1929,14 @@ export default function AshtangaGuide() {
                   const k = `${sec.id}-${p.sk}`;
                   const L = loc(p, lang);
                   return (
-                    <article key={k} className="card">
+                    <article key={k} className="card" style={{ position: "relative", flexWrap: "wrap" }}>
+                      {vidReady[poseVid(p.ko)] && (
+                        <button className="pbtn" onClick={() => setEntryVid(entryVid === k ? null : k)}
+                          aria-expanded={entryVid === k}
+                          style={{ position: "absolute", top: 10, insetInlineEnd: 10, zIndex: 2, fontSize: 12, padding: "5px 11px" }}>
+                          ▶ {lang === "ko" ? "자세잡기" : "Entry"}
+                        </button>
+                      )}
                       <button className="cardbtn" onClick={() => setDetail(p)} aria-label={L.name}>
                         <PoseVisual pose={p} size={140} />
                         <div style={{ flex: 1 }}>
@@ -1913,6 +1976,11 @@ export default function AshtangaGuide() {
                       >
                         {done[k] ? "✓" : ""}
                       </button>
+                      {entryVid === k && vidReady[poseVid(p.ko)] && (
+                        <div style={{ flexBasis: "100%" }}>
+                          <EntryVideo src={poseVid(p.ko)} lang={lang} onClose={() => setEntryVid(null)} />
+                        </div>
+                      )}
                     </article>
                   );
                 })}
