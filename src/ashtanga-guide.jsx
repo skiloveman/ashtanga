@@ -1600,8 +1600,10 @@ export default function AshtangaGuide() {
           .card, .cardbtn { flex-direction:column; align-items:center; text-align:center; }
           .surya { overflow-x:auto; -webkit-overflow-scrolling:touch; }
           /* 여백 축소 */
-          .hrow { padding:8px 12px 6px !important; }
-          .hrow2 { padding:0 12px 8px !important; }
+          .hrow { padding:8px 12px !important; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+          .hrow::-webkit-scrollbar { display:none; }
+          /* 가로 스크롤되는 헤더 안에서 드롭다운이 잘리지 않게 화면 기준으로 고정 */
+          .langdrop { position:fixed !important; top:54px !important; inset-inline-end:10px !important; }
           .content { padding:20px 14px 70px !important; }
           .card { padding:16px 14px !important; }
           /* 자세 사진·피겨를 화면 폭에 맞게 확대 */
@@ -1631,18 +1633,29 @@ export default function AshtangaGuide() {
 
       {/* 상단 고정 바 */}
       <header style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 40 }}>
-        <div className="hrow" style={{ maxWidth: 1180, margin: "0 auto", padding: "10px 20px 8px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+        {/* 한 줄 헤더: 로고 · 레벨 탭 · 검색 · 언어 · 테마 (모바일은 가로 스크롤) */}
+        <div className="hrow" style={{ maxWidth: 1180, margin: "0 auto", padding: "10px 20px", display: "flex", alignItems: "center", gap: 12, flexWrap: "nowrap" }}>
           <p className="display" style={{ color: C.amber, fontWeight: 700, letterSpacing: "0.12em", fontSize: 14.5, whiteSpace: "nowrap" }}>
             <span className="candle live" style={{ marginRight: 9, verticalAlign: "middle" }} />
             ASHTANGA SHALA
           </p>
-          <div style={{ flex: 1, minWidth: 170, maxWidth: 460 }}>
+          <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+            {LEVELS.map((l) => (
+              <button key={l.id} role="tab" aria-selected={levelId === l.id}
+                className={`lvl ${levelId === l.id ? "on" : ""}`}
+                style={{ padding: "6px 14px", fontSize: 12.5, whiteSpace: "nowrap" }}
+                onClick={() => changeLevel(l.id)}>
+                {lvMeta(l, lang).tab}
+              </button>
+            ))}
+          </div>
+          <div style={{ flex: 1, minWidth: 120, maxWidth: 460 }}>
             <PoseSearch lang={lang} onPick={(p, lvl) => { setLevelId(lvl); setDetail(p); }} compact />
           </div>
-          <div style={{ marginInlineStart: "auto", position: "relative" }}>
+          <div style={{ marginInlineStart: "auto", position: "relative", flexShrink: 0 }}>
             <button className="lvl" onClick={() => setLangOpen((o) => !o)}
               aria-haspopup="listbox" aria-expanded={langOpen} aria-label={T.langLabel}
-              style={{ padding: "7px 14px", fontSize: 12.5, display: "flex", alignItems: "center", gap: 7 }}>
+              style={{ padding: "7px 14px", fontSize: 12.5, display: "flex", alignItems: "center", gap: 7, whiteSpace: "nowrap" }}>
               <span aria-hidden="true">🌐</span>
               {LANGS.find((x) => x.c === lang)?.n}
               <span aria-hidden="true" style={{ fontSize: 9, opacity: 0.7 }}>▼</span>
@@ -1650,7 +1663,7 @@ export default function AshtangaGuide() {
             {langOpen && (
               <>
                 <div onClick={() => setLangOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 58 }} />
-                <div role="listbox" aria-label={T.langLabel} style={{
+                <div role="listbox" className="langdrop" aria-label={T.langLabel} style={{
                   position: "absolute", top: "calc(100% + 8px)", insetInlineEnd: 0, zIndex: 59,
                   background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 14,
                   minWidth: 205, padding: "6px 0 8px",
@@ -1681,19 +1694,6 @@ export default function AshtangaGuide() {
             style={{ padding: "6px 12px", fontSize: 14, lineHeight: 1 }}>
             {theme === "dark" ? "☀️" : "🌙"}
           </button>
-        </div>
-        <div className="hrow2" style={{ maxWidth: 1180, margin: "0 auto", padding: "0 20px 10px", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-          <div role="tablist" aria-label={lang !== "ko" ? "Practice level" : "수련 레벨"} style={{ display: "flex", gap: 6 }}>
-            {LEVELS.map((l) => (
-              <button key={l.id} role="tab" aria-selected={levelId === l.id}
-                className={`lvl ${levelId === l.id ? "on" : ""}`}
-                style={{ padding: "6px 16px", fontSize: 13 }}
-                onClick={() => changeLevel(l.id)}>
-                {lvMeta(l, lang).tab}
-              </button>
-            ))}
-          </div>
-          <p className="display" style={{ fontSize: 13, color: C.sub, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{LV.series}</p>
         </div>
       </header>
 
@@ -1761,7 +1761,8 @@ export default function AshtangaGuide() {
                 </div>
               ))}
             </div>
-            <p style={{ color: C.sub, fontSize: 13.5, lineHeight: 1.7, fontWeight: 300, maxWidth: 640, marginTop: 16 }}>{LV.intro}</p>
+            <p className="display" style={{ color: C.amber, fontSize: 13.5, fontWeight: 700, marginTop: 18 }}>{LV.series}</p>
+            <p style={{ color: C.sub, fontSize: 13.5, lineHeight: 1.7, fontWeight: 300, maxWidth: 640, marginTop: 6 }}>{LV.intro}</p>
             {LV.caution && (
               <div role="note" style={{
                 border: `1px solid rgba(201,123,107,0.45)`, background: "rgba(201,123,107,0.08)",
