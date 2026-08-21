@@ -1803,19 +1803,16 @@ export default function AshtangaGuide() {
     [done, level]
   );
   const toggle = (k) => setDone((d) => ({ ...d, [k]: !d[k] }));
-  const mainRef = useRef(null);
-  const changeLevel = (id) => { setLevelId(id); setActive("surya"); mainRef.current?.scrollTo({ top: 0, behavior: "smooth" }); };
+  const changeLevel = (id) => { setLevelId(id); setActive("surya"); window.scrollTo({ top: 0, behavior: "smooth" }); };
   const go = (id) => {
     setActive(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  /* 콘텐츠 스크롤 위치를 따라 좌측 내비 하이라이트 */
+  /* 콘텐츠 스크롤 위치를 따라 좌측 내비 하이라이트 (창 스크롤 기준) */
   useEffect(() => {
-    const root = mainRef.current;
-    if (!root) return;
     const obs = new IntersectionObserver((es) => {
       es.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
-    }, { root, rootMargin: "-15% 0px -75% 0px" });
+    }, { rootMargin: "-15% 0px -75% 0px" });
     ["surya", ...level.sections.map((s) => s.id)].forEach((id) => {
       const el = document.getElementById(id);
       if (el) obs.observe(el);
@@ -1824,12 +1821,13 @@ export default function AshtangaGuide() {
   }, [level]);
 
   return (
-    <div dir={lang === "ar" ? "rtl" : "ltr"} className="app" style={{ background: C.bg, color: C.ink, display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: "'IBM Plex Sans KR', sans-serif" }}>
+    <div dir={lang === "ar" ? "rtl" : "ltr"} className="app" style={{ background: C.bg, color: C.ink, display: "flex", flexDirection: "column", fontFamily: "'IBM Plex Sans KR', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; }
-        /* 모바일 주소창 높이 변화 대응: dvh 지원 브라우저는 dvh 사용 */
-        .app { height: 100vh; height: 100dvh; }
+        /* 창 스크롤 구조: 스크롤바가 화면 맨 오른쪽에 오고 푸터가 전체 폭을 쓴다 */
+        .app { min-height: 100vh; min-height: 100dvh; }
+        html { scroll-behavior: smooth; }
         .display { font-family: 'Gowun Batang', serif; }
         .navbtn { background:none; border:none; cursor:pointer; text-align:left; width:100%;
           padding:10px 14px; border-radius:8px; font:inherit; color:${C.sub}; font-size:14px; }
@@ -1847,6 +1845,9 @@ export default function AshtangaGuide() {
         .card { background:${C.card}; border:1px solid ${C.cardEdge}; border-radius:14px; padding:22px;
           display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; transition: border-color .25s; }
         .card:hover { border-color: rgba(217,160,91,0.35); }
+        .rail { position:sticky; top:60px; align-self:flex-start; max-height:calc(100vh - 60px); }
+        /* 섹션 이동 시 고정 헤더에 제목이 가리지 않게 */
+        section[id] { scroll-margin-top: 74px; }
         /* 수련 마침 카드: 앰버 톤으로 완료 표시 */
         .card.done { background: linear-gradient(rgba(217,160,91,0.10), rgba(217,160,91,0.10)), ${C.card};
           border-color: rgba(217,160,91,0.5); }
@@ -1890,7 +1891,8 @@ export default function AshtangaGuide() {
         .breathe { animation-name: breatheAnim; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
         @media (max-width: 760px) {
           .layout { flex-direction:column; gap:0 !important; }
-          .rail { width:100% !important; display:flex; flex-direction:row; overflow-x:auto; overflow-y:hidden !important; gap:4px; padding:8px 12px !important; border-bottom:1px solid ${C.line}; }
+          .rail { width:100% !important; display:flex; flex-direction:row; overflow-x:auto; overflow-y:hidden !important; gap:4px; padding:8px 12px !important; border-bottom:1px solid ${C.line};
+            top:50px !important; max-height:none !important; z-index:30; background:${C.bg}; }
           .railprog { display:none; }
           .railtop { display:flex !important; padding:0 !important; gap:6px !important; }
           .railtop .pbtn { white-space:nowrap; }
@@ -1910,7 +1912,7 @@ export default function AshtangaGuide() {
           .cardtitle { padding-inline-end: 0 !important; justify-content:center; }
           .surya { overflow-x:auto; -webkit-overflow-scrolling:touch; }
           /* 여백 축소 */
-          .hrow { padding:8px 12px !important; gap:8px !important; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+          .hrow { padding:0 12px !important; height:50px !important; gap:8px !important; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
           .logo { width:auto !important; }
           .hrow::-webkit-scrollbar { display:none; }
           /* 가로 스크롤되는 헤더 안에서 드롭다운이 잘리지 않게 화면 기준으로 고정 */
@@ -1920,6 +1922,8 @@ export default function AshtangaGuide() {
           .footgrid { grid-template-columns:1fr 1fr !important; gap:20px !important; }
           .footgrid > :first-child, .footgrid > :last-child { grid-column:1 / -1; }
           .cfrow { grid-template-columns:1fr !important; gap:0 !important; }
+          .footwrap { padding:26px 14px 46px !important; }
+          section[id] { scroll-margin-top: 112px; } /* 헤더 50 + 고정 레일 높이 */
           .card { padding:16px 14px !important; }
           /* 자세 사진·피겨를 화면 폭에 맞게 확대 */
           .card .pv { width:min(220px, 58vw) !important; height:min(220px, 58vw) !important; }
@@ -1948,9 +1952,9 @@ export default function AshtangaGuide() {
       `}</style>
 
       {/* 상단 고정 바 */}
-      <header style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 40 }}>
+      <header style={{ position: "sticky", top: 0, flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 40 }}>
         {/* 한 줄 헤더: 로고 · 레벨 탭 · 검색 · 언어 · 테마 (모바일은 가로 스크롤) */}
-        <div className="hrow" style={{ maxWidth: 1180, margin: "0 auto", padding: "10px 20px", display: "flex", alignItems: "center", gap: 12, flexWrap: "nowrap" }}>
+        <div className="hrow" style={{ maxWidth: 1180, margin: "0 auto", height: 60, padding: "0 20px", display: "flex", alignItems: "center", gap: 12, flexWrap: "nowrap" }}>
           <p className="display logo" style={{ color: C.amber, fontWeight: 700, letterSpacing: "0.12em", fontSize: 12, lineHeight: 1.35, whiteSpace: "nowrap", display: "flex", alignItems: "center" }}>
             <span className="candle live" style={{ marginInlineEnd: 9, flexShrink: 0 }} />
             <span>ASHTANGA<br />SHALA</span>
@@ -2013,9 +2017,9 @@ export default function AshtangaGuide() {
         </div>
       </header>
 
-      {/* 본문: 좌측 내비 고정 + 콘텐츠 독립 스크롤 */}
-      <div className="layout" style={{ flex: 1, display: "flex", overflow: "hidden", width: "100%", maxWidth: 1180, margin: "0 auto", gap: 20 }}>
-        {/* 사이드 레일 */}
+      {/* 본문: 창 전체 스크롤 — 헤더·레일은 sticky, 스크롤바는 화면 오른쪽 끝 */}
+      <div className="layout" style={{ flex: 1, display: "flex", width: "100%", maxWidth: 1180, margin: "0 auto", gap: 20 }}>
+        {/* 사이드 레일 — 헤더(60px) 아래에 고정 */}
         <nav className="rail" style={{ width: 210, flexShrink: 0, overflowY: "auto", padding: "20px 6px 20px 14px" }}>
           <div className="railtop" style={{ display: "grid", gap: 8, padding: "0 2px 16px" }}>
             <button className="pbtn big" style={{ fontSize: 13.5, padding: "10px 14px", textAlign: "center" }} onClick={() => setPractice(true)}>{T.startPractice}</button>
@@ -2050,7 +2054,7 @@ export default function AshtangaGuide() {
         </nav>
 
         {/* 콘텐츠 */}
-        <main ref={mainRef} className="content" style={{ flex: 1, minWidth: 0, overflowY: "auto", padding: "26px 24px 80px" }}>
+        <main className="content" style={{ flex: 1, minWidth: 0, padding: "26px 24px 80px" }}>
           {/* 소개 (컴팩트) */}
           <section style={{ marginBottom: 44 }}>
             <h1 className="display" style={{ fontSize: "clamp(20px, 3vw, 28px)", lineHeight: 1.45, marginBottom: 8, fontWeight: 400 }}>
@@ -2276,7 +2280,12 @@ export default function AshtangaGuide() {
             </section>
           );})}
 
-          <footer style={{ borderTop: `1px solid ${C.line}`, paddingTop: 32, paddingBottom: 56, color: C.sub, fontSize: 13, lineHeight: 1.8, fontWeight: 300 }}>
+        </main>
+      </div>
+
+      {/* 전체 폭 푸터 — 화면 가로 전체를 쓰고, 내용은 1180px 중앙 정렬 */}
+      <footer style={{ borderTop: `1px solid ${C.line}`, background: C.bg, color: C.sub, fontSize: 13, lineHeight: 1.8, fontWeight: 300 }}>
+        <div className="footwrap" style={{ maxWidth: 1180, margin: "0 auto", padding: "32px 24px 56px" }}>
             <div className="footgrid" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr 1.2fr 1.2fr", gap: 28 }}>
               {/* 브랜드 */}
               <div>
@@ -2324,9 +2333,8 @@ export default function AshtangaGuide() {
               <p style={{ fontSize: 12, opacity: 0.75 }}>{T.medNote}</p>
               <p style={{ fontSize: 12, opacity: 0.6, whiteSpace: "nowrap" }}>© {new Date().getFullYear()} Ashtanga Shala. All rights reserved.</p>
             </div>
-          </footer>
-        </main>
-      </div>
+        </div>
+      </footer>
 
       {/* 우하단 플로팅 버튼: 맨 위로 · 1:1 문의 (쿠키 바가 떠 있으면 그 위로 올림) */}
       <div style={{
@@ -2334,7 +2342,7 @@ export default function AshtangaGuide() {
         display: "flex", flexDirection: "column", gap: 10, transition: "bottom .3s",
       }}>
         <button className="pbtn fab" aria-label={lang === "ko" ? "맨 위로" : "Back to top"}
-          onClick={() => mainRef.current?.scrollTo({ top: 0, behavior: "smooth" })}>
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <span aria-hidden="true" style={{ fontSize: 16, lineHeight: 1 }}>↑</span>
           <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.08em" }}>TOP</span>
         </button>
