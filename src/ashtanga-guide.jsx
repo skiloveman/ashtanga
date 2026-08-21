@@ -11,11 +11,11 @@ import React, { useState, useMemo, useEffect, useCallback, useRef } from "react"
 const THEMES = {
   dark: {
     bg: "#101419", card: "#181E27", cardEdge: "#232C37",
-    ink: "#D9D3C4", sub: "#8B95A0",
+    ink: "#CFC9BA", sub: "#8B95A0",
     amber: "#D9A05B", amberDim: "rgba(217,160,91,0.12)",
     jade: "#9DBBAA", line: "#28303C", danger: "#C97B6B",
-    /* 사진 박스 — 다크에서 순백 글레어를 줄이기 위해 따뜻한 종이톤 + 살짝 감광 */
-    photoBg: "#E4DCCB", photoFilter: "brightness(0.9) saturate(0.95)",
+    /* 사진 박스 — 다크에서 순백 글레어를 줄이기 위해 어두운 모래톤 + 감광·세피아 */
+    photoBg: "#C2B8A2", photoFilter: "brightness(0.7) sepia(0.16) saturate(0.88)",
   },
   light: {
     bg: "#F6F3EB", card: "#FFFFFF", cardEdge: "#E7E1D2",
@@ -2084,7 +2084,7 @@ export default function AshtangaGuide() {
         .card.done:hover { border-color: rgba(217,160,91,0.7); }
         .card.done h3 { color:${C.amber}; }
         .card.done .cardbtn > div > p { color:${C.sub}; }
-        .card.done .pv { border-color: rgba(217,160,91,0.55); background:#F5E9D5;
+        .card.done .pv { border-color: rgba(217,160,91,0.55); background:${C.photoBg};
           box-shadow: 0 0 12px rgba(217,160,91,0.3); }
         .cardbtn { all:unset; cursor:pointer; display:flex; gap:20px; align-items:flex-start; flex:1; }
         .cardfoot { padding-inline-start: 160px; } /* 사진(140) + 간격(20) — 도움말을 제목 라인에 정렬 */
