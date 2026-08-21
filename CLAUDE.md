@@ -28,10 +28,12 @@ Single-page Ashtanga yoga guide (Korean-first, multilingual). React 18 + Vite, *
 
 3. **i18n** — `STR` holds UI strings per language; `LANGS` is the dropdown list. Pose content exists fully in Korean (inline in the data) and English (`EN`, keyed by the pose's `sk` Sanskrit name); all other languages get English pose content via `loc()`/`lvMeta()`/`secMeta()`. Arabic switches the app to RTL. When adding a pose, add its `EN` entry too or non-Korean UIs will show Korean text.
 
+   **URL language routing** — the first path segment selects the language (`/en/`, `/ko/`, …; country aliases like `/kr`→`ko` via `LANG_ALIASES`). `langFromPath()` wins over the localStorage `lang` on load; language changes call `syncLangPath()` (`history.replaceState`) and `syncSeoLinks()` (hreflang/canonical `<link>` tags + `<html lang>`). No router — Cloudflare Pages' automatic SPA fallback serves index.html for these paths, and `public/_redirects` 301s the country-code aliases server-side. Deep-linking anything beyond the language segment is not supported.
+
 4. **Sequence data** — `SURYA_A` plus `LEVELS`: three levels (`primary`/`intermediate`/`advanced`) → `sections` → `poses`. A pose's completion key is `` `${section.id}-${pose.sk}` ``, so renaming a section id or `sk` orphans users' saved progress. `breath` values can be numbers or strings ("5×4", "10+", "5분+") parsed by `parseBreaths` for the practice timer. Sequence order follows the traditional teaching order — don't reorder poses for aesthetic reasons.
 
 5. **Components** — `PoseSearch` (searches `ALL_POSES` with diacritic-insensitive `norm`), `PracticeMode` (auto-advancing breath timer), `PoseDetail` (modal with steps/mistakes/benefits), `InfoPage`/`PAGES` (about/privacy/terms/contact pages required for AdSense approval), `CookieBar`, and the root `AshtangaGuide` (scroll-spy nav via IntersectionObserver).
 
 Persistence is localStorage only, via `lsGet`/`lsSet` (keys: `lang`, `tips`, `done`, `level`, `theme`), always wrapped in try/catch for private-mode Safari.
 
-`vite.config.js` sets `base: "./"` — keep asset references relative.
+`vite.config.js` sets `base: "/"` and runtime asset paths (`/photos/…`, `/videos/…`) are absolute — required so assets resolve from language paths like `/en/`. Don't introduce relative asset URLs.

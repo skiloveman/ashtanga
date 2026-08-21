@@ -1,0 +1,11 @@
+# 국가코드 별칭 → 언어 경로 (Cloudflare Pages)
+/kr /ko/ 301
+/kr/* /ko/ 301
+/jp /ja/ 301
+/jp/* /ja/ 301
+/cn /zh/ 301
+/cn/* /zh/ 301
+/br /pt/ 301
+/br/* /pt/ 301
+/us /en/ 301
+/us/* /en/ 301

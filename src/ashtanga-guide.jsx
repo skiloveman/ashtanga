@@ -60,7 +60,7 @@ const Fig = ({ d, size = 96, glow = false }) => (
    해당 자세에 자동으로 표시되고, 파일이 없거나 로딩에 실패하면 스틱 피겨로 대체됩니다.
    예) public/photos/사마스티티.jpg → 사마스티티 자세에 표시 */
 const poseImg = (koName) =>
-  koName ? `photos/${encodeURIComponent(koName.split(" · ")[0].trim())}.jpg` : null;
+  koName ? `/photos/${encodeURIComponent(koName.split(" · ")[0].trim())}.jpg` : null; /* 언어 경로(/en/ 등) 아래에서도 동작하도록 절대 경로 */
 const PoseVisual = ({ pose, size = 96, glow = false, video = false }) => {
   const src = pose.photo || poseImg(pose.ko || pose.name);
   const [failed, setFailed] = useState(false);
@@ -496,6 +496,41 @@ const LANGS = [
   { c: "ar", cc: "SA", n: "العربية" },
 ];
 
+/* ── URL 경로 언어 라우팅 ──
+   /en/, /ko/ … 첫 경로 세그먼트가 언어를 결정합니다 (국가코드 별칭 kr→ko 등 지원).
+   언어가 바뀌면 replaceState로 URL을 동기화하고, SEO용 hreflang/canonical 링크를 갱신합니다.
+   Cloudflare Pages는 존재하지 않는 경로를 index.html로 폴백(SPA)하므로 서버 설정이 따로 필요 없습니다. */
+const LANG_ALIASES = { kr: "ko", jp: "ja", cn: "zh", br: "pt", us: "en", sa: "ar" };
+const langFromPath = () => {
+  if (typeof window === "undefined") return null;
+  const seg = window.location.pathname.split("/").filter(Boolean)[0]?.toLowerCase();
+  if (!seg) return null;
+  const c = LANG_ALIASES[seg] || seg;
+  return STR[c] ? c : null;
+};
+const syncLangPath = (lang) => {
+  if (typeof window === "undefined") return;
+  const path = `/${lang}/`;
+  if (window.location.pathname !== path)
+    window.history.replaceState(null, "", path + window.location.search + window.location.hash);
+};
+const syncSeoLinks = (lang) => {
+  if (typeof document === "undefined") return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("link[data-i18n]").forEach((el) => el.remove());
+  const o = window.location.origin;
+  const add = (rel, href, hreflang) => {
+    const l = document.createElement("link");
+    l.rel = rel; l.href = href;
+    if (hreflang) l.hreflang = hreflang;
+    l.setAttribute("data-i18n", "1");
+    document.head.appendChild(l);
+  };
+  LANGS.forEach((x) => add("alternate", `${o}/${x.c}/`, x.c));
+  add("alternate", `${o}/`, "x-default");
+  add("canonical", `${o}/${lang}/`);
+};
+
 /* 응시점 영문 매핑 (ko 외 언어에서 사용) */
 const DRISHTI_EN = {
   "코끝": "nose tip", "미간": "third eye", "배꼽": "navel", "위": "upward", "앞": "forward",
@@ -624,17 +659,17 @@ const secMeta = (s, lang) => (lang !== "ko" && META.sections[s.id] ? { title: ME
    cnt: 산스크리트 카운트 / br: 호흡 방향 (in 들숨 · ex 날숨 · hold 머무르기 · ready 준비)
    vid: 해당 자세로 들어가는 전환 동영상 (public/videos/, 재생 후 마지막 프레임에서 정지) */
 const SURYA_A = [
-  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", cnt: "시작", cntEn: "Start", br: "ready", breath: "준비", breathEn: "Ready", n: 1, vid: "videos/surya-a-01.mp4" },
-  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", cnt: "1 에캄", cntEn: "1 Ekam", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-02.mp4" },
-  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", cnt: "2 드웨", cntEn: "2 Dve", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-03.mp4" },
-  { fig: F.ardhaUttanasana, name: "아르다 우타나사나", nameEn: "Ardha Uttanasana", cnt: "3 트리니", cntEn: "3 Trini", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-04.mp4" },
-  { fig: F.chaturanga, name: "차투랑가", nameEn: "Chaturanga", cnt: "4 차트와리", cntEn: "4 Chatvari", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-05.mp4" },
-  { fig: F.upDog, name: "업독", nameEn: "Upward Dog", cnt: "5 판차", cntEn: "5 Pancha", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-06.mp4" },
-  { fig: F.downDog, name: "다운독", nameEn: "Downward Dog", cnt: "6 샷", cntEn: "6 Shat", br: "hold", breath: "호흡 5회", breathEn: "5 breaths", n: 5, vid: "videos/surya-a-07.mp4" },
-  { fig: F.ardhaUttanasana, name: "아르다 우타나사나", nameEn: "Ardha Uttanasana", cnt: "7 삽타", cntEn: "7 Sapta", br: "in", breath: "점프 후 마시며", breathEn: "Jump fwd, inhale", n: 1, vid: "videos/surya-a-09.mp4" },
-  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", cnt: "8 아쉬타우", cntEn: "8 Ashtau", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-10.mp4" },
-  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", cnt: "9 나와", cntEn: "9 Nava", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-11.mp4" },
-  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", cnt: "마침", cntEn: "Finish", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-12.mp4" },
+  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", cnt: "시작", cntEn: "Start", br: "ready", breath: "준비", breathEn: "Ready", n: 1, vid: "/videos/surya-a-01.mp4" },
+  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", cnt: "1 에캄", cntEn: "1 Ekam", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "/videos/surya-a-02.mp4" },
+  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", cnt: "2 드웨", cntEn: "2 Dve", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "/videos/surya-a-03.mp4" },
+  { fig: F.ardhaUttanasana, name: "아르다 우타나사나", nameEn: "Ardha Uttanasana", cnt: "3 트리니", cntEn: "3 Trini", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "/videos/surya-a-04.mp4" },
+  { fig: F.chaturanga, name: "차투랑가", nameEn: "Chaturanga", cnt: "4 차트와리", cntEn: "4 Chatvari", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "/videos/surya-a-05.mp4" },
+  { fig: F.upDog, name: "업독", nameEn: "Upward Dog", cnt: "5 판차", cntEn: "5 Pancha", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "/videos/surya-a-06.mp4" },
+  { fig: F.downDog, name: "다운독", nameEn: "Downward Dog", cnt: "6 샷", cntEn: "6 Shat", br: "hold", breath: "호흡 5회", breathEn: "5 breaths", n: 5, vid: "/videos/surya-a-07.mp4" },
+  { fig: F.ardhaUttanasana, name: "아르다 우타나사나", nameEn: "Ardha Uttanasana", cnt: "7 삽타", cntEn: "7 Sapta", br: "in", breath: "점프 후 마시며", breathEn: "Jump fwd, inhale", n: 1, vid: "/videos/surya-a-09.mp4" },
+  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", cnt: "8 아쉬타우", cntEn: "8 Ashtau", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "/videos/surya-a-10.mp4" },
+  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", cnt: "9 나와", cntEn: "9 Nava", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "/videos/surya-a-11.mp4" },
+  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", cnt: "마침", cntEn: "Finish", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "/videos/surya-a-12.mp4" },
 ];
 
 /* 태양경배 A 전체 흐름 클립 (01~12 순서 재생) */
@@ -652,7 +687,7 @@ const SURYA_CLIPS = [
   { ko: "우르드바 하스타사나 · 마시며", en: "Urdhva Hastasana · inhale" },
   { ko: "사마스티티 · 내쉬며", en: "Samasthiti · exhale" },
 ];
-const suryaClipSrc = (i) => `videos/surya-a-${String(i + 1).padStart(2, "0")}.mp4`;
+const suryaClipSrc = (i) => `/videos/surya-a-${String(i + 1).padStart(2, "0")}.mp4`;
 
 /* ── 레벨별 시퀀스 데이터 ──
    steps: 진입 단계 / mistakes: 흔한 실수
@@ -1459,12 +1494,12 @@ function CookieBar({ lang, onOk }) {
 }
 
 export default function AshtangaGuide() {
-  const [lang, setLang] = useState(() => { const v = lsGet("lang", "en"); return STR[v] ? v : "en"; });
+  const [lang, setLang] = useState(() => { const u = langFromPath(); if (u) return u; const v = lsGet("lang", "en"); return STR[v] ? v : "en"; });
   const [beginner, setBeginner] = useState(() => lsGet("tips", true) !== false);
   const [done, setDone] = useState(() => { const v = lsGet("done", {}); return v && typeof v === "object" ? v : {}; });
   const [levelId, setLevelId] = useState(() => { const v = lsGet("level", "primary"); return LEVELS.some((l) => l.id === v) ? v : "primary"; });
   useEffect(() => lsSet("done", done), [done]);
-  useEffect(() => lsSet("lang", lang), [lang]);
+  useEffect(() => { lsSet("lang", lang); syncLangPath(lang); syncSeoLinks(lang); }, [lang]);
   useEffect(() => lsSet("tips", beginner), [beginner]);
   useEffect(() => lsSet("level", levelId), [levelId]);
   const [active, setActive] = useState("surya");
