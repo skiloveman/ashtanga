@@ -10,16 +10,19 @@ import React, { useState, useMemo, useEffect, useCallback, useRef } from "react"
 /* 테마 팔레트 — applyTheme()가 C/FIG_C 값을 통째로 바꿔치기합니다 */
 const THEMES = {
   dark: {
-    bg: "#12171E", card: "#1A212B", cardEdge: "#242E3A",
-    ink: "#E9E6DC", sub: "#8B95A0",
+    bg: "#101419", card: "#181E27", cardEdge: "#232C37",
+    ink: "#D9D3C4", sub: "#8B95A0",
     amber: "#D9A05B", amberDim: "rgba(217,160,91,0.12)",
-    jade: "#9DBBAA", line: "#2A3441", danger: "#C97B6B",
+    jade: "#9DBBAA", line: "#28303C", danger: "#C97B6B",
+    /* 사진 박스 — 다크에서 순백 글레어를 줄이기 위해 따뜻한 종이톤 + 살짝 감광 */
+    photoBg: "#E4DCCB", photoFilter: "brightness(0.9) saturate(0.95)",
   },
   light: {
     bg: "#F6F3EB", card: "#FFFFFF", cardEdge: "#E7E1D2",
     ink: "#2B2F35", sub: "#68737E",
     amber: "#B27A39", amberDim: "rgba(178,122,57,0.12)",
     jade: "#5E8571", line: "#E0DACB", danger: "#B05A48",
+    photoBg: "#FFFFFF", photoFilter: "none",
   },
 };
 const C = { ...THEMES.dark };
@@ -74,8 +77,8 @@ const PoseVisual = ({ pose, size = 96, glow = false, video = false }) => {
   useEffect(() => setFailed(false), [src]);
   useEffect(() => setVidFailed(false), [pose.vid]);
   const box = {
-    width: size, height: size, objectFit: "contain", background: "#fff", borderRadius: 12,
-    border: `1px solid ${C.cardEdge}`, flexShrink: 0,
+    width: size, height: size, objectFit: "contain", background: C.photoBg, borderRadius: 12,
+    border: `1px solid ${C.cardEdge}`, flexShrink: 0, filter: C.photoFilter,
     ...(glow ? { boxShadow: "0 0 14px rgba(157,187,170,0.35)" } : {}),
   };
   if (video && pose.vid && !vidFailed) {
@@ -128,7 +131,7 @@ function EntryVideo({ src, lang, onClose }) {
           muted
           ref={(el) => { ref.current = el; if (el) el.muted = true; }} /* React가 muted를 DOM에 안 쓰는 문제 대비 */
           onError={() => setFailed(true)}
-          style={{ width: "min(380px, 100%)", borderRadius: 12, background: "#fff", border: `1px solid ${C.cardEdge}` }}
+          style={{ width: "min(380px, 100%)", borderRadius: 12, background: C.photoBg, border: `1px solid ${C.cardEdge}`, filter: C.photoFilter }}
         />
       )}
       <div style={{ display: "flex", gap: 8 }}>
@@ -2337,7 +2340,7 @@ export default function AshtangaGuide() {
                     muted
                     ref={(el) => { if (el) el.muted = true; }}
                     onEnded={() => setFlowClip((c) => (c + 1 < SURYA_CLIPS.length ? c + 1 : c))}
-                    style={{ width: "min(340px, 100%)", aspectRatio: "1 / 1", objectFit: "cover", borderRadius: 12, background: "#fff", border: `1px solid ${C.cardEdge}` }}
+                    style={{ width: "min(340px, 100%)", aspectRatio: "1 / 1", objectFit: "cover", borderRadius: 12, background: C.photoBg, border: `1px solid ${C.cardEdge}`, filter: C.photoFilter }}
                   />
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
                     <button className="pbtn" style={{ fontSize: 12.5 }} onClick={() => setFlowClip((c) => Math.max(0, c - 1))}>
