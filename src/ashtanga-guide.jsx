@@ -1465,13 +1465,24 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         width: 240, flexShrink: 0, overflowY: "auto", padding: "14px 10px 20px",
         borderInlineEnd: `1px solid ${C.line}`,
       }}>
-        {seq.map((s, i) => (
-          <button key={i} className={`plitem ${i === idx ? "on" : ""}`} onClick={() => jumpTo(i)}
-            aria-current={i === idx ? "true" : undefined}>
-            <span style={{ width: 22, flexShrink: 0, textAlign: "end", fontSize: 11, opacity: 0.7 }}>{i + 1}</span>
-            <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.short}</span>
-          </button>
-        ))}
+        {/* 태양경배 11단계는 한 항목으로 묶음 — 진행 중이면 현재 단계 표시 */}
+        <button className={`plitem ${idx < SURYA_A.length ? "on" : ""}`} onClick={() => jumpTo(0)}
+          aria-current={idx < SURYA_A.length ? "true" : undefined}>
+          <span style={{ width: 22, flexShrink: 0, textAlign: "end", fontSize: 11, opacity: 0.7 }}>1</span>
+          <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            {T.sunSal}{idx < SURYA_A.length ? ` · ${idx + 1}/${SURYA_A.length}` : ""}
+          </span>
+        </button>
+        {seq.slice(SURYA_A.length).map((s, i) => {
+          const at = SURYA_A.length + i;
+          return (
+            <button key={at} className={`plitem ${at === idx ? "on" : ""}`} onClick={() => jumpTo(at)}
+              aria-current={at === idx ? "true" : undefined}>
+              <span style={{ width: 22, flexShrink: 0, textAlign: "end", fontSize: 11, opacity: 0.7 }}>{i + 2}</span>
+              <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.short}</span>
+            </button>
+          );
+        })}
       </nav>
 
       {/* 중앙 */}
@@ -1504,7 +1515,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
 
       {/* 오른쪽: 현재 자세 설명 */}
       <aside className="pdesc" style={{
-        width: 290, flexShrink: 0, overflowY: "auto", padding: "18px 20px 24px",
+        width: 350, flexShrink: 0, overflowY: "auto", padding: "18px 22px 24px",
         borderInlineStart: `1px solid ${C.line}`,
       }}>
         <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
@@ -2237,6 +2248,8 @@ export default function AshtangaGuide() {
           border-radius:8px; text-align:start; }
         .plitem:hover { background:${C.card}; color:${C.ink}; }
         .plitem.on { background:${C.amberDim}; color:${C.amber}; font-weight:600; }
+        .plist { scrollbar-width:none; }
+        .plist::-webkit-scrollbar { display:none; }
         /* 로고 폭 고정: 헤더 패딩 20 + 222 + 갭 12 = 254 → 레벨 탭이 본문 텍스트 라인(레일 210+갭 20+패딩 24)과 정렬 */
         .logo { width:222px; flex-shrink:0; }
         @keyframes flicker { 0%,100%{opacity:1} 50%{opacity:.65} }
@@ -2296,14 +2309,14 @@ export default function AshtangaGuide() {
           /* 수련 모드 */
           .phead { padding:10px 12px !important; }
           .plist, .pdesc { display:none !important; } /* 모바일은 타이머 집중 화면 유지 */
-          /* 수련 모드가 폰 한 화면에 딱 맞게 — 카운트·비주얼 축소, 여백 압축 */
-          .pviz { width:min(220px, 56vw) !important; height:min(220px, 56vw) !important; }
-          .pname { margin-top:12px !important; font-size:19px !important; }
-          .pcount { font-size:28px !important; margin-top:8px !important; }
-          .pnext { margin-top:10px !important; }
-          .pcenter { padding:12px !important; }
-          .pviz .pv { width:min(190px, 48vw) !important; height:min(190px, 48vw) !important; }
-          .pctrl { padding:0 12px 20px !important; gap:8px !important; }
+          /* 수련 모드가 폰 한 화면에 딱 맞게 — 동영상은 크게, 텍스트·여백은 압축 */
+          .pviz { width:min(290px, 76vw) !important; height:min(290px, 76vw) !important; }
+          .pname { margin-top:8px !important; font-size:18px !important; }
+          .pcount { font-size:26px !important; margin-top:4px !important; }
+          .pnext { margin-top:6px !important; }
+          .pviz .pv { width:min(270px, 70vw) !important; height:min(270px, 70vw) !important; }
+          .pctrl { padding:0 10px 10px !important; gap:6px !important; }
+          .pcenter { padding:8px 12px !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           html { scroll-behavior:auto; }
