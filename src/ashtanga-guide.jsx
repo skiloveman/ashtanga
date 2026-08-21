@@ -63,15 +63,10 @@ const poseImg = (koName) =>
   koName ? `/photos/${encodeURIComponent(koName.split(" · ")[0].trim())}.jpg` : null; /* 언어 경로(/en/ 등) 아래에서도 동작하도록 절대 경로 */
 
 /* ── 자세잡기 동영상 (시작 자세 → 완성 자세) ──
-   public/videos/poses/<한글이름>.mp4 를 넣으면 해당 카드에 "자세잡기" 버튼이 자동으로 나타납니다.
-   probeVid: HEAD 요청으로 실제 파일 존재를 확인 (SPA 폴백이 200 HTML을 돌려주므로 content-type까지 검사) */
+   public/videos/poses/<한글이름>.mp4 를 넣으면 카드의 "자세잡기" 버튼에서 재생됩니다.
+   파일이 아직 없으면 EntryVideo가 "준비 중" 안내를 보여줍니다. */
 const poseVid = (koName) =>
   koName ? `/videos/poses/${encodeURIComponent(koName.split(" · ")[0].trim())}.mp4` : null;
-const vidProbeCache = {};
-const probeVid = (url) =>
-  (vidProbeCache[url] ??= fetch(url, { headers: { Range: "bytes=0-0" } })
-    .then((r) => r.ok && /video/i.test(r.headers.get("content-type") || ""))
-    .catch(() => false));
 const PoseVisual = ({ pose, size = 96, glow = false, video = false }) => {
   const src = pose.photo || poseImg(pose.ko || pose.name);
   const [failed, setFailed] = useState(false);
@@ -1556,7 +1551,6 @@ export default function AshtangaGuide() {
   const [flowOn, setFlowOn] = useState(false); // 태양경배 전체 흐름 영상
   const [flowClip, setFlowClip] = useState(0);
   const [entryVid, setEntryVid] = useState(null); // 펼쳐져 있는 "자세잡기" 영상의 완료 키
-  const [vidReady, setVidReady] = useState({}); // poseVid URL -> 파일 존재 확인됨
   const [theme, setTheme] = useState(() => {
     let t = "dark";
     try { t = localStorage.getItem("theme") || "dark"; } catch { /* SSR/사파리 프라이빗 등 */ }
@@ -1573,15 +1567,6 @@ export default function AshtangaGuide() {
   const T = STR[lang];
   const level = LEVELS.find((l) => l.id === levelId);
   const LV = lvMeta(level, lang);
-  useEffect(() => {
-    /* 현재 레벨 자세들의 자세잡기 영상 존재 여부를 확인해, 있는 카드에만 버튼을 보여줍니다 */
-    let on = true;
-    level.sections.forEach((sec) => sec.poses.forEach((p) => {
-      const u = poseVid(p.ko);
-      probeVid(u).then((ok) => { if (on && ok) setVidReady((m) => (m[u] ? m : { ...m, [u]: true })); });
-    }));
-    return () => { on = false; };
-  }, [level]);
   const levelTotal = level.sections.reduce((n, s) => n + s.poses.length, 0);
   const doneCount = useMemo(
     () => level.sections.reduce((n, s) => n + s.poses.filter((p) => done[`${s.id}-${p.sk}`]).length, 0),
@@ -1930,24 +1915,28 @@ export default function AshtangaGuide() {
                   const L = loc(p, lang);
                   return (
                     <article key={k} className="card" style={{ position: "relative", flexWrap: "wrap" }}>
-                      {vidReady[poseVid(p.ko)] && (
+                      {/* 우측 상단 액션: 자세잡기 · 상세 보기 */}
+                      <div style={{ position: "absolute", top: 10, insetInlineEnd: 10, zIndex: 2, display: "flex", gap: 6 }}>
                         <button className="pbtn" onClick={() => setEntryVid(entryVid === k ? null : k)}
                           aria-expanded={entryVid === k}
-                          style={{ position: "absolute", top: 10, insetInlineEnd: 10, zIndex: 2, fontSize: 12, padding: "5px 11px" }}>
+                          style={{ fontSize: 12, padding: "5px 11px" }}>
                           ▶ {lang === "ko" ? "자세잡기" : "Entry"}
                         </button>
-                      )}
-                      <button className="cardbtn" onClick={() => setDetail(p)} aria-label={L.name}>
+                        <button className="pbtn" onClick={() => setDetail(p)} aria-label={`${L.name} — ${T.detailChip}`}
+                          style={{ fontSize: 12, padding: "5px 11px" }}>
+                          {T.detailChip}
+                        </button>
+                      </div>
+                      <div className="cardbtn" style={{ cursor: "auto" }}>
                         <PoseVisual pose={p} size={140} />
                         <div style={{ flex: 1 }}>
-                          <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
+                          <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", paddingInlineEnd: 170 }}>
                             <h3 className="display" style={{ fontSize: 19, fontWeight: 700 }}>{L.name}</h3>
                             <span style={{ fontSize: 12.5, color: C.sub, fontStyle: "italic" }}>{p.sk}</span>
                           </div>
                           <div style={{ margin: "10px 0 12px" }}>
                             <span className="chip b">{T.breaths(p.breath)}</span>
                             <span className="chip">{T.drishtiChip(drishtiLoc(p.drishti, lang))}</span>
-                            <span className="chip" style={{ borderStyle: "dashed" }}>{T.detailChip}</span>
                           </div>
                           <p style={{ fontSize: 14, lineHeight: 1.8, fontWeight: 300 }}>{L.desc}</p>
                           {beginner && (
@@ -1960,7 +1949,7 @@ export default function AshtangaGuide() {
                             </p>
                           )}
                         </div>
-                      </button>
+                      </div>
                       <button
                         className="chk"
                         onClick={() => toggle(k)}
@@ -1976,7 +1965,7 @@ export default function AshtangaGuide() {
                       >
                         {done[k] ? "✓" : ""}
                       </button>
-                      {entryVid === k && vidReady[poseVid(p.ko)] && (
+                      {entryVid === k && (
                         <div style={{ flexBasis: "100%" }}>
                           <EntryVideo src={poseVid(p.ko)} lang={lang} onClose={() => setEntryVid(null)} />
                         </div>
