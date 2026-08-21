@@ -1364,9 +1364,11 @@ function PoseDetail({ pose, onClose, lang }) {
         maxWidth: 640, width: "100%", maxHeight: "86vh", position: "relative",
         display: "flex", flexDirection: "column", overflow: "hidden",
       }}>
-        <button onClick={onClose} aria-label={T.closeL} style={{
-          position: "absolute", top: 14, right: 14, background: "none", border: "none",
-          color: C.sub, fontSize: 20, cursor: "pointer", padding: 6, zIndex: 1,
+        <button onClick={onClose} aria-label={T.closeL} className="sheetx" style={{
+          position: "absolute", top: 12, right: 12, zIndex: 2, cursor: "pointer",
+          width: 34, height: 34, borderRadius: "50%", padding: 0,
+          background: C.bg, border: `1px solid ${C.line}`, color: C.ink,
+          fontSize: 16, lineHeight: 1, display: "flex", alignItems: "center", justifyContent: "center",
         }}>✕</button>
 
         {/* 고정 헤더 — 사진·이름·칩은 스크롤해도 유지 */}
@@ -1568,7 +1570,7 @@ export default function AshtangaGuide() {
   const [detail, setDetail] = useState(null);
   const [practice, setPractice] = useState(false);
   const [page, setPage] = useState(null);
-  const [cookieOk, setCookieOk] = useState(false);
+  const [cookieOk, setCookieOk] = useState(() => lsGet("cookieOk", false) === true);
   const [langOpen, setLangOpen] = useState(false);
   const [flowOn, setFlowOn] = useState(false); // 태양경배 전체 흐름 영상
   const [flowClip, setFlowClip] = useState(0);
@@ -1585,6 +1587,21 @@ export default function AshtangaGuide() {
     try { localStorage.setItem("theme", n); } catch { /* 무시 */ }
     return n;
   });
+
+  /* 뒤로가기 → 오버레이(상세 보기·수련 모드·정보 페이지)만 닫기. 히스토리에 항목을 하나
+     쌓아 두고 popstate에서 닫는다. ✕ 등 다른 경로로 닫히면 back()으로 그 항목을 걷어낸다. */
+  const overlayOpen = !!detail || practice || !!page;
+  useEffect(() => {
+    if (!overlayOpen) return;
+    let popped = false;
+    window.history.pushState({ overlay: 1 }, "");
+    const onPop = () => { popped = true; setDetail(null); setPractice(false); setPage(null); };
+    window.addEventListener("popstate", onPop);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      if (!popped) window.history.back();
+    };
+  }, [overlayOpen]);
 
   const T = STR[lang];
   const level = LEVELS.find((l) => l.id === levelId);
@@ -1702,7 +1719,8 @@ export default function AshtangaGuide() {
           .sheet { max-width:100% !important; border-radius:18px 18px 0 0 !important;
             border-left:none !important; border-right:none !important; border-bottom:none !important;
             max-height:90vh !important; max-height:90dvh !important; }
-          .sheethead { padding:18px 16px 12px !important; }
+          /* 닫기 버튼 자리 확보: 제목이 ✕ 아래로 파고들지 않게 상단 여백을 늘림 */
+          .sheethead { padding:52px 16px 12px !important; }
           .sheethead .pv { width:104px !important; height:104px !important; }
           .sheetbody { padding:0 16px 24px !important; }
           .infopad { padding:24px 16px 28px !important; }
@@ -2067,7 +2085,7 @@ export default function AshtangaGuide() {
       {detail && <PoseDetail pose={detail} lang={lang} onClose={() => setDetail(null)} />}
       {practice && <PracticeMode level={level} lang={lang} onExit={() => setPractice(false)} />}
       {page && <InfoPage pageKey={page} lang={lang} onClose={() => setPage(null)} />}
-      {!cookieOk && <CookieBar lang={lang} onOk={() => setCookieOk(true)} />}
+      {!cookieOk && <CookieBar lang={lang} onOk={() => { setCookieOk(true); lsSet("cookieOk", true); }} />}
     </div>
   );
 }
