@@ -2098,9 +2098,9 @@ export default function AshtangaGuide() {
           display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
           box-shadow:0 4px 14px rgba(0,0,0,0.35); text-decoration:none; }
         .foothead { font-size:13px; font-weight:700; color:${C.ink}; letter-spacing:0.03em;
-          margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid ${C.line}; }
+          margin-bottom:8px; padding-bottom:7px; border-bottom:1px solid ${C.line}; }
         .footlink { background:none; border:none; cursor:pointer; font:inherit; font-size:12.5px;
-          color:${C.sub}; padding:5px 0; display:flex; align-items:center; gap:9px;
+          color:${C.sub}; padding:4px 0; display:flex; align-items:center; gap:9px;
           text-align:start; width:100%; }
         .footlink:hover { color:${C.ink}; }
         .footlink.hl { color:${C.amber}; font-weight:600; }
@@ -2512,8 +2512,8 @@ export default function AshtangaGuide() {
 
       {/* 전체 폭 푸터 — 화면 가로 전체를 쓰고, 내용은 1180px 중앙 정렬 */}
       <footer style={{ borderTop: `1px solid ${C.line}`, background: C.bg, color: C.sub, fontSize: 13, lineHeight: 1.8, fontWeight: 300 }}>
-        <div className="footwrap" style={{ maxWidth: 1180, margin: "0 auto", padding: "32px 24px 56px" }}>
-            <div className="footgrid" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr 1.2fr 1.2fr", gap: 28 }}>
+        <div className="footwrap" style={{ maxWidth: 1180, margin: "0 auto", padding: "28px 24px 36px" }}>
+            <div className="footgrid" style={{ display: "grid", gridTemplateColumns: "2fr 0.9fr 1.3fr 1.1fr", columnGap: 36, rowGap: 20 }}>
               {/* 브랜드 */}
               <div>
                 <p className="display" style={{ fontSize: 14.5, color: C.amber, fontWeight: 700, letterSpacing: "0.1em", marginBottom: 10, display: "flex", alignItems: "center" }}>
@@ -2557,7 +2557,7 @@ export default function AshtangaGuide() {
                 </button>
               </div>
             </div>
-            <div style={{ borderTop: `1px solid ${C.line}`, marginTop: 26, paddingTop: 16, display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
+            <div style={{ borderTop: `1px solid ${C.line}`, marginTop: 20, paddingTop: 12, display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
               <p style={{ fontSize: 12, opacity: 0.75 }}>{T.medNote}</p>
               <p style={{ fontSize: 12, opacity: 0.6, whiteSpace: "nowrap" }}>© {new Date().getFullYear()} Ashtanga Shala. All rights reserved.</p>
             </div>
