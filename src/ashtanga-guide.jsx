@@ -1357,9 +1357,13 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
   const cur = seq[idx];
   const next = seq[idx + 1];
 
+  /* 음성 안내 낭독 중 여부 — 낭독하는 동안 호흡 타이머가 대기한다 */
+  const speakingRef = useRef(false);
+
   useEffect(() => {
     if (!playing) return;
     const t = setInterval(() => {
+      if (speakingRef.current) return; // 음성 안내가 끝날 때까지 호흡 카운트 보류
       setBreath((b) => {
         if (b + 1 >= cur.target) {
           setIdx((i) => {
@@ -1398,14 +1402,21 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       const vs = synth.getVoices();
       const v = vs.find((x) => x.lang === item.ttsLang) || vs.find((x) => x.lang.startsWith(item.ttsLang.split("-")[0]));
       if (v) u.voice = v;
+      /* 낭독 중에는 호흡 타이머 대기 — 시작 이벤트에서만 켜서, 발화가 안 되면 타이머가 정상 진행 */
+      u.onstart = () => { speakingRef.current = true; };
+      u.onend = () => { speakingRef.current = false; };
+      u.onerror = () => { speakingRef.current = false; };
       synth.speak(u);
-    } catch { /* 미지원 브라우저 */ }
+    } catch { speakingRef.current = false; }
   };
   useEffect(() => { if (voice) speak(cur); }, [cur, voice]); // 자세가 바뀌면 자동 낭독
   useEffect(() => () => { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } }, []);
   const toggleVoice = () => setVoice((v) => {
     const n = !v;
-    if (!n) { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } }
+    if (!n) {
+      try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ }
+      speakingRef.current = false; // 끄면 즉시 호흡 속도로 복귀
+    }
     return n;
   });
 
