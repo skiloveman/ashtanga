@@ -1919,11 +1919,19 @@ export default function AshtangaGuide() {
                       <div style={{ position: "absolute", top: 10, insetInlineEnd: 10, zIndex: 2, display: "flex", gap: 6 }}>
                         <button className="pbtn" onClick={() => setEntryVid(entryVid === k ? null : k)}
                           aria-expanded={entryVid === k}
-                          style={{ fontSize: 12, padding: "5px 11px" }}>
-                          ▶ {lang === "ko" ? "동영상 보기" : "Watch video"}
+                          style={{
+                            fontSize: 12, padding: "5px 11px", fontWeight: 600,
+                            background: entryVid === k ? C.amber : C.amberDim,
+                            color: entryVid === k ? C.bg : C.amber,
+                            borderColor: "rgba(217,160,91,0.5)",
+                          }}>
+                          {lang === "ko" ? "동영상 보기" : "Watch video"} ▶
                         </button>
                         <button className="pbtn" onClick={() => setDetail(p)} aria-label={`${L.name} — ${T.detailChip}`}
-                          style={{ fontSize: 12, padding: "5px 11px" }}>
+                          style={{
+                            fontSize: 12, padding: "5px 11px", fontWeight: 600,
+                            background: C.amberDim, color: C.amber, borderColor: "rgba(217,160,91,0.5)",
+                          }}>
                           {T.detailChip}
                         </button>
                       </div>
@@ -1939,15 +1947,6 @@ export default function AshtangaGuide() {
                             <span className="chip">{T.drishtiChip(drishtiLoc(p.drishti, lang))}</span>
                           </div>
                           <p style={{ fontSize: 14, lineHeight: 1.8, fontWeight: 300 }}>{L.desc}</p>
-                          {beginner && (
-                            <p style={{
-                              fontSize: 12.5, lineHeight: 1.55, marginTop: 8, padding: "6px 10px",
-                              background: C.amberDim, borderLeft: `2px solid rgba(217,160,91,0.5)`,
-                              borderRadius: "0 8px 8px 0", color: "#CBB289", fontWeight: 300,
-                            }}>
-                              🌙 {L.tip}
-                            </p>
-                          )}
                         </div>
                       </div>
                       {entryVid === k && (
@@ -1955,9 +1954,18 @@ export default function AshtangaGuide() {
                           <EntryVideo src={poseVid(p.ko)} lang={lang} onClose={() => setEntryVid(null)} />
                         </div>
                       )}
-                      {/* 수련 완료 체크 — 카드 하단, 라벨과 함께 */}
-                      <div style={{ flexBasis: "100%", display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 10, marginTop: 6 }}>
-                        <span style={{ fontSize: 12.5, color: done[k] ? C.amber : C.sub, fontWeight: done[k] ? 700 : 400 }}>
+                      {/* 하단 행: 도움말(왼쪽, 남는 폭) + 수련 마침 체크(오른쪽) */}
+                      <div style={{ flexBasis: "100%", display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 12, marginTop: 6 }}>
+                        {beginner && (
+                          <p style={{
+                            flex: 1, fontSize: 13.5, lineHeight: 1.6, padding: "8px 14px",
+                            background: C.amberDim, borderLeft: `2px solid rgba(217,160,91,0.5)`,
+                            borderRadius: "0 8px 8px 0", color: "#CBB289", fontWeight: 300,
+                          }}>
+                            🌙 {L.tip}
+                          </p>
+                        )}
+                        <span style={{ fontSize: 12.5, color: done[k] ? C.amber : C.sub, fontWeight: done[k] ? 700 : 400, whiteSpace: "nowrap" }}>
                           {lang === "ko" ? "수련 마침" : "Practiced"}
                         </span>
                         <button
