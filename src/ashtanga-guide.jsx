@@ -109,6 +109,7 @@ const F = {
   samasthiti: [{ p: "M46.9 33.1 L52.3 46.6 L53.9 58.2 A2.1 2.1 0 0 1 58.1 57.8 L57.7 45.4 L53.1 30.9 A3.3 3.3 0 0 1 46.9 33.1 Z", f: "skin2" }, { c: [56.2, 60.2, 2.8], f: "skin2" }, { p: "M45.3 52.9 L49.3 68.3 L50.3 86 A2.8 2.8 0 0 1 55.8 86 L56.7 67.7 L54.7 51.1 A4.8 4.8 0 0 1 45.3 52.9 Z", f: "pants2" }, { p: "M51.5 88 L56.1 90.2 A1.5 1.5 0 0 1 57.9 87.8 L54.5 84 A2.5 2.5 0 0 1 51.5 88 Z", f: "skin2" }, { p: "M44.5 32 L44.3 34.5 L44.2 37 L44 39.5 L43.9 42 L43.7 44.5 L43.6 47 L43.4 49.5 L43.3 52 A6.8 6.8 0 0 1 56.8 52 L56.6 49.5 L56.4 47 L56.3 44.5 L56.1 42 L56 39.5 L55.8 37 L55.7 34.5 L55.5 32 A5.5 5.5 0 0 1 44.5 32 Z", f: "top" }, { p: "M45.3 51.4 L44.3 67.8 L45.3 86 A2.8 2.8 0 0 1 50.8 86 L51.7 68.2 L54.7 52.6 A4.8 4.8 0 0 1 45.3 51.4 Z", f: "pants" }, { p: "M46.5 84 L43.1 87.8 A1.5 1.5 0 0 1 44.9 90.2 L49.5 88 A2.5 2.5 0 0 1 46.5 84 Z", f: "skin" }, { p: "M46.9 31.1 L43.3 45.5 L42.9 57.8 A2.1 2.1 0 0 1 47.1 58.2 L48.7 46.5 L53.1 32.9 A3.3 3.3 0 0 1 46.9 31.1 Z", f: "skin" }, { c: [44.8, 60.2, 2.8], f: "skin" }, { p: "M52.5 32 L52.1 21 A2.1 2.1 0 0 1 47.9 21 L47.5 32 A2.5 2.5 0 0 1 52.5 32 Z", f: "skin" }, { c: [50, 21, 6.5], f: "skin" }, { p: "M52.9 26.8 A6.5 6.5 0 0 1 47.1 15.2 Z", f: "hair" }, { c: [56, 18, 3.4], f: "hair" }, { c: [46, 23.2, 1.25], f: "blush", o: 0 }],
   urdhvaHasta: [{ p: "M52.8 35.7 L58.6 25 L60.1 13.4 A2.1 2.1 0 0 1 55.9 12.6 L53.4 23 L47.2 32.3 A3.3 3.3 0 0 1 52.8 35.7 Z", f: "skin2" }, { c: [58.4, 10.8, 2.8], f: "skin2" }, { p: "M45.3 54.9 L49.3 69.4 L50.3 86 A2.8 2.8 0 0 1 55.8 86 L56.7 68.6 L54.7 53.1 A4.8 4.8 0 0 1 45.3 54.9 Z", f: "pants2" }, { p: "M51.5 88 L56.1 90.2 A1.5 1.5 0 0 1 57.9 87.8 L54.5 84 A2.5 2.5 0 0 1 51.5 88 Z", f: "skin2" }, { p: "M44.5 34 L44.3 36.5 L44.2 39 L44 41.5 L43.9 44 L43.7 46.5 L43.6 49 L43.4 51.5 L43.3 54 A6.8 6.8 0 0 1 56.8 54 L56.6 51.5 L56.4 49 L56.3 46.5 L56.1 44 L56 41.5 L55.8 39 L55.7 36.5 L55.5 34 A5.5 5.5 0 0 1 44.5 34 Z", f: "top" }, { p: "M45.3 53.4 L44.3 68.8 L45.3 86 A2.8 2.8 0 0 1 50.8 86 L51.7 69.2 L54.7 54.6 A4.8 4.8 0 0 1 45.3 53.4 Z", f: "pants" }, { p: "M46.5 84 L43.1 87.8 A1.5 1.5 0 0 1 44.9 90.2 L49.5 88 A2.5 2.5 0 0 1 46.5 84 Z", f: "skin" }, { p: "M52.9 32.5 L47.6 23 L44 12.4 A2.1 2.1 0 0 1 40 13.6 L42.4 25 L47.1 35.5 A3.3 3.3 0 0 1 52.9 32.5 Z", f: "skin" }, { c: [41.4, 10.9, 2.8], f: "skin" }, { p: "M52.5 34 L52.1 24 A2.1 2.1 0 0 1 47.9 24 L47.5 34 A2.5 2.5 0 0 1 52.5 34 Z", f: "skin" }, { c: [50, 24, 6.5], f: "skin" }, { p: "M52.9 29.8 A6.5 6.5 0 0 1 47.1 18.2 Z", f: "hair" }, { c: [56, 21, 3.4], f: "hair" }, { c: [46, 26.2, 1.25], f: "blush", o: 0 }],
   uttanasana: [{ p: "M42.1 64.6 L48.4 74.8 L49.9 86.2 A2.1 2.1 0 0 1 54.1 85.8 L53.6 73.2 L47.9 61.4 A3.3 3.3 0 0 1 42.1 64.6 Z", f: "skin2" }, { c: [52.2, 88.2, 2.8], f: "skin2" }, { p: "M51.3 46.4 L54.3 68.2 L55.3 86 A2.8 2.8 0 0 1 60.8 86 L61.7 67.8 L60.7 45.6 A4.8 4.8 0 0 1 51.3 46.4 Z", f: "pants2" }, { p: "M56.5 88 L61.1 90.2 A1.5 1.5 0 0 1 62.9 87.8 L59.5 84 A2.5 2.5 0 0 1 56.5 88 Z", f: "skin2" }, { p: "M50.1 65 L51.3 62.5 L52.4 60.4 L53.6 58.4 L54.9 56.6 L56.2 55 L57.6 53.5 L59 52.2 L60.6 51 A6.8 6.8 0 0 1 51.4 41 L49.6 42.9 L47.8 45.1 L46.1 47.4 L44.6 49.9 L43.2 52.5 L42 55.3 L40.8 58.1 L39.9 61 A5.5 5.5 0 0 1 50.1 65 Z", f: "top" }, { p: "M51.3 45.6 L50.3 67.8 L51.3 86 A2.8 2.8 0 0 1 56.8 86 L57.7 68.2 L60.7 46.4 A4.8 4.8 0 0 1 51.3 45.6 Z", f: "pants" }, { p: "M52.5 84 L49.1 87.8 A1.5 1.5 0 0 1 50.9 90.2 L55.5 88 A2.5 2.5 0 0 1 52.5 84 Z", f: "skin" }, { p: "M41.8 63.7 L44.3 72.4 L45.9 84.2 A2.1 2.1 0 0 1 50.1 83.8 L49.7 71.6 L48.2 62.3 A3.3 3.3 0 0 1 41.8 63.7 Z", f: "skin" }, { c: [48.2, 86.2, 2.8], f: "skin" }, { p: "M42.6 62.4 L40 75.5 A2.1 2.1 0 0 1 44 76.5 L47.4 63.6 A2.5 2.5 0 0 1 42.6 62.4 Z", f: "skin" }, { c: [42, 76, 6.5], f: "skin" }, { p: "M36.9 71.9 A6.5 6.5 0 0 1 47.1 80.1 Z", f: "hair" }, { c: [38, 81, 3.4], f: "hair" }, { c: [46, 78.2, 1.25], f: "blush", o: 0 }],
+  ardhaUttanasana: [{ p: "M36.9 47.1 L41.2 57.3 L46.9 65.9 A2.1 2.1 0 0 1 50.3 63.4 L44.9 54.8 L40 44.9 A3.3 3.3 0 0 1 36.9 47.1 Z", f: "skin2" }, { c: [49.6, 66.4, 2.8], f: "skin2" }, { p: "M51.3 46.4 L54.3 68.2 L55.3 86 A2.8 2.8 0 0 1 60.8 86 L61.7 67.8 L60.7 45.6 A4.8 4.8 0 0 1 51.3 46.4 Z", f: "pants2" }, { p: "M56.5 88 L61.1 90.2 A1.5 1.5 0 0 1 62.9 87.8 L59.5 84 A2.5 2.5 0 0 1 56.5 88 Z", f: "skin2" }, { p: "M35.6 52.4 L37.9 52.9 L40.4 53.3 L42.9 53.7 L45.4 54.1 L47.9 54.5 L50.4 54.9 L52.8 55.3 L55.3 55.7 A6.8 6.8 0 0 1 56.7 42.3 L54.2 42.2 L51.6 42.1 L49.1 42 L46.6 41.9 L44.1 41.8 L41.6 41.7 L39.1 41.6 L36.5 41.5 A5.5 5.5 0 0 1 35.6 52.4 Z", f: "top" }, { p: "M51.3 45.6 L50.3 67.8 L51.3 86 A2.8 2.8 0 0 1 56.8 86 L57.7 68.2 L60.7 46.4 A4.8 4.8 0 0 1 51.3 45.6 Z", f: "pants" }, { p: "M52.5 84 L49.1 87.8 A1.5 1.5 0 0 1 50.9 90.2 L55.5 88 A2.5 2.5 0 0 1 52.5 84 Z", f: "skin" }, { p: "M35.9 48.1 L40.2 58.3 L45.9 66.9 A2.1 2.1 0 0 1 49.3 64.4 L43.9 55.8 L39 45.9 A3.3 3.3 0 0 1 35.9 48.1 Z", f: "skin" }, { c: [48.6, 67.4, 2.8], f: "skin" }, { p: "M37 44.4 L28.4 38.9 A2.1 2.1 0 0 1 26.2 42.5 L34.9 48.8 A2.5 2.5 0 0 1 37 44.4 Z", f: "skin" }, { c: [26.8, 40.2, 6.5], f: "skin" }, { p: "M30.9 35.1 A6.5 6.5 0 0 1 22.7 45.3 Z", f: "hair" }, { c: [21.8, 36.2, 3.4], f: "hair" }, { c: [30.8, 42.4, 1.25], f: "blush", o: 0 }],
   chaturanga: [{ p: "M34.9 60.9 L39.3 74.2 L37.9 85.7 A2.1 2.1 0 0 1 42.1 86.3 L44.7 73.8 L41.1 59.1 A3.3 3.3 0 0 1 34.9 60.9 Z", f: "skin2" }, { c: [39.6, 88.2, 2.8], f: "skin2" }, { p: "M57 66.6 L71.2 68.7 L83.3 70.7 A2.8 2.8 0 0 1 84.7 65.3 L72.8 61.3 L59 57.4 A4.8 4.8 0 0 1 57 66.6 Z", f: "pants2" }, { p: "M81.9 69.3 L85.7 73.8 A1.5 1.5 0 0 1 88.3 72.2 L86.1 66.7 A2.5 2.5 0 0 1 81.9 69.3 Z", f: "skin2" }, { p: "M37.5 65.5 L39.9 65.9 L42.4 66.3 L44.9 66.7 L47.4 67.1 L49.9 67.5 L52.4 67.9 L54.8 68.3 L57.3 68.7 A6.8 6.8 0 0 1 58.7 55.3 L56.2 55.2 L53.6 55.1 L51.1 55 L48.6 54.9 L46.1 54.8 L43.6 54.7 L41.1 54.6 L38.5 54.5 A5.5 5.5 0 0 1 37.5 65.5 Z", f: "top" }, { p: "M57.7 66.7 L71.4 66.7 L83.3 68.7 A2.8 2.8 0 0 1 84.7 63.3 L72.6 59.3 L58.3 57.3 A4.8 4.8 0 0 1 57.7 66.7 Z", f: "pants" }, { p: "M81.9 67.3 L85.7 71.8 A1.5 1.5 0 0 1 88.3 70.2 L86.1 64.7 A2.5 2.5 0 0 1 81.9 67.3 Z", f: "skin" }, { p: "M34.8 59.5 L33.3 73.6 L31.9 85.7 A2.1 2.1 0 0 1 36.1 86.3 L38.7 74.4 L41.2 60.5 A3.3 3.3 0 0 1 34.8 59.5 Z", f: "skin" }, { c: [33.6, 88.2, 2.8], f: "skin" }, { p: "M39 57.7 L29.9 54.1 A2.1 2.1 0 0 1 28.1 57.9 L37 62.3 A2.5 2.5 0 0 1 39 57.7 Z", f: "skin" }, { c: [29, 56, 6.5], f: "skin" }, { p: "M33.1 50.9 A6.5 6.5 0 0 1 24.9 61.1 Z", f: "hair" }, { c: [24, 52, 3.4], f: "hair" }, { c: [33, 58.2, 1.25], f: "blush", o: 0 }],
   upDog: [{ p: "M34.8 48.8 L38.3 60.1 L36.9 73.7 A2.1 2.1 0 0 1 41.1 74.3 L43.7 59.9 L41.2 47.2 A3.3 3.3 0 0 1 34.8 48.8 Z", f: "skin2" }, { c: [38.7, 76.2, 2.8], f: "skin2" }, { p: "M56.3 70.4 L69.9 74.6 L82.3 76.7 A2.8 2.8 0 0 1 83.7 71.3 L72.1 67.4 L59.7 61.6 A4.8 4.8 0 0 1 56.3 70.4 Z", f: "pants2" }, { p: "M82.1 76.3 L87.4 77.4 A1.5 1.5 0 0 1 88.6 74.6 L83.9 71.7 A2.5 2.5 0 0 1 82.1 76.3 Z", f: "skin2" }, { p: "M34.1 51.9 L35.7 53.7 L37.5 55.6 L39.6 57.7 L41.9 60.1 L44.5 62.5 L47.3 65.2 L50.3 68.1 L53.6 71.1 A6.8 6.8 0 0 1 62.4 60.9 L58.9 58.1 L55.7 55.5 L52.8 53.1 L50.1 50.9 L47.7 48.9 L45.5 47.1 L43.6 45.5 L41.9 44.1 A5.5 5.5 0 0 1 34.1 51.9 Z", f: "top" }, { p: "M56.9 70.6 L70.1 72.6 L82.3 74.7 A2.8 2.8 0 0 1 83.7 69.3 L71.9 65.4 L59.1 61.4 A4.8 4.8 0 0 1 56.9 70.6 Z", f: "pants" }, { p: "M82.1 74.3 L87.4 75.4 A1.5 1.5 0 0 1 88.6 72.6 L83.9 69.7 A2.5 2.5 0 0 1 82.1 74.3 Z", f: "skin" }, { p: "M34.8 47.5 L33.3 59.6 L31.9 73.7 A2.1 2.1 0 0 1 36.1 74.3 L38.7 60.4 L41.2 48.5 A3.3 3.3 0 0 1 34.8 47.5 Z", f: "skin" }, { c: [33.7, 76.2, 2.8], f: "skin" }, { p: "M40.4 47.2 L37 38.3 A2.1 2.1 0 0 1 33 39.7 L35.6 48.8 A2.5 2.5 0 0 1 40.4 47.2 Z", f: "skin" }, { c: [35, 39, 6.5], f: "skin" }, { p: "M37.9 44.8 A6.5 6.5 0 0 1 32.1 33.2 Z", f: "hair" }, { c: [41, 36, 3.4], f: "hair" }, { c: [31, 41.2, 1.25], f: "blush", o: 0 }],
   downDog: [{ p: "M61 57.2 L67.5 72.2 L76.2 85.1 A2.1 2.1 0 0 1 79.8 82.9 L72.5 69.8 L67 54.8 A3.3 3.3 0 0 1 61 57.2 Z", f: "skin2" }, { c: [79.2, 85.9, 2.8], f: "skin2" }, { p: "M47.4 34.8 L42.5 58.6 L29.6 82.6 A2.8 2.8 0 0 1 34.4 85.4 L49.5 61.4 L56.6 37.2 A4.8 4.8 0 0 1 47.4 34.8 Z", f: "pants2" }, { p: "M30 82.4 L26.8 88.1 A1.5 1.5 0 0 1 29.2 89.9 L34 85.6 A2.5 2.5 0 0 1 30 82.4 Z", f: "skin2" }, { p: "M68.7 53.2 L67.4 50.6 L66 48 L64.6 45.4 L63.3 42.8 L61.9 40.3 L60.5 37.7 L59.2 35.1 L57.8 32.5 A6.8 6.8 0 0 1 46.2 39.5 L47.8 41.9 L49.5 44.3 L51.1 46.7 L52.7 49.2 L54.4 51.6 L56 54 L57.6 56.4 L59.3 58.8 A5.5 5.5 0 0 1 68.7 53.2 Z", f: "top" }, { p: "M47.7 34 L38.7 56.3 L25.6 80.6 A2.8 2.8 0 0 1 30.4 83.4 L45.3 59.7 L56.3 38 A4.8 4.8 0 0 1 47.7 34 Z", f: "pants" }, { p: "M26 80.4 L22.8 86.1 A1.5 1.5 0 0 1 25.2 87.9 L30 83.6 A2.5 2.5 0 0 1 26 80.4 Z", f: "skin" }, { p: "M61.3 57.8 L70.7 70.5 L79.2 83.1 A2.1 2.1 0 0 1 82.8 80.9 L75.3 67.5 L66.7 54.2 A3.3 3.3 0 0 1 61.3 57.8 Z", f: "skin" }, { c: [82.2, 83.9, 2.8], f: "skin" }, { p: "M61.6 55.3 L58 69.4 A2.1 2.1 0 0 1 62 70.6 L66.4 56.7 A2.5 2.5 0 0 1 61.6 55.3 Z", f: "skin" }, { c: [60, 70, 6.5], f: "skin" }, { p: "M55.4 74.6 A6.5 6.5 0 0 1 64.6 65.4 Z", f: "hair" }, { c: [65, 75, 3.4], f: "hair" }, { c: [56, 72.2, 1.25], f: "blush", o: 0 }],
@@ -619,16 +620,21 @@ const lvMeta = (l, lang) => {
 const secMeta = (s, lang) => (lang !== "ko" && META.sections[s.id] ? { title: META.sections[s.id].t, note: META.sections[s.id].n } : { title: s.title, note: s.note });
 
 /* ── 수리야 나마스카라 A ── */
-/* vid: 해당 자세로 들어가는 전환 동영상 (public/videos/, 재생 후 마지막 프레임에서 정지) */
+/* 전통 빈야사 카운트(사마스티티 + 에캄~나와 + 사마스티티) 순서 그대로 11단계.
+   cnt: 산스크리트 카운트 / br: 호흡 방향 (in 들숨 · ex 날숨 · hold 머무르기 · ready 준비)
+   vid: 해당 자세로 들어가는 전환 동영상 (public/videos/, 재생 후 마지막 프레임에서 정지) */
 const SURYA_A = [
-  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", breath: "준비", breathEn: "Ready", n: 1, vid: "videos/surya-a-01.mp4" },
-  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-02.mp4" },
-  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-03.mp4" },
-  { fig: F.chaturanga, name: "차투랑가", nameEn: "Chaturanga", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-05.mp4" },
-  { fig: F.upDog, name: "업독", nameEn: "Upward Dog", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-06.mp4" },
-  { fig: F.downDog, name: "다운독", nameEn: "Downward Dog", breath: "호흡 5회", breathEn: "5 breaths", n: 5, vid: "videos/surya-a-07.mp4" },
-  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-10.mp4" },
-  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-12.mp4" },
+  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", cnt: "시작", cntEn: "Start", br: "ready", breath: "준비", breathEn: "Ready", n: 1, vid: "videos/surya-a-01.mp4" },
+  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", cnt: "1 에캄", cntEn: "1 Ekam", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-02.mp4" },
+  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", cnt: "2 드웨", cntEn: "2 Dve", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-03.mp4" },
+  { fig: F.ardhaUttanasana, name: "아르다 우타나사나", nameEn: "Ardha Uttanasana", cnt: "3 트리니", cntEn: "3 Trini", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-04.mp4" },
+  { fig: F.chaturanga, name: "차투랑가", nameEn: "Chaturanga", cnt: "4 차트와리", cntEn: "4 Chatvari", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-05.mp4" },
+  { fig: F.upDog, name: "업독", nameEn: "Upward Dog", cnt: "5 판차", cntEn: "5 Pancha", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-06.mp4" },
+  { fig: F.downDog, name: "다운독", nameEn: "Downward Dog", cnt: "6 샷", cntEn: "6 Shat", br: "hold", breath: "호흡 5회", breathEn: "5 breaths", n: 5, vid: "videos/surya-a-07.mp4" },
+  { fig: F.ardhaUttanasana, name: "아르다 우타나사나", nameEn: "Ardha Uttanasana", cnt: "7 삽타", cntEn: "7 Sapta", br: "in", breath: "점프 후 마시며", breathEn: "Jump fwd, inhale", n: 1, vid: "videos/surya-a-09.mp4" },
+  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", cnt: "8 아쉬타우", cntEn: "8 Ashtau", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-10.mp4" },
+  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", cnt: "9 나와", cntEn: "9 Nava", br: "in", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-11.mp4" },
+  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", cnt: "마침", cntEn: "Finish", br: "ex", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-12.mp4" },
 ];
 
 /* 태양경배 A 전체 흐름 클립 (01~12 순서 재생) */
@@ -1781,20 +1787,40 @@ export default function AshtangaGuide() {
                 </div>
               )}
             </div>
-            <div className="surya" style={{ background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 14, padding: "20px 12px" }}>
-              <div style={{ display: "flex", alignItems: "flex-start", minWidth: 640 }}>
-                {SURYA_A.map((s, i) => (
-                  <React.Fragment key={i}>
-                    <div style={{ textAlign: "center", flex: 1 }}>
+            <div className="surya" style={{ background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 14, padding: "16px 14px" }}>
+              {/* 범례 — 산스크리트 카운트 + 호흡 방향 */}
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center", fontSize: 11.5, marginBottom: 14, color: C.sub }}>
+                <span style={{ fontWeight: 700, color: C.ink }}>{lang === "ko" ? "빈야사 카운트 1~9" : "Vinyasa count 1–9"}</span>
+                <span style={{ color: C.jade, fontWeight: 500 }}>↑ {lang === "ko" ? "마시며 (들숨)" : "Inhale"}</span>
+                <span style={{ color: C.amber, fontWeight: 500 }}>↓ {lang === "ko" ? "내쉬며 (날숨)" : "Exhale"}</span>
+                <span style={{ background: C.amberDim, color: C.amber, fontWeight: 700, borderRadius: 999, padding: "1px 8px" }}>{lang === "ko" ? "호흡 5회 머무르기" : "Hold 5 breaths"}</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(104px, 1fr))", gap: 10 }}>
+                {SURYA_A.map((s, i) => {
+                  const counted = /^\d/.test(s.cnt);
+                  const bCol = s.br === "in" ? C.jade : s.br === "ex" ? C.amber : C.sub;
+                  const arrow = s.br === "in" ? "↑ " : s.br === "ex" ? "↓ " : "";
+                  return (
+                    <div key={i} style={{
+                      display: "flex", flexDirection: "column", alignItems: "center", gap: 5,
+                      textAlign: "center", padding: "10px 4px 12px", borderRadius: 12,
+                      background: C.bg, border: `1px solid ${C.cardEdge}`,
+                    }}>
+                      <span style={{ fontSize: 10.5, fontWeight: counted ? 700 : 500, letterSpacing: 0.4, color: counted ? C.ink : C.sub }}>
+                        {lang !== "ko" ? s.cntEn : s.cnt}
+                      </span>
                       <PoseVisual pose={s} size={72} glow />
-                      <p style={{ fontSize: 11.5, fontWeight: 500, marginTop: 4 }}>{lang !== "ko" ? s.nameEn : s.name}</p>
-                      <p style={{ fontSize: 11, color: s.n > 1 ? C.amber : C.sub, fontWeight: s.n > 1 ? 700 : 300 }}>{lang !== "ko" ? s.breathEn : s.breath}</p>
+                      <p style={{ fontSize: 11.5, fontWeight: 500, lineHeight: 1.35 }}>{lang !== "ko" ? s.nameEn : s.name}</p>
+                      {s.br === "hold" ? (
+                        <span style={{ fontSize: 11, fontWeight: 700, color: C.amber, background: C.amberDim, borderRadius: 999, padding: "1px 8px" }}>
+                          {lang !== "ko" ? s.breathEn : s.breath}
+                        </span>
+                      ) : (
+                        <span style={{ fontSize: 11, color: bCol, fontWeight: 500 }}>{arrow}{lang !== "ko" ? s.breathEn : s.breath}</span>
+                      )}
                     </div>
-                    {i < SURYA_A.length - 1 && (
-                      <span aria-hidden="true" style={{ color: C.line, alignSelf: "center", fontSize: 18, padding: "0 2px" }}>→</span>
-                    )}
-                  </React.Fragment>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </section>
