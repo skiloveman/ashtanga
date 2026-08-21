@@ -1639,7 +1639,7 @@ export default function AshtangaGuide() {
         .langopt:focus-visible { outline:2px solid ${C.amber}; outline-offset:-2px; }
         .lvl.on { background:${C.amberDim}; border-color: rgba(217,160,91,0.55); color:${C.amber}; font-weight:600; }
         .card { background:${C.card}; border:1px solid ${C.cardEdge}; border-radius:14px; padding:22px;
-          display:flex; gap:20px; align-items:flex-start; transition: border-color .25s; }
+          display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; transition: border-color .25s; }
         .card:hover { border-color: rgba(217,160,91,0.35); }
         .cardbtn { all:unset; cursor:pointer; display:flex; gap:20px; align-items:flex-start; flex:1; }
         .cardfoot { padding-inline-start: 160px; } /* 사진(140) + 간격(20) — 도움말을 제목 라인에 정렬 */
@@ -1664,7 +1664,13 @@ export default function AshtangaGuide() {
           .railtop .pbtn { white-space:nowrap; }
           .navbtn { white-space:nowrap; width:auto; }
           .card, .cardbtn { flex-direction:column; align-items:center; text-align:center; }
-          .cardfoot { padding-inline-start: 0 !important; } /* 모바일 세로 배치에선 들여쓰기 해제 */
+          /* 세로 배치에선 wrap이 하단 행을 옆 열로 밀어내므로 해제하고, basis도 초기화 */
+          .card { flex-wrap:nowrap; }
+          .cardfoot { padding-inline-start: 0 !important; flex-basis:auto !important; width:100%;
+            flex-wrap:wrap; justify-content:center; row-gap:8px; }
+          .cardfoot > span { margin-inline-start: 0 !important; }
+          .cardvid { flex-basis:auto !important; width:100%; }
+          .cardtitle { padding-inline-end: 0 !important; justify-content:center; }
           .surya { overflow-x:auto; -webkit-overflow-scrolling:touch; }
           /* 여백 축소 */
           .hrow { padding:8px 12px !important; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
@@ -1962,7 +1968,7 @@ export default function AshtangaGuide() {
                   const k = `${sec.id}-${p.sk}`;
                   const L = loc(p, lang);
                   return (
-                    <article key={k} className="card" style={{ position: "relative", flexWrap: "wrap" }}>
+                    <article key={k} className="card" style={{ position: "relative" }}>
                       {/* 우측 상단 액션: 자세잡기 · 상세 보기 */}
                       <div style={{ position: "absolute", top: 10, insetInlineEnd: 10, zIndex: 2, display: "flex", gap: 6 }}>
                         <button className="pbtn" onClick={() => setEntryVid(entryVid === k ? null : k)}
@@ -1986,7 +1992,7 @@ export default function AshtangaGuide() {
                       <div className="cardbtn" style={{ cursor: "auto" }}>
                         <PoseVisual pose={p} size={140} />
                         <div style={{ flex: 1 }}>
-                          <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", paddingInlineEnd: 170 }}>
+                          <div className="cardtitle" style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", paddingInlineEnd: 170 }}>
                             <h3 className="display" style={{ fontSize: 19, fontWeight: 700 }}>{L.name}</h3>
                             <span style={{ fontSize: 12.5, color: C.sub, fontStyle: "italic" }}>{p.sk}</span>
                           </div>
@@ -1998,7 +2004,7 @@ export default function AshtangaGuide() {
                         </div>
                       </div>
                       {entryVid === k && (
-                        <div style={{ flexBasis: "100%" }}>
+                        <div className="cardvid" style={{ flexBasis: "100%" }}>
                           <EntryVideo src={poseVid(p.ko)} lang={lang} onClose={() => setEntryVid(null)} />
                         </div>
                       )}
