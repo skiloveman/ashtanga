@@ -1403,6 +1403,11 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
   };
   useEffect(() => { if (voice) speak(cur); }, [cur, voice]); // 자세가 바뀌면 자동 낭독
   useEffect(() => () => { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } }, []);
+  const toggleVoice = () => setVoice((v) => {
+    const n = !v;
+    if (!n) { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } }
+    return n;
+  });
 
   /* 왼쪽 리스트에서 현재 자세가 항상 보이게 */
   const listRef = useRef(null);
@@ -1493,10 +1498,14 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       }}>
         <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
           <p className="display" style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4, flex: 1 }}>{cur.ko}</p>
-          <button className="pbtn" onClick={() => speak(cur)}
-            aria-label={lang === "ko" ? "설명 읽어주기" : "Read description aloud"}
-            style={{ fontSize: 13, padding: "5px 10px", lineHeight: 1, flexShrink: 0 }}>
-            🔊
+          <button className="pbtn" onClick={toggleVoice} aria-pressed={voice}
+            aria-label={lang === "ko" ? "음성 안내 켜기/끄기" : "Toggle voice guide"}
+            style={{
+              fontSize: 22, padding: "9px 13px", lineHeight: 1, flexShrink: 0,
+              borderColor: voice ? "rgba(217,160,91,0.5)" : C.line,
+              background: voice ? C.amberDim : C.card,
+            }}>
+            {voice ? "🔊" : "🔇"}
           </button>
         </div>
         <p style={{ color: C.sub, fontSize: 12, fontStyle: "italic", marginTop: 3 }}>{cur.sk} · {T.drishtiChip(cur.drishti)}</p>
@@ -1530,15 +1539,15 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
             {T.paceOpts.map(([v, label]) => <option key={v} value={v}>{label}</option>)}
           </select>
         </label>
-        <button className="pbtn" aria-pressed={voice}
-          onClick={() => setVoice((v) => { const n = !v; if (!n) { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } } return n; })}
+        <button className="pbtn" aria-pressed={voice} onClick={toggleVoice}
           style={{
-            fontSize: 12.5,
+            fontSize: 13.5,
             borderColor: voice ? "rgba(217,160,91,0.5)" : C.line,
             background: voice ? C.amberDim : C.card,
             color: voice ? C.amber : C.sub,
           }}>
-          {voice ? "🔊" : "🔇"} {lang === "ko" ? "음성 안내" : "Voice guide"}
+          <span style={{ fontSize: 17, verticalAlign: "middle" }}>{voice ? "🔊" : "🔇"}</span>{" "}
+          {lang === "ko" ? "음성 안내" : "Voice guide"}
         </button>
       </div>
     </div>
