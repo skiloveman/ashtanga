@@ -53,6 +53,8 @@ Persistence is localStorage only, via `lsGet`/`lsSet` (keys: `lang`, `done`, `le
 - URL 언어 라우팅(/en/, /ko/, 별칭 /kr 등) + hreflang/canonical. 헤더는 한 줄(로고·탭·검색·언어·테마). 로고는 2줄(ASHTANGA/SHALA, `.logo` 폭 222px 고정)로 데스크탑에서 레벨 탭이 본문 텍스트 라인(254px)과 정렬, 모바일은 폭 auto로 좌측 밀착.
 - 카드 UI: 우측 상단 [동영상 보기 ▶][상세 보기 →](앰버 배경, 동영상 보기는 열림 토글), 본문 클릭으로는 모달 안 열림. 하단 행 = 도움말(제목 라인 정렬, 글자 폭) + 수련 마침 라벨/체크. 모바일에선 두 버튼(`.cardact`)이 flex order로 본문 아래·도움말 위로 내려옴. 도움말은 항상 표시(켜기/끄기 토글·`beginner` 상태·`tips` 키 제거됨). 수련 마침 카드는 `.card.done`으로 앰버 배경/테두리/제목·사진 글로우 표시.
 - 사진: 수리야 스틸 전체 + 웃티타 트리코나사나(AI 생성, 사마스티티 스틸 레퍼런스로 nano_banana_pro 2크레딧/장 — 파이프라인 검증됨). 인물 중심 정사각 크롭 적용.
+- 2026-08-22 UI 정비: 창 전체 스크롤 구조(헤더·레일 sticky, 스크롤바 화면 오른쪽 끝, 섹션 scroll-margin). 푸터는 전체 폭 4컬럼(브랜드/카테고리/약관/1:1 지원). 우하단 플로팅 TOP·💬1:1 버튼. 쿠키 동의 1회 저장(cookieOk), 뒤로가기로 오버레이 닫기, 모달 ✕ 원형 버튼.
+- 1:1 문의: ContactModal(10개 언어) → POST /api/contact(Pages Function) → Resend → skiloveman@naver.com (RESEND_API_KEY 시크릿은 사용자가 대시보드에 등록 완료, 라이브 전송 테스트 성공). 상세는 Deployment 섹션 참고.
 
 **진행 중 / 다음 할 일**
 - **자세 동영상(우선)**: 사용자가 클로드 데스크탑에서 직접 제작해 유튜브 병행 게시 예정. 스펙·76개 파일명 체크리스트는 `video-production-guide.md`. 받은 파일은 `public/videos/poses/<한글이름>.mp4`로 넣고 커밋·푸시만 하면 활성화. 사용자가 "받은 영상 사이트에 넣어줘"라고 하면 파일명 검증→배치→배포 처리.
