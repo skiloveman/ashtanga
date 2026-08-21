@@ -248,6 +248,13 @@ const STR = {
     footCats: "주요 카테고리", footLegal: "약관 및 개인정보 처리방침", footSupport: "1:1 문의 및 고객 지원",
     footSupportD: "콘텐츠 오류 제보, 제휴 제안, 개인정보 관련 문의는 언제든지 접수 가능합니다.",
     footContactBtn: "1:1 문의 및 제보하기", footPolicy: "Google 게시자 정책 준수 사이트",
+    cfTitle: "문의하기 & 피드백", cfIntro: "콘텐츠 오류 제보, 기능 요청, 제휴 및 기타 문의를 아래 폼으로 보내주시면 운영자 메일(skiloveman@naver.com)로 바로 전달됩니다.",
+    cfName: "성함/닉네임", cfNamePh: "홍길동", cfEmail: "답변 이메일", cfType: "문의 유형",
+    cfTypes: ["일반 문의", "오류 제보", "제휴 제안", "기타"],
+    cfMsg: "상세 내용", cfMsgPh: "문의 또는 제보 내용을 입력해 주세요.",
+    cfSend: "문의 보내기", cfSending: "전송 중…",
+    cfSent: "접수되었습니다. 영업일 기준 3일 이내에 답변드리겠습니다.",
+    cfFail: "전송에 실패했습니다. 잠시 후 다시 시도하거나 skiloveman@naver.com 으로 직접 보내주세요.",
   },
   en: {
     heroT1: "In the stillness before sunrise,", heroT2: "a practice that follows the breath",
@@ -281,6 +288,13 @@ const STR = {
     footCats: "Categories", footLegal: "Legal & Privacy", footSupport: "Contact & Support",
     footSupportD: "Content corrections, partnership proposals, and privacy questions are welcome anytime.",
     footContactBtn: "Email us · 1:1 support", footPolicy: "Compliant with Google Publisher Policies",
+    cfTitle: "Contact & Feedback", cfIntro: "Report content errors, request features, or propose partnerships — the form below goes straight to the operator (skiloveman@naver.com).",
+    cfName: "Name/Nickname", cfNamePh: "Jane Doe", cfEmail: "Reply email", cfType: "Inquiry type",
+    cfTypes: ["General inquiry", "Error report", "Partnership", "Other"],
+    cfMsg: "Message", cfMsgPh: "Write your inquiry or report here.",
+    cfSend: "Send", cfSending: "Sending…",
+    cfSent: "Received — we aim to reply within three business days.",
+    cfFail: "Sending failed. Please try again later or email skiloveman@naver.com directly.",
   },
   es: {
     heroT1: "En la quietud antes del amanecer,", heroT2: "una práctica que sigue la respiración",
@@ -314,6 +328,13 @@ const STR = {
     footCats: "Categorías", footLegal: "Legal y privacidad", footSupport: "Contacto y soporte",
     footSupportD: "Correcciones de contenido, propuestas de colaboración y consultas de privacidad son bienvenidas.",
     footContactBtn: "Escríbenos por correo", footPolicy: "Sitio conforme a las políticas para editores de Google",
+    cfTitle: "Contacto y comentarios", cfIntro: "Informa errores de contenido, solicita funciones o propone colaboraciones — el formulario llega directamente al operador (skiloveman@naver.com).",
+    cfName: "Nombre/Apodo", cfNamePh: "María García", cfEmail: "Correo de respuesta", cfType: "Tipo de consulta",
+    cfTypes: ["Consulta general", "Informe de error", "Colaboración", "Otro"],
+    cfMsg: "Mensaje", cfMsgPh: "Escribe aquí tu consulta o informe.",
+    cfSend: "Enviar", cfSending: "Enviando…",
+    cfSent: "Recibido — respondemos en un plazo de tres días hábiles.",
+    cfFail: "No se pudo enviar. Inténtalo más tarde o escribe a skiloveman@naver.com.",
   },
   ja: {
     heroT1: "夜明け前の静けさの中で、", heroT2: "呼吸に導かれる練習",
@@ -347,6 +368,13 @@ const STR = {
     footCats: "主なカテゴリー", footLegal: "規約とプライバシー", footSupport: "お問い合わせ・サポート",
     footSupportD: "内容の誤りのご報告、提携のご提案、プライバシーに関するお問い合わせを受け付けています。",
     footContactBtn: "メールでお問い合わせ", footPolicy: "Google パブリッシャー ポリシー準拠サイト",
+    cfTitle: "お問い合わせ＆フィードバック", cfIntro: "内容の誤りのご報告、機能のご要望、提携のご提案などを下のフォームからお送りいただくと、運営者メール（skiloveman@naver.com）に直接届きます。",
+    cfName: "お名前/ニックネーム", cfNamePh: "山田太郎", cfEmail: "返信用メール", cfType: "お問い合わせの種類",
+    cfTypes: ["一般のお問い合わせ", "誤りのご報告", "提携のご提案", "その他"],
+    cfMsg: "詳細内容", cfMsgPh: "お問い合わせ内容をご記入ください。",
+    cfSend: "送信する", cfSending: "送信中…",
+    cfSent: "受け付けました。3営業日以内にご返信いたします。",
+    cfFail: "送信に失敗しました。時間をおいて再試行するか、skiloveman@naver.com まで直接お送りください。",
   },
   de: {
     heroT1: "In der Stille vor Sonnenaufgang,", heroT2: "eine Praxis, die dem Atem folgt",
@@ -380,6 +408,13 @@ const STR = {
     footCats: "Kategorien", footLegal: "Rechtliches & Datenschutz", footSupport: "Kontakt & Support",
     footSupportD: "Inhaltliche Korrekturen, Kooperationsanfragen und Datenschutzfragen sind jederzeit willkommen.",
     footContactBtn: "Per E-Mail kontaktieren", footPolicy: "Konform mit den Google-Publisher-Richtlinien",
+    cfTitle: "Kontakt & Feedback", cfIntro: "Melde inhaltliche Fehler, wünsche dir Funktionen oder schlage Kooperationen vor — das Formular geht direkt an den Betreiber (skiloveman@naver.com).",
+    cfName: "Name/Spitzname", cfNamePh: "Max Mustermann", cfEmail: "Antwort-E-Mail", cfType: "Art der Anfrage",
+    cfTypes: ["Allgemeine Anfrage", "Fehlermeldung", "Kooperation", "Sonstiges"],
+    cfMsg: "Nachricht", cfMsgPh: "Schreibe hier deine Anfrage oder Meldung.",
+    cfSend: "Senden", cfSending: "Wird gesendet…",
+    cfSent: "Eingegangen — wir antworten innerhalb von drei Werktagen.",
+    cfFail: "Senden fehlgeschlagen. Versuche es später erneut oder schreibe direkt an skiloveman@naver.com.",
   },
   fr: {
     heroT1: "Dans le calme d'avant l'aube,", heroT2: "une pratique guidée par le souffle",
@@ -413,6 +448,13 @@ const STR = {
     footCats: "Catégories", footLegal: "Mentions légales et confidentialité", footSupport: "Contact et assistance",
     footSupportD: "Corrections de contenu, propositions de partenariat et questions de confidentialité sont les bienvenues.",
     footContactBtn: "Nous contacter par e-mail", footPolicy: "Site conforme aux règles Google pour les éditeurs",
+    cfTitle: "Contact et retours", cfIntro: "Signalez des erreurs de contenu, demandez des fonctionnalités ou proposez un partenariat — le formulaire arrive directement à l'opérateur (skiloveman@naver.com).",
+    cfName: "Nom/Pseudo", cfNamePh: "Jean Dupont", cfEmail: "E-mail de réponse", cfType: "Type de demande",
+    cfTypes: ["Demande générale", "Signalement d'erreur", "Partenariat", "Autre"],
+    cfMsg: "Message", cfMsgPh: "Écrivez ici votre demande ou signalement.",
+    cfSend: "Envoyer", cfSending: "Envoi…",
+    cfSent: "Bien reçu — nous répondons sous trois jours ouvrés.",
+    cfFail: "Échec de l'envoi. Réessayez plus tard ou écrivez directement à skiloveman@naver.com.",
   },
   zh: {
     heroT1: "在日出前的宁静中，", heroT2: "跟随呼吸的练习",
@@ -446,6 +488,13 @@ const STR = {
     footCats: "主要栏目", footLegal: "条款与隐私", footSupport: "联系与支持",
     footSupportD: "欢迎随时提交内容纠错、合作提案及隐私相关咨询。",
     footContactBtn: "邮件联系我们", footPolicy: "符合 Google 发布商政策",
+    cfTitle: "联系与反馈", cfIntro: "内容纠错、功能建议、合作提案等，通过下方表单提交将直接送达运营者邮箱（skiloveman@naver.com）。",
+    cfName: "姓名/昵称", cfNamePh: "张三", cfEmail: "回复邮箱", cfType: "咨询类型",
+    cfTypes: ["一般咨询", "错误反馈", "合作提案", "其他"],
+    cfMsg: "详细内容", cfMsgPh: "请输入您的咨询或反馈内容。",
+    cfSend: "发送", cfSending: "发送中…",
+    cfSent: "已收到，我们将在三个工作日内回复。",
+    cfFail: "发送失败。请稍后重试，或直接发邮件至 skiloveman@naver.com。",
   },
   pt: {
     heroT1: "Na quietude antes do amanhecer,", heroT2: "uma prática que segue a respiração",
@@ -479,6 +528,13 @@ const STR = {
     footCats: "Categorias", footLegal: "Legal e privacidade", footSupport: "Contato e suporte",
     footSupportD: "Correções de conteúdo, propostas de parceria e dúvidas de privacidade são bem-vindas.",
     footContactBtn: "Fale conosco por e-mail", footPolicy: "Site em conformidade com as políticas do Google para editores",
+    cfTitle: "Contato e feedback", cfIntro: "Informe erros de conteúdo, peça funções ou proponha parcerias — o formulário vai direto ao operador (skiloveman@naver.com).",
+    cfName: "Nome/Apelido", cfNamePh: "João Silva", cfEmail: "E-mail para resposta", cfType: "Tipo de contato",
+    cfTypes: ["Dúvida geral", "Relato de erro", "Parceria", "Outro"],
+    cfMsg: "Mensagem", cfMsgPh: "Escreva aqui sua dúvida ou relato.",
+    cfSend: "Enviar", cfSending: "Enviando…",
+    cfSent: "Recebido — respondemos em até três dias úteis.",
+    cfFail: "Falha no envio. Tente novamente mais tarde ou escreva para skiloveman@naver.com.",
   },
   hi: {
     heroT1: "सूर्योदय से पहले की शांति में,", heroT2: "सांस के साथ चलने वाला अभ्यास",
@@ -512,6 +568,13 @@ const STR = {
     footCats: "मुख्य श्रेणियाँ", footLegal: "नियम और गोपनीयता", footSupport: "संपर्क और सहायता",
     footSupportD: "सामग्री सुधार, साझेदारी प्रस्ताव और गोपनीयता से जुड़े प्रश्न कभी भी भेजें।",
     footContactBtn: "ईमेल से संपर्क करें", footPolicy: "Google प्रकाशक नीतियों के अनुरूप साइट",
+    cfTitle: "संपर्क और प्रतिक्रिया", cfIntro: "सामग्री त्रुटि, फीचर अनुरोध या साझेदारी प्रस्ताव नीचे दिए फ़ॉर्म से भेजें — यह सीधे संचालक के मेल (skiloveman@naver.com) पर पहुँचता है।",
+    cfName: "नाम/उपनाम", cfNamePh: "राम कुमार", cfEmail: "उत्तर हेतु ईमेल", cfType: "पूछताछ का प्रकार",
+    cfTypes: ["सामान्य पूछताछ", "त्रुटि रिपोर्ट", "साझेदारी", "अन्य"],
+    cfMsg: "विवरण", cfMsgPh: "अपनी पूछताछ या रिपोर्ट यहाँ लिखें।",
+    cfSend: "भेजें", cfSending: "भेजा जा रहा है…",
+    cfSent: "प्राप्त हुआ — हम तीन कार्यदिवसों में उत्तर देने का प्रयास करते हैं।",
+    cfFail: "भेजने में विफल। बाद में पुनः प्रयास करें या सीधे skiloveman@naver.com पर लिखें।",
   },
   ar: {
     heroT1: "في سكون ما قبل الفجر،", heroT2: "ممارسة تتبع النَّفَس",
@@ -545,6 +608,13 @@ const STR = {
     footCats: "الأقسام الرئيسية", footLegal: "الشروط والخصوصية", footSupport: "التواصل والدعم",
     footSupportD: "نرحب دائمًا بتصحيحات المحتوى ومقترحات الشراكة واستفسارات الخصوصية.",
     footContactBtn: "راسلنا عبر البريد الإلكتروني", footPolicy: "موقع متوافق مع سياسات ناشري Google",
+    cfTitle: "التواصل والملاحظات", cfIntro: "أبلغ عن أخطاء المحتوى أو اقترح ميزات أو شراكات — يصل النموذج أدناه مباشرة إلى بريد المشغّل (skiloveman@naver.com).",
+    cfName: "الاسم/اللقب", cfNamePh: "محمد أحمد", cfEmail: "بريد الرد", cfType: "نوع الاستفسار",
+    cfTypes: ["استفسار عام", "بلاغ عن خطأ", "اقتراح شراكة", "أخرى"],
+    cfMsg: "التفاصيل", cfMsgPh: "اكتب استفسارك أو بلاغك هنا.",
+    cfSend: "إرسال", cfSending: "جارٍ الإرسال…",
+    cfSent: "تم الاستلام — نرد خلال ثلاثة أيام عمل.",
+    cfFail: "فشل الإرسال. حاول لاحقًا أو راسل skiloveman@naver.com مباشرة.",
   },
 };
 
@@ -1481,7 +1551,7 @@ function PoseDetail({ pose, onClose, lang }) {
 
 /* ── 정보 페이지 (애드센스 승인 필수: 소개·개인정보처리방침·이용약관·문의) ──
    배포 시 각 페이지는 별도 URL(/about, /privacy, /terms, /contact)로 라우팅하는 것을 권장합니다.
-   사이트명 Ashtanga Shala · 문의 skiloveman@gmail.com · 시행일 2026-08-20 적용됨 */
+   사이트명 Ashtanga Shala · 문의 skiloveman@naver.com · 시행일 2026-08-20 적용됨 */
 const PAGES = {
   ko: {
     about: { t: "소개", ps: [
@@ -1495,7 +1565,7 @@ const PAGES = {
       "2. 쿠키와 광고 — 사이트는 Google AdSense를 통해 광고를 게재합니다. Google을 포함한 제3자 광고 사업자는 쿠키를 사용하여 이용자의 이전 방문 기록을 바탕으로 광고를 게재할 수 있습니다. Google의 광고 쿠키 사용으로 이용자에게 맞춤형 광고가 표시될 수 있으며, 이용자는 Google 광고 설정(adssettings.google.com)에서 맞춤 광고를 해제할 수 있습니다. 또한 www.aboutads.info 에서 제3자 광고 사업자의 쿠키 사용을 일괄 거부할 수 있습니다.",
       "3. 분석 도구 — 서비스 개선을 위해 방문자 통계 도구(예: Google Analytics)를 사용할 수 있으며, 이 과정에서 익명화된 이용 데이터가 수집됩니다.",
       "4. 아동의 개인정보 — 사이트는 만 14세 미만 아동의 개인정보를 고의로 수집하지 않습니다.",
-      "5. 문의 — 개인정보 관련 문의는 skiloveman@gmail.com 으로 연락해 주세요. 본 방침은 법령이나 서비스 변경에 따라 개정될 수 있으며, 개정 시 본 페이지에 게시합니다.",
+      "5. 문의 — 개인정보 관련 문의는 skiloveman@naver.com 으로 연락해 주세요. 본 방침은 법령이나 서비스 변경에 따라 개정될 수 있으며, 개정 시 본 페이지에 게시합니다.",
     ]},
     terms: { t: "이용약관", ps: [
       "1. 목적 — 본 약관은 아쉬탕가 샬라(Ashtanga Shala)가 제공하는 콘텐츠 이용 조건을 규정합니다. 사이트를 이용함으로써 본 약관에 동의하는 것으로 간주됩니다.",
@@ -1506,7 +1576,7 @@ const PAGES = {
     ]},
     contact: { t: "문의", ps: [
       "콘텐츠 오류 제보, 제휴 제안, 개인정보 관련 문의는 아래 이메일로 보내 주세요.",
-      "이메일: skiloveman@gmail.com — 영업일 기준 3일 이내에 답변드리도록 하겠습니다.",
+      "이메일: skiloveman@naver.com — 영업일 기준 3일 이내에 답변드리도록 하겠습니다.",
       "광고 및 제휴 관련 문의도 같은 주소로 받고 있습니다.",
     ]},
   },
@@ -1522,7 +1592,7 @@ const PAGES = {
       "2. Cookies and advertising — The Site displays ads through Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve personalized ads. You may opt out of personalized advertising by visiting Google Ads Settings (adssettings.google.com), and opt out of some third-party vendors' cookie use at www.aboutads.info.",
       "3. Analytics — We may use visitor analytics tools (e.g., Google Analytics), which collect anonymized usage data to help improve the service.",
       "4. Children's privacy — The Site does not knowingly collect personal information from children under 13 (or the applicable age in your jurisdiction).",
-      "5. Contact — For privacy inquiries, email skiloveman@gmail.com. This policy may be updated as laws or the service change; revisions will be posted on this page.",
+      "5. Contact — For privacy inquiries, email skiloveman@naver.com. This policy may be updated as laws or the service change; revisions will be posted on this page.",
     ]},
     terms: { t: "Terms of Use", ps: [
       "1. Purpose — These terms govern the use of content provided by Ashtanga Shala. By using the Site you agree to these terms.",
@@ -1533,7 +1603,7 @@ const PAGES = {
     ]},
     contact: { t: "Contact", ps: [
       "For content corrections, partnership proposals, or privacy inquiries, please email us.",
-      "Email: skiloveman@gmail.com — we aim to reply within three business days.",
+      "Email: skiloveman@naver.com — we aim to reply within three business days.",
       "Advertising and partnership inquiries are welcome at the same address.",
     ]},
   },
@@ -1574,6 +1644,96 @@ function InfoPage({ pageKey, lang, onClose }) {
 /* 쿠키 안내 배너 — 프리뷰에서는 상태로만 유지됩니다.
    배포 시 동의 여부를 localStorage/쿠키에 저장해 재방문 시 숨기고,
    EU 트래픽 대상이면 Google CMP 등 정식 동의 관리 플랫폼 연동을 권장합니다. */
+/* ── 1:1 문의 모달 — /api/contact(Cloudflare Pages Function)를 통해 Resend로 발송 ── */
+function ContactModal({ lang, onClose }) {
+  const T = STR[lang];
+  const [f, setF] = useState({ name: "", email: "", type: 0, message: "", website: "" });
+  const [st, setSt] = useState("idle"); // idle | sending | sent | fail
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+  const set = (k) => (e) => setF((v) => ({ ...v, [k]: e.target.value }));
+  const submit = async (e) => {
+    e.preventDefault();
+    if (st === "sending" || st === "sent") return;
+    setSt("sending");
+    try {
+      const r = await fetch("/api/contact", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        /* 유형은 운영자가 읽으므로 한국어 라벨로 전송 */
+        body: JSON.stringify({ name: f.name, email: f.email, message: f.message, website: f.website, type: STR.ko.cfTypes[f.type] || "" }),
+      });
+      const j = await r.json().catch(() => ({}));
+      setSt(r.ok && j.ok ? "sent" : "fail");
+    } catch { setSt("fail"); }
+  };
+  return (
+    <div onClick={onClose} className="ovl" style={{
+      position: "fixed", inset: 0, zIndex: 50, background: "rgba(8,11,15,0.78)",
+      display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
+    }}>
+      <div role="dialog" aria-modal="true" aria-label={T.cfTitle} className="sheet" onClick={(e) => e.stopPropagation()} style={{
+        background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 18,
+        maxWidth: 560, width: "100%", maxHeight: "86vh", position: "relative",
+        display: "flex", flexDirection: "column", overflow: "hidden",
+      }}>
+        <button onClick={onClose} aria-label={T.closeL} className="sheetx" style={{
+          position: "absolute", top: 12, right: 12, zIndex: 2, cursor: "pointer",
+          width: 34, height: 34, borderRadius: "50%", padding: 0,
+          background: C.bg, border: `1px solid ${C.line}`, color: C.ink,
+          fontSize: 16, lineHeight: 1, display: "flex", alignItems: "center", justifyContent: "center",
+        }}>✕</button>
+        <div className="sheethead" style={{ flexShrink: 0, padding: "24px 28px 16px", borderBottom: `1px solid ${C.line}`, display: "flex", alignItems: "center", gap: 12 }}>
+          <span aria-hidden="true" style={{
+            width: 40, height: 40, borderRadius: 12, background: C.amberDim, color: C.amber,
+            display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0,
+          }}>✉</span>
+          <h3 className="display" style={{ fontSize: 19, fontWeight: 700 }}>{T.cfTitle}</h3>
+        </div>
+        <form className="sheetbody" onSubmit={submit} style={{ overflowY: "auto", padding: "16px 28px 26px" }}>
+          <p style={{ fontSize: 13, color: C.sub, lineHeight: 1.7, fontWeight: 300 }}>{T.cfIntro}</p>
+          <div className="cfrow" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <label className="cflab">{T.cfName}
+              <input className="cfin" value={f.name} onChange={set("name")} placeholder={T.cfNamePh} maxLength={100} />
+            </label>
+            <label className="cflab">{T.cfEmail}
+              <input className="cfin" type="email" required value={f.email} onChange={set("email")} placeholder="name@example.com" maxLength={200} />
+            </label>
+          </div>
+          <label className="cflab">{T.cfType}
+            <select className="cfin" value={f.type} onChange={(e) => setF((v) => ({ ...v, type: +e.target.value }))}>
+              {T.cfTypes.map((t, i) => <option key={i} value={i}>{t}</option>)}
+            </select>
+          </label>
+          <label className="cflab">{T.cfMsg}
+            <textarea className="cfin" required rows={6} value={f.message} onChange={set("message")}
+              placeholder={T.cfMsgPh} maxLength={5000} style={{ resize: "vertical" }} />
+          </label>
+          {/* 허니팟 — 사람에겐 안 보이는 필드. 채워져 있으면 서버가 조용히 무시 */}
+          <input type="text" name="website" value={f.website} onChange={set("website")} tabIndex={-1}
+            autoComplete="off" aria-hidden="true"
+            style={{ position: "absolute", left: -9999, top: 0, width: 1, height: 1, opacity: 0 }} />
+          {st === "sent" ? (
+            <p style={{ color: C.jade, fontSize: 13.5, marginTop: 18, lineHeight: 1.6 }}>✓ {T.cfSent}</p>
+          ) : (
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 18, flexWrap: "wrap" }}>
+              {st === "fail" && <p style={{ color: C.danger, fontSize: 12.5, flex: "1 1 200px", lineHeight: 1.6 }}>{T.cfFail}</p>}
+              <button type="submit" className="pbtn" disabled={st === "sending"} style={{
+                marginInlineStart: "auto", background: C.amber, color: C.bg, borderColor: C.amber,
+                fontWeight: 700, fontSize: 13.5, padding: "10px 26px", opacity: st === "sending" ? 0.7 : 1,
+              }}>
+                {st === "sending" ? T.cfSending : T.cfSend}
+              </button>
+            </div>
+          )}
+        </form>
+      </div>
+    </div>
+  );
+}
+
 function CookieBar({ lang, onOk }) {
   const T = STR[lang];
   return (
@@ -1601,6 +1761,7 @@ export default function AshtangaGuide() {
   const [practice, setPractice] = useState(false);
   const [page, setPage] = useState(null);
   const [cookieOk, setCookieOk] = useState(() => lsGet("cookieOk", false) === true);
+  const [contactOpen, setContactOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [flowOn, setFlowOn] = useState(false); // 태양경배 전체 흐름 영상
   const [flowClip, setFlowClip] = useState(0);
@@ -1620,12 +1781,12 @@ export default function AshtangaGuide() {
 
   /* 뒤로가기 → 오버레이(상세 보기·수련 모드·정보 페이지)만 닫기. 히스토리에 항목을 하나
      쌓아 두고 popstate에서 닫는다. ✕ 등 다른 경로로 닫히면 back()으로 그 항목을 걷어낸다. */
-  const overlayOpen = !!detail || practice || !!page;
+  const overlayOpen = !!detail || practice || !!page || contactOpen;
   useEffect(() => {
     if (!overlayOpen) return;
     let popped = false;
     window.history.pushState({ overlay: 1 }, "");
-    const onPop = () => { popped = true; setDetail(null); setPractice(false); setPage(null); };
+    const onPop = () => { popped = true; setDetail(null); setPractice(false); setPage(null); setContactOpen(false); };
     window.addEventListener("popstate", onPop);
     return () => {
       window.removeEventListener("popstate", onPop);
@@ -1715,6 +1876,12 @@ export default function AshtangaGuide() {
           text-align:start; width:100%; }
         .footlink:hover { color:${C.ink}; }
         .footlink.hl { color:${C.amber}; font-weight:600; }
+        .cflab { display:block; font-size:12.5px; font-weight:600; color:${C.ink}; margin-top:14px; }
+        .cfin { display:block; width:100%; box-sizing:border-box; margin-top:6px;
+          background:${C.bg}; color:${C.ink}; border:1px solid ${C.line}; border-radius:10px;
+          padding:10px 12px; font:inherit; font-size:14px; }
+        .cfin::placeholder { color:${C.sub}; opacity:0.7; }
+        .cfin:focus-visible { outline:2px solid ${C.amber}; outline-offset:1px; }
         /* 로고 폭 고정: 헤더 패딩 20 + 222 + 갭 12 = 254 → 레벨 탭이 본문 텍스트 라인(레일 210+갭 20+패딩 24)과 정렬 */
         .logo { width:222px; flex-shrink:0; }
         @keyframes flicker { 0%,100%{opacity:1} 50%{opacity:.65} }
@@ -1752,6 +1919,7 @@ export default function AshtangaGuide() {
           /* 푸터: 브랜드·문의는 전체 폭, 카테고리·약관은 2열 */
           .footgrid { grid-template-columns:1fr 1fr !important; gap:20px !important; }
           .footgrid > :first-child, .footgrid > :last-child { grid-column:1 / -1; }
+          .cfrow { grid-template-columns:1fr !important; gap:0 !important; }
           .card { padding:16px 14px !important; }
           /* 자세 사진·피겨를 화면 폭에 맞게 확대 */
           .card .pv { width:min(220px, 58vw) !important; height:min(220px, 58vw) !important; }
@@ -2142,14 +2310,14 @@ export default function AshtangaGuide() {
               <div>
                 <p className="foothead display">{T.footSupport}</p>
                 <p style={{ fontSize: 12.5, lineHeight: 1.7 }}>{T.footSupportD}</p>
-                <a className="pbtn" href="mailto:skiloveman@gmail.com" style={{
+                <button className="pbtn" onClick={() => setContactOpen(true)} style={{
                   display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
-                  marginTop: 14, fontSize: 13, fontWeight: 600, textDecoration: "none",
+                  marginTop: 14, fontSize: 13, fontWeight: 600,
                   background: C.amberDim, color: C.amber, borderColor: "rgba(217,160,91,0.5)",
                   padding: "10px 22px", width: "100%", boxSizing: "border-box",
                 }}>
                   <span aria-hidden="true">✉</span>{T.footContactBtn}
-                </a>
+                </button>
               </div>
             </div>
             <div style={{ borderTop: `1px solid ${C.line}`, marginTop: 26, paddingTop: 16, display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
@@ -2170,15 +2338,16 @@ export default function AshtangaGuide() {
           <span aria-hidden="true" style={{ fontSize: 16, lineHeight: 1 }}>↑</span>
           <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.08em" }}>TOP</span>
         </button>
-        <a className="pbtn fab" aria-label={T.pageNav.contact} href="mailto:skiloveman@gmail.com">
+        <button className="pbtn fab" aria-label={T.pageNav.contact} onClick={() => setContactOpen(true)}>
           <span aria-hidden="true" style={{ fontSize: 15, lineHeight: 1 }}>💬</span>
           <span style={{ fontSize: 9, fontWeight: 700 }}>1:1</span>
-        </a>
+        </button>
       </div>
 
       {detail && <PoseDetail pose={detail} lang={lang} onClose={() => setDetail(null)} />}
       {practice && <PracticeMode level={level} lang={lang} onExit={() => setPractice(false)} />}
       {page && <InfoPage pageKey={page} lang={lang} onClose={() => setPage(null)} />}
+      {contactOpen && <ContactModal lang={lang} onClose={() => setContactOpen(false)} />}
       {!cookieOk && <CookieBar lang={lang} onOk={() => { setCookieOk(true); lsSet("cookieOk", true); }} />}
     </div>
   );

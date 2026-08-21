@@ -16,6 +16,8 @@ No tests, linter, or TypeScript. Verify changes by loading the page (the browser
 
 Cloudflare Pages at ashtanga-shala.pages.dev. Every push to `main` auto-deploys — only push when the work is ready to go live.
 
+`functions/api/contact.js` is a Pages Function (auto-deployed from the `functions/` dir) that sends the 1:1 contact form via Resend to skiloveman@naver.com. It needs the `RESEND_API_KEY` env var set in the Cloudflare Pages dashboard (Settings → Environment variables) — never commit the key. Resend free tier: sender is fixed to onboarding@resend.dev and can only deliver to the Resend account owner's email, so the Resend account must be registered as skiloveman@naver.com. The function is plain ESM with no imports — testable in node by mocking `globalThis.fetch`. It does not run under `vite dev` (form submits 404 → the modal's fail path with a mailto fallback shows).
+
 ## Architecture
 
 Single-page Ashtanga yoga guide (Korean-first, multilingual). React 18 + Vite, **no router, no state library, no CSS files** — the entire app lives in one file, `src/ashtanga-guide.jsx` (~1700 lines), mounted by `src/main.jsx`. The file is organized top-to-bottom in this order; comments in the file are in Korean.
