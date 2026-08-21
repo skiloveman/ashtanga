@@ -61,10 +61,34 @@ const Fig = ({ d, size = 96, glow = false }) => (
    예) public/photos/사마스티티.jpg → 사마스티티 자세에 표시 */
 const poseImg = (koName) =>
   koName ? `photos/${encodeURIComponent(koName.split(" · ")[0].trim())}.jpg` : null;
-const PoseVisual = ({ pose, size = 96, glow = false }) => {
+const PoseVisual = ({ pose, size = 96, glow = false, video = false }) => {
   const src = pose.photo || poseImg(pose.ko || pose.name);
   const [failed, setFailed] = useState(false);
+  const [vidFailed, setVidFailed] = useState(false);
   useEffect(() => setFailed(false), [src]);
+  useEffect(() => setVidFailed(false), [pose.vid]);
+  const box = {
+    width: size, height: size, objectFit: "contain", background: "#fff", borderRadius: 12,
+    border: `1px solid ${C.cardEdge}`, flexShrink: 0,
+    ...(glow ? { boxShadow: "0 0 14px rgba(157,187,170,0.35)" } : {}),
+  };
+  if (video && pose.vid && !vidFailed) {
+    return (
+      <video
+        key={pose.vid}
+        className="pv"
+        src={pose.vid}
+        autoPlay
+        playsInline
+        muted
+        ref={(el) => { if (el) el.muted = true; }} /* React가 muted 속성을 DOM에 안 쓰는 문제 대비 */
+        poster={src || undefined}
+        aria-label={pose.ko || pose.name || ""}
+        onError={() => setVidFailed(true)}
+        style={{ ...box, objectFit: "cover" }}
+      />
+    );
+  }
   if (src && !failed) {
     return (
       <img
@@ -73,11 +97,7 @@ const PoseVisual = ({ pose, size = 96, glow = false }) => {
         alt={pose.ko || pose.name || ""}
         onError={() => setFailed(true)}
         loading="lazy"
-        style={{
-          width: size, height: size, objectFit: "contain", background: "#fff", borderRadius: 12,
-          border: `1px solid ${C.cardEdge}`, flexShrink: 0,
-          ...(glow ? { boxShadow: "0 0 14px rgba(157,187,170,0.35)" } : {}),
-        }}
+        style={box}
       />
     );
   }
@@ -599,16 +619,34 @@ const lvMeta = (l, lang) => {
 const secMeta = (s, lang) => (lang !== "ko" && META.sections[s.id] ? { title: META.sections[s.id].t, note: META.sections[s.id].n } : { title: s.title, note: s.note });
 
 /* ── 수리야 나마스카라 A ── */
+/* vid: 해당 자세로 들어가는 전환 동영상 (public/videos/, 재생 후 마지막 프레임에서 정지) */
 const SURYA_A = [
-  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", breath: "준비", breathEn: "Ready", n: 1 },
-  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", breath: "마시며", breathEn: "Inhale", n: 1 },
-  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", breath: "내쉬며", breathEn: "Exhale", n: 1 },
-  { fig: F.chaturanga, name: "차투랑가", nameEn: "Chaturanga", breath: "내쉬며", breathEn: "Exhale", n: 1 },
-  { fig: F.upDog, name: "업독", nameEn: "Upward Dog", breath: "마시며", breathEn: "Inhale", n: 1 },
-  { fig: F.downDog, name: "다운독", nameEn: "Downward Dog", breath: "호흡 5회", breathEn: "5 breaths", n: 5 },
-  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", breath: "내쉬며", breathEn: "Exhale", n: 1 },
-  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", breath: "내쉬며", breathEn: "Exhale", n: 1 },
+  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", breath: "준비", breathEn: "Ready", n: 1, vid: "videos/surya-a-01.mp4" },
+  { fig: F.urdhvaHasta, name: "우르드바 하스타사나", nameEn: "Urdhva Hastasana", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-02.mp4" },
+  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-03.mp4" },
+  { fig: F.chaturanga, name: "차투랑가", nameEn: "Chaturanga", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-05.mp4" },
+  { fig: F.upDog, name: "업독", nameEn: "Upward Dog", breath: "마시며", breathEn: "Inhale", n: 1, vid: "videos/surya-a-06.mp4" },
+  { fig: F.downDog, name: "다운독", nameEn: "Downward Dog", breath: "호흡 5회", breathEn: "5 breaths", n: 5, vid: "videos/surya-a-07.mp4" },
+  { fig: F.uttanasana, name: "우타나사나", nameEn: "Uttanasana", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-10.mp4" },
+  { fig: F.samasthiti, name: "사마스티티", nameEn: "Samasthiti", breath: "내쉬며", breathEn: "Exhale", n: 1, vid: "videos/surya-a-12.mp4" },
 ];
+
+/* 태양경배 A 전체 흐름 클립 (01~12 순서 재생) */
+const SURYA_CLIPS = [
+  { ko: "사마스티티 · 준비 호흡", en: "Samasthiti · settle in" },
+  { ko: "우르드바 하스타사나 · 마시며", en: "Urdhva Hastasana · inhale" },
+  { ko: "우타나사나 · 내쉬며", en: "Uttanasana · exhale" },
+  { ko: "아르다 우타나사나 · 마시며", en: "Ardha Uttanasana · inhale" },
+  { ko: "차투랑가 · 내쉬며", en: "Chaturanga · exhale" },
+  { ko: "업독 · 마시며", en: "Upward Dog · inhale" },
+  { ko: "다운독 · 내쉬며", en: "Downward Dog · exhale" },
+  { ko: "다운독 · 호흡 5회", en: "Downward Dog · 5 breaths" },
+  { ko: "점프 포워드 · 마시며", en: "Jump forward · inhale" },
+  { ko: "우타나사나 · 내쉬며", en: "Uttanasana · exhale" },
+  { ko: "우르드바 하스타사나 · 마시며", en: "Urdhva Hastasana · inhale" },
+  { ko: "사마스티티 · 내쉬며", en: "Samasthiti · exhale" },
+];
+const suryaClipSrc = (i) => `videos/surya-a-${String(i + 1).padStart(2, "0")}.mp4`;
 
 /* ── 레벨별 시퀀스 데이터 ──
    steps: 진입 단계 / mistakes: 흔한 실수
@@ -1079,7 +1117,7 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
   const level = LEVELS.find((l) => l.id === levelId);
   const seq = useMemo(() => {
     const surya = SURYA_A.map((s) => ({
-      fig: s.fig, photo: poseImg(s.name),
+      fig: s.fig, photo: poseImg(s.name), vid: s.vid,
       ko: `${T.sunSal} · ${lang !== "ko" ? s.nameEn : s.name}`,
       sk: lang !== "ko" ? s.breathEn : s.breath, target: s.n, drishti: drishtiLoc("코끝", lang),
     }));
@@ -1163,7 +1201,7 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
             border: "1px solid rgba(217,160,91,0.25)",
             animationDuration: `${pace}s`,
           }} />
-          <PoseVisual pose={cur} size={250} glow />
+          <PoseVisual pose={cur} size={250} glow video />
         </div>
 
         <h2 className="display" style={{ fontSize: "clamp(20px, 4vw, 30px)", marginTop: 20, fontWeight: 400 }}>{cur.ko}</h2>
@@ -1429,6 +1467,8 @@ export default function AshtangaGuide() {
   const [page, setPage] = useState(null);
   const [cookieOk, setCookieOk] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [flowOn, setFlowOn] = useState(false); // 태양경배 전체 흐름 영상
+  const [flowClip, setFlowClip] = useState(0);
   const [theme, setTheme] = useState(() => {
     let t = "dark";
     try { t = localStorage.getItem("theme") || "dark"; } catch { /* SSR/사파리 프라이빗 등 */ }
@@ -1699,6 +1739,48 @@ export default function AshtangaGuide() {
               {T.suryaDesc}
               {beginner && <span style={{ color: C.amber }}>{T.suryaBeg}</span>}
             </p>
+            {/* 전체 흐름 영상 — 열기 전에는 아무것도 로드하지 않음 */}
+            <div style={{ marginBottom: 14 }}>
+              {!flowOn ? (
+                <button className="pbtn" style={{ fontSize: 13 }}
+                  onClick={() => { setFlowClip(0); setFlowOn(true); }}>
+                  {lang === "ko" ? "▶ 전체 흐름 영상 보기" : "▶ Watch the full flow"}
+                </button>
+              ) : (
+                <div style={{
+                  background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 14,
+                  padding: 14, display: "flex", flexDirection: "column", alignItems: "center", gap: 10,
+                }}>
+                  <video
+                    key={flowClip}
+                    src={suryaClipSrc(flowClip)}
+                    autoPlay
+                    playsInline
+                    muted
+                    ref={(el) => { if (el) el.muted = true; }}
+                    onEnded={() => setFlowClip((c) => (c + 1 < SURYA_CLIPS.length ? c + 1 : c))}
+                    style={{ width: "min(340px, 100%)", aspectRatio: "1 / 1", objectFit: "cover", borderRadius: 12, background: "#fff", border: `1px solid ${C.cardEdge}` }}
+                  />
+                  <p style={{ fontSize: 13, fontWeight: 500 }}>
+                    {flowClip + 1} / {SURYA_CLIPS.length} · {lang === "ko" ? SURYA_CLIPS[flowClip].ko : SURYA_CLIPS[flowClip].en}
+                  </p>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+                    <button className="pbtn" style={{ fontSize: 12.5 }} onClick={() => setFlowClip((c) => Math.max(0, c - 1))}>
+                      {lang === "ko" ? "이전" : "Prev"}
+                    </button>
+                    <button className="pbtn" style={{ fontSize: 12.5 }} onClick={() => setFlowClip(0)}>
+                      {lang === "ko" ? "처음부터" : "Restart"}
+                    </button>
+                    <button className="pbtn" style={{ fontSize: 12.5 }} onClick={() => setFlowClip((c) => Math.min(SURYA_CLIPS.length - 1, c + 1))}>
+                      {lang === "ko" ? "다음" : "Next"}
+                    </button>
+                    <button className="pbtn" style={{ fontSize: 12.5 }} onClick={() => setFlowOn(false)}>
+                      {lang === "ko" ? "닫기" : "Close"}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             <div className="surya" style={{ background: C.card, border: `1px solid ${C.cardEdge}`, borderRadius: 14, padding: "20px 12px" }}>
               <div style={{ display: "flex", alignItems: "flex-start", minWidth: 640 }}>
                 {SURYA_A.map((s, i) => (
