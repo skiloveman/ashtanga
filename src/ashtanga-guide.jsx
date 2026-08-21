@@ -263,7 +263,7 @@ const STR = {
     okL: "Aceptar", langLabel: "Seleccionar idioma", langWord: "Idioma",
     searchPh: "Buscar posturas…", searchNone: "Sin resultados",
     benefitsH: "Beneficios",
-    tabs: { primary: "Principiante", intermediate: "Intermedio", advanced: "Avanzado" },
+    tabs: { primary: "Primaria", intermediate: "Intermedia", advanced: "Avanzada" },
     pageNav: { about: "Acerca de", privacy: "Política de privacidad", terms: "Términos de uso", contact: "Contacto" },
   },
   ja: {
@@ -293,7 +293,7 @@ const STR = {
     okL: "OK", langLabel: "言語を選択", langWord: "言語",
     searchPh: "ポーズを検索…", searchNone: "見つかりません",
     benefitsH: "体への効果",
-    tabs: { primary: "初級", intermediate: "中級", advanced: "上級" },
+    tabs: { primary: "プライマリー", intermediate: "インターミディエイト", advanced: "アドバンス" },
     pageNav: { about: "サイトについて", privacy: "プライバシーポリシー", terms: "利用規約", contact: "お問い合わせ" },
   },
   de: {
@@ -323,7 +323,7 @@ const STR = {
     okL: "OK", langLabel: "Sprache wählen", langWord: "Sprache",
     searchPh: "Haltungen suchen…", searchNone: "Keine Treffer",
     benefitsH: "Wirkung",
-    tabs: { primary: "Anfänger", intermediate: "Mittelstufe", advanced: "Fortgeschritten" },
+    tabs: { primary: "Primary", intermediate: "Intermediate", advanced: "Advanced" },
     pageNav: { about: "Über uns", privacy: "Datenschutzerklärung", terms: "Nutzungsbedingungen", contact: "Kontakt" },
   },
   fr: {
@@ -353,7 +353,7 @@ const STR = {
     okL: "OK", langLabel: "Choisir la langue", langWord: "Langue",
     searchPh: "Rechercher une posture…", searchNone: "Aucun résultat",
     benefitsH: "Bienfaits",
-    tabs: { primary: "Débutant", intermediate: "Intermédiaire", advanced: "Avancé" },
+    tabs: { primary: "Première série", intermediate: "Intermédiaire", advanced: "Avancée" },
     pageNav: { about: "À propos", privacy: "Politique de confidentialité", terms: "Conditions d'utilisation", contact: "Contact" },
   },
   zh: {
@@ -383,7 +383,7 @@ const STR = {
     okL: "确定", langLabel: "选择语言", langWord: "语言",
     searchPh: "搜索体式…", searchNone: "没有找到体式",
     benefitsH: "身体功效",
-    tabs: { primary: "初级", intermediate: "中级", advanced: "高级" },
+    tabs: { primary: "初级序列", intermediate: "中级序列", advanced: "高级序列" },
     pageNav: { about: "关于本站", privacy: "隐私政策", terms: "使用条款", contact: "联系我们" },
   },
   pt: {
@@ -413,7 +413,7 @@ const STR = {
     okL: "OK", langLabel: "Selecionar idioma", langWord: "Idioma",
     searchPh: "Buscar posturas…", searchNone: "Nenhum resultado",
     benefitsH: "Benefícios",
-    tabs: { primary: "Iniciante", intermediate: "Intermediário", advanced: "Avançado" },
+    tabs: { primary: "Primária", intermediate: "Intermediária", advanced: "Avançada" },
     pageNav: { about: "Sobre", privacy: "Política de Privacidade", terms: "Termos de Uso", contact: "Contato" },
   },
   hi: {
@@ -443,7 +443,7 @@ const STR = {
     okL: "ठीक है", langLabel: "भाषा चुनें", langWord: "भाषा",
     searchPh: "आसन खोजें…", searchNone: "कोई परिणाम नहीं",
     benefitsH: "शरीर को लाभ",
-    tabs: { primary: "प्रारंभिक", intermediate: "मध्यम", advanced: "उन्नत" },
+    tabs: { primary: "प्राइमरी", intermediate: "इंटरमीडिएट", advanced: "एडवांस्ड" },
     pageNav: { about: "परिचय", privacy: "गोपनीयता नीति", terms: "उपयोग की शर्तें", contact: "संपर्क" },
   },
   ar: {
@@ -473,7 +473,7 @@ const STR = {
     okL: "موافق", langLabel: "اختر اللغة", langWord: "اللغة",
     searchPh: "ابحث عن وضعية…", searchNone: "لا توجد نتائج",
     benefitsH: "الفوائد",
-    tabs: { primary: "مبتدئ", intermediate: "متوسط", advanced: "متقدم" },
+    tabs: { primary: "السلسلة الأولى", intermediate: "السلسلة المتوسطة", advanced: "السلسلة المتقدمة" },
     pageNav: { about: "حول الموقع", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", contact: "اتصل بنا" },
   },
 };
@@ -508,7 +508,7 @@ const drishtiLoc = (d, lang) => (lang === "ko" ? d : DRISHTI_EN[d] || d);
 /* 레벨·섹션 메타 영문 */
 const META = {
   levels: {
-    primary: { tab: "Beginner", series: "Primary Series · Yoga Chikitsa (Yoga Therapy)", intro: "The foundational series that purifies and aligns the body. Every Ashtanga practitioner begins here.", caution: null },
+    primary: { tab: "Primary", series: "Primary Series · Yoga Chikitsa (Yoga Therapy)", intro: "The foundational series that purifies and aligns the body. Every Ashtanga practitioner begins here.", caution: null },
     intermediate: { tab: "Intermediate", series: "Intermediate Series · Nadi Shodhana (Nerve Cleansing)", intro: "Deep backbends, leg-behind-head poses, and arm balances. Approach only after the full Primary Series is stable.", caution: "Traditionally, Intermediate poses are added one at a time under a teacher's guidance. If you practice alone, do not attempt deep poses like Kapotasana or Eka Pada Sirsasana without thorough preparation." },
     advanced: { tab: "Advanced", series: "Advanced Series · Sthira Bhaga (Strength & Grace)", intro: "Signature poses from Advanced A (3rd) and B (4th) — territory reached over many years. Presented here as landmarks, not instructions.", caution: "Practice these poses only with a qualified teacher. Attempting them alone can cause serious injury to the wrists, shoulders, and spine. The notes below are for reference only." },
   },
