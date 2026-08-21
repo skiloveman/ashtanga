@@ -1920,7 +1920,7 @@ export default function AshtangaGuide() {
                         <button className="pbtn" onClick={() => setEntryVid(entryVid === k ? null : k)}
                           aria-expanded={entryVid === k}
                           style={{ fontSize: 12, padding: "5px 11px" }}>
-                          ▶ {lang === "ko" ? "자세잡기" : "Entry"}
+                          ▶ {lang === "ko" ? "동영상 보기" : "Watch video"}
                         </button>
                         <button className="pbtn" onClick={() => setDetail(p)} aria-label={`${L.name} — ${T.detailChip}`}
                           style={{ fontSize: 12, padding: "5px 11px" }}>
@@ -1941,7 +1941,7 @@ export default function AshtangaGuide() {
                           <p style={{ fontSize: 14, lineHeight: 1.8, fontWeight: 300 }}>{L.desc}</p>
                           {beginner && (
                             <p style={{
-                              fontSize: 13.5, lineHeight: 1.7, marginTop: 10, padding: "10px 14px",
+                              fontSize: 12.5, lineHeight: 1.55, marginTop: 8, padding: "6px 10px",
                               background: C.amberDim, borderLeft: `2px solid rgba(217,160,91,0.5)`,
                               borderRadius: "0 8px 8px 0", color: "#CBB289", fontWeight: 300,
                             }}>
@@ -1950,26 +1950,32 @@ export default function AshtangaGuide() {
                           )}
                         </div>
                       </div>
-                      <button
-                        className="chk"
-                        onClick={() => toggle(k)}
-                        aria-pressed={!!done[k]}
-                        aria-label={lang !== "ko" ? `Mark ${L.name} done` : `${L.name} 완료 표시`}
-                        style={{
-                          width: 32, height: 32, borderRadius: "50%", flexShrink: 0, cursor: "pointer",
-                          border: `2px solid ${done[k] ? C.amber : C.line}`,
-                          background: done[k] ? C.amber : "transparent",
-                          boxShadow: done[k] ? "0 0 10px rgba(217,160,91,0.5)" : "none",
-                          color: C.bg, fontSize: 16, lineHeight: 1, fontWeight: 700,
-                        }}
-                      >
-                        {done[k] ? "✓" : ""}
-                      </button>
                       {entryVid === k && (
                         <div style={{ flexBasis: "100%" }}>
                           <EntryVideo src={poseVid(p.ko)} lang={lang} onClose={() => setEntryVid(null)} />
                         </div>
                       )}
+                      {/* 수련 완료 체크 — 카드 하단, 라벨과 함께 */}
+                      <div style={{ flexBasis: "100%", display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 10, marginTop: 6 }}>
+                        <span style={{ fontSize: 12.5, color: done[k] ? C.amber : C.sub, fontWeight: done[k] ? 700 : 400 }}>
+                          {lang === "ko" ? "수련 마침" : "Practiced"}
+                        </span>
+                        <button
+                          className="chk"
+                          onClick={() => toggle(k)}
+                          aria-pressed={!!done[k]}
+                          aria-label={lang !== "ko" ? `Mark ${L.name} done` : `${L.name} 완료 표시`}
+                          style={{
+                            width: 28, height: 28, borderRadius: "50%", flexShrink: 0, cursor: "pointer",
+                            border: `2px solid ${done[k] ? C.amber : C.line}`,
+                            background: done[k] ? C.amber : "transparent",
+                            boxShadow: done[k] ? "0 0 10px rgba(217,160,91,0.5)" : "none",
+                            color: C.bg, fontSize: 14, lineHeight: 1, fontWeight: 700,
+                          }}
+                        >
+                          {done[k] ? "✓" : ""}
+                        </button>
+                      </div>
                     </article>
                   );
                 })}
