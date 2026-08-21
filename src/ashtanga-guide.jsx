@@ -1327,12 +1327,18 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
     const surya = SURYA_A.map((s) => ({
       fig: s.fig, photo: poseImg(s.name), vid: s.vid,
       ko: `${T.sunSal} · ${lang !== "ko" ? s.nameEn : s.name}`,
+      short: `${lang !== "ko" ? s.cntEn : s.cnt} · ${lang !== "ko" ? s.nameEn : s.name}`,
       sk: lang !== "ko" ? s.breathEn : s.breath, target: s.n, drishti: drishtiLoc("코끝", lang),
+      desc: T.suryaDesc,
     }));
     const poses = level.sections.flatMap((sec) =>
       sec.poses.map((p) => {
         const L = loc(p, lang);
-        return { fig: p.fig, photo: poseImg(p.ko), ko: L.name, sk: p.sk, target: parseBreaths(p.breath), drishti: drishtiLoc(p.drishti, lang) };
+        return {
+          fig: p.fig, photo: poseImg(p.ko), ko: L.name, short: L.name, sk: p.sk,
+          target: parseBreaths(p.breath), drishti: drishtiLoc(p.drishti, lang),
+          desc: L.desc, tip: L.tip,
+        };
       })
     );
     return [...surya, ...poses];
@@ -1372,7 +1378,14 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
 
   const goPrev = () => { setIdx((i) => Math.max(0, i - 1)); setBreath(0); };
   const goNext = () => { setIdx((i) => Math.min(seq.length - 1, i + 1)); setBreath(0); };
+  const jumpTo = (i) => { setIdx(i); setBreath(0); };
   const finished = idx === seq.length - 1 && !playing && breath === 0;
+
+  /* 왼쪽 리스트에서 현재 자세가 항상 보이게 */
+  const listRef = useRef(null);
+  useEffect(() => {
+    listRef.current?.querySelector(".plitem.on")?.scrollIntoView({ block: "nearest" });
+  }, [idx]);
 
   return (
     <div role="dialog" aria-modal="true" aria-label="수련 모드" style={{
@@ -1406,8 +1419,24 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         </div>
       </div>
 
+      {/* 본문: [자세 리스트] [타이머] [설명] — 모바일은 타이머만 */}
+      <div className="pbody" style={{ flex: 1, display: "flex", minHeight: 0 }}>
+      {/* 왼쪽: 레벨 전체 자세 리스트 */}
+      <nav ref={listRef} className="plist" aria-label={T.ofPractice(lvMeta(level, lang).tab)} style={{
+        width: 240, flexShrink: 0, overflowY: "auto", padding: "14px 10px 20px",
+        borderInlineEnd: `1px solid ${C.line}`,
+      }}>
+        {seq.map((s, i) => (
+          <button key={i} className={`plitem ${i === idx ? "on" : ""}`} onClick={() => jumpTo(i)}
+            aria-current={i === idx ? "true" : undefined}>
+            <span style={{ width: 22, flexShrink: 0, textAlign: "end", fontSize: 11, opacity: 0.7 }}>{i + 1}</span>
+            <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.short}</span>
+          </button>
+        ))}
+      </nav>
+
       {/* 중앙 */}
-      <div className="pcenter" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24, textAlign: "center" }}>
+      <div className="pcenter" style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24, textAlign: "center", overflowY: "auto" }}>
         {/* 호흡 원 + 피겨 */}
         <div className="pviz" style={{ position: "relative", width: "min(320px, 80vw)", height: "min(320px, 80vw)", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div className={playing ? "breathe" : ""} style={{
@@ -1432,6 +1461,28 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         {next && !finished && (
           <p style={{ color: C.sub, fontSize: 12.5, marginTop: 22, opacity: 0.7 }}>{T.nextPrefix}{next.ko}</p>
         )}
+      </div>
+
+      {/* 오른쪽: 현재 자세 설명 */}
+      <aside className="pdesc" style={{
+        width: 290, flexShrink: 0, overflowY: "auto", padding: "18px 20px 24px",
+        borderInlineStart: `1px solid ${C.line}`,
+      }}>
+        <p className="display" style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4 }}>{cur.ko}</p>
+        <p style={{ color: C.sub, fontSize: 12, fontStyle: "italic", marginTop: 3 }}>{cur.sk} · {T.drishtiChip(cur.drishti)}</p>
+        {cur.desc && (
+          <p style={{ fontSize: 13, lineHeight: 1.85, fontWeight: 300, color: C.ink, marginTop: 14 }}>{cur.desc}</p>
+        )}
+        {cur.tip && (
+          <p style={{
+            fontSize: 12.5, lineHeight: 1.7, marginTop: 14, padding: "10px 14px",
+            background: C.amberDim, borderLeft: `2px solid rgba(217,160,91,0.5)`,
+            borderRadius: "0 8px 8px 0", color: "#CBB289", fontWeight: 300,
+          }}>
+            🌙 {cur.tip}
+          </p>
+        )}
+      </aside>
       </div>
 
       {/* 컨트롤 */}
@@ -2120,6 +2171,12 @@ export default function AshtangaGuide() {
           padding:10px 12px; font:inherit; font-size:14px; }
         .cfin::placeholder { color:${C.sub}; opacity:0.7; }
         .cfin:focus-visible { outline:2px solid ${C.amber}; outline-offset:1px; }
+        /* 수련 모드 좌측 자세 리스트 */
+        .plitem { display:flex; gap:8px; align-items:baseline; width:100%; background:none; border:none;
+          cursor:pointer; font:inherit; font-size:12.5px; color:${C.sub}; padding:6px 10px;
+          border-radius:8px; text-align:start; }
+        .plitem:hover { background:${C.card}; color:${C.ink}; }
+        .plitem.on { background:${C.amberDim}; color:${C.amber}; font-weight:600; }
         /* 로고 폭 고정: 헤더 패딩 20 + 222 + 갭 12 = 254 → 레벨 탭이 본문 텍스트 라인(레일 210+갭 20+패딩 24)과 정렬 */
         .logo { width:222px; flex-shrink:0; }
         @keyframes flicker { 0%,100%{opacity:1} 50%{opacity:.65} }
@@ -2178,6 +2235,7 @@ export default function AshtangaGuide() {
           .infopad { padding:24px 16px 28px !important; }
           /* 수련 모드 */
           .phead { padding:10px 12px !important; }
+          .plist, .pdesc { display:none !important; } /* 모바일은 타이머 집중 화면 유지 */
           .pcenter { padding:12px !important; }
           .pviz .pv { width:min(250px, 60vw) !important; height:min(250px, 60vw) !important; }
           .pctrl { padding:0 12px 20px !important; gap:8px !important; }
