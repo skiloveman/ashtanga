@@ -39,3 +39,21 @@ Single-page Ashtanga yoga guide (Korean-first, multilingual). React 18 + Vite, *
 Persistence is localStorage only, via `lsGet`/`lsSet` (keys: `lang`, `tips`, `done`, `level`, `theme`), always wrapped in try/catch for private-mode Safari.
 
 `vite.config.js` sets `base: "/"` and runtime asset paths (`/photos/…`, `/videos/…`) are absolute — required so assets resolve from language paths like `/en/`. Don't introduce relative asset URLs.
+
+## 프로젝트 현황 (2026-08-21 기준)
+
+이 섹션은 세션 간 이어달리기용 상태 기록이다. 작업이 진행되면 갱신할 것.
+
+**완료된 것**
+- 수리야 나마스카라 A: 전통 빈야사 카운트 11단계 카드 그리드(산스크리트 카운트·들숨/날숨 색 구분·범례), 전체 흐름 플레이어(12클립)에 오른쪽 단계별 설명 리스트(클릭 이동, 현재 단계 강조). 12클립 + 전 단계 실사 스틸 완비.
+- 자세 콘텐츠: 76개 전 자세의 desc(ko)/d(EN)를 2~3문장 상세 설명으로 확장. 시퀀스 순서·드리쉬티·호흡 수 전통 기준 검증 완료.
+- 레벨 탭: 비한국어 UI는 시리즈 명칭(Primary/初级序列/プライマリー 등). 한국어는 초보자/중급자/상급자 유지.
+- URL 언어 라우팅(/en/, /ko/, 별칭 /kr 등) + hreflang/canonical. 헤더는 한 줄(로고·탭·검색·언어·테마).
+- 카드 UI: 우측 상단 [동영상 보기 ▶][상세 보기 →](앰버 배경, 동영상 보기는 열림 토글), 본문 클릭으로는 모달 안 열림. 하단 행 = 도움말(제목 라인 정렬, 글자 폭) + 수련 마침 라벨/체크.
+- 사진: 수리야 스틸 전체 + 웃티타 트리코나사나(AI 생성, 사마스티티 스틸 레퍼런스로 nano_banana_pro 2크레딧/장 — 파이프라인 검증됨). 인물 중심 정사각 크롭 적용.
+
+**진행 중 / 다음 할 일**
+- **자세 동영상(우선)**: 사용자가 클로드 데스크탑에서 직접 제작해 유튜브 병행 게시 예정. 스펙·76개 파일명 체크리스트는 `video-production-guide.md`. 받은 파일은 `public/videos/poses/<한글이름>.mp4`로 넣고 커밋·푸시만 하면 활성화. 사용자가 "받은 영상 사이트에 넣어줘"라고 하면 파일명 검증→배치→배포 처리.
+- 남은 자세 사진: 스탠딩 10장 등 (동영상 마지막 프레임 추출로 대체 가능 — 아르다 우타나사나 때 브라우저 캔버스 추출 기법 검증됨).
+- Higgsfield 계정: 트라이얼이 2026-08-23 종료 후 Plus 월간(월 1,000크레딧) 자동 전환. 7일 무제한 Kling 3.0은 연간 플랜 한정, 2026-08-24까지 구매분, "웹에서 사용" 조건.
+- 파사사나.jpg는 일러스트라 실사 교체 대상.
