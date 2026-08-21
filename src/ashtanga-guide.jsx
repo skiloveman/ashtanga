@@ -1487,10 +1487,10 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
           <PoseVisual pose={cur} size={250} glow video />
         </div>
 
-        <h2 className="display" style={{ fontSize: "clamp(20px, 4vw, 30px)", marginTop: 20, fontWeight: 400 }}>{cur.ko}</h2>
+        <h2 className="display pname" style={{ fontSize: "clamp(20px, 4vw, 30px)", marginTop: 20, fontWeight: 400 }}>{cur.ko}</h2>
         <p style={{ color: C.sub, fontSize: 13, fontStyle: "italic", marginTop: 4 }}>{cur.sk} · {T.drishtiChip(cur.drishti)}</p>
 
-        <p className="display" style={{ fontSize: 44, color: C.amber, marginTop: 18, fontWeight: 400 }}>
+        <p className="display pcount" style={{ fontSize: 44, color: C.amber, marginTop: 18, fontWeight: 400 }}>
           {finished ? "🙏" : `${breath + 1} / ${cur.target}`}
         </p>
         <p style={{ color: C.sub, fontSize: 13, marginTop: 2 }}>
@@ -1498,7 +1498,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         </p>
 
         {next && !finished && (
-          <p style={{ color: C.sub, fontSize: 12.5, marginTop: 22, opacity: 0.7 }}>{T.nextPrefix}{next.ko}</p>
+          <p className="pnext" style={{ color: C.sub, fontSize: 12.5, marginTop: 22, opacity: 0.7 }}>{T.nextPrefix}{next.ko}</p>
         )}
       </div>
 
@@ -2296,8 +2296,13 @@ export default function AshtangaGuide() {
           /* 수련 모드 */
           .phead { padding:10px 12px !important; }
           .plist, .pdesc { display:none !important; } /* 모바일은 타이머 집중 화면 유지 */
+          /* 수련 모드가 폰 한 화면에 딱 맞게 — 카운트·비주얼 축소, 여백 압축 */
+          .pviz { width:min(220px, 56vw) !important; height:min(220px, 56vw) !important; }
+          .pname { margin-top:12px !important; font-size:19px !important; }
+          .pcount { font-size:28px !important; margin-top:8px !important; }
+          .pnext { margin-top:10px !important; }
           .pcenter { padding:12px !important; }
-          .pviz .pv { width:min(250px, 60vw) !important; height:min(250px, 60vw) !important; }
+          .pviz .pv { width:min(190px, 48vw) !important; height:min(190px, 48vw) !important; }
           .pctrl { padding:0 12px 20px !important; gap:8px !important; }
         }
         @media (prefers-reduced-motion: reduce) {
