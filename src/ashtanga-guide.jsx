@@ -1245,10 +1245,10 @@ function PracticeMode({ level: initialLevel, lang, onExit }) {
           <PoseVisual pose={cur} size={250} glow video />
         </div>
 
-        <h2 className="display" style={{ fontSize: "clamp(20px, 4vw, 30px)", marginTop: 20, fontWeight: 800, letterSpacing: "-0.02em" }}>{cur.ko}</h2>
+        <h2 className="display" style={{ fontSize: "clamp(20px, 4vw, 30px)", marginTop: 20, fontWeight: 400 }}>{cur.ko}</h2>
         <p style={{ color: C.sub, fontSize: 13, fontStyle: "italic", marginTop: 4 }}>{cur.sk} · {T.drishtiChip(cur.drishti)}</p>
 
-        <p className="display" style={{ fontSize: 44, color: C.amber, marginTop: 18, fontWeight: 800, letterSpacing: "-0.02em" }}>
+        <p className="display" style={{ fontSize: 44, color: C.amber, marginTop: 18, fontWeight: 400 }}>
           {finished ? "🙏" : `${breath + 1} / ${cur.target}`}
         </p>
         <p style={{ color: C.sub, fontSize: 13, marginTop: 2 }}>
@@ -1553,13 +1553,13 @@ export default function AshtangaGuide() {
   }, [level]);
 
   return (
-    <div dir={lang === "ar" ? "rtl" : "ltr"} className="app" style={{ background: C.bg, color: C.ink, display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif` }}>
+    <div dir={lang === "ar" ? "rtl" : "ltr"} className="app" style={{ background: C.bg, color: C.ink, display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: "'IBM Plex Sans KR', sans-serif" }}>
       <style>{`
-        /* 웹폰트 없음 — omnitoolkit.net처럼 시스템 폰트 스택 + 헤비 웨이트 타이포그래피 */
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; }
         /* 모바일 주소창 높이 변화 대응: dvh 지원 브라우저는 dvh 사용 */
         .app { height: 100vh; height: 100dvh; }
-        .display { font-family: inherit; }
+        .display { font-family: 'Gowun Batang', serif; }
         .navbtn { background:none; border:none; cursor:pointer; text-align:left; width:100%;
           padding:10px 14px; border-radius:8px; font:inherit; color:${C.sub}; font-size:14px; }
         .navbtn:hover { background:${C.card}; color:${C.ink}; }
@@ -1635,7 +1635,7 @@ export default function AshtangaGuide() {
       <header style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 40 }}>
         {/* 한 줄 헤더: 로고 · 레벨 탭 · 검색 · 언어 · 테마 (모바일은 가로 스크롤) */}
         <div className="hrow" style={{ maxWidth: 1180, margin: "0 auto", padding: "10px 20px", display: "flex", alignItems: "center", gap: 12, flexWrap: "nowrap" }}>
-          <p className="display" style={{ color: C.amber, fontWeight: 800, letterSpacing: "0.05em", fontSize: 14.5, whiteSpace: "nowrap" }}>
+          <p className="display" style={{ color: C.amber, fontWeight: 700, letterSpacing: "0.12em", fontSize: 14.5, whiteSpace: "nowrap" }}>
             <span className="candle live" style={{ marginRight: 9, verticalAlign: "middle" }} />
             ASHTANGA SHALA
           </p>
@@ -1749,7 +1749,7 @@ export default function AshtangaGuide() {
         <main ref={mainRef} className="content" style={{ flex: 1, minWidth: 0, overflowY: "auto", padding: "26px 24px 80px" }}>
           {/* 소개 (컴팩트) */}
           <section style={{ marginBottom: 44 }}>
-            <h1 className="display" style={{ fontSize: "clamp(22px, 3.2vw, 32px)", lineHeight: 1.35, marginBottom: 8, fontWeight: 800, letterSpacing: "-0.02em" }}>
+            <h1 className="display" style={{ fontSize: "clamp(20px, 3vw, 28px)", lineHeight: 1.45, marginBottom: 8, fontWeight: 400 }}>
               {T.heroT1} {T.heroT2}
             </h1>
             <p style={{ color: C.sub, maxWidth: 640, lineHeight: 1.7, fontWeight: 300, fontSize: 14 }}>{T.heroDesc}</p>
@@ -1776,7 +1776,7 @@ export default function AshtangaGuide() {
 
           {/* 태양경배 */}
           <section id="surya" style={{ marginBottom: 64 }}>
-            <h2 className="display" style={{ fontSize: 26, marginBottom: 6, fontWeight: 800, letterSpacing: "-0.02em" }}>{T.suryaTitle}</h2>
+            <h2 className="display" style={{ fontSize: 26, marginBottom: 6, fontWeight: 400 }}>{T.suryaTitle}</h2>
             <p style={{ color: C.sub, fontSize: 14, marginBottom: 22, fontWeight: 300, lineHeight: 1.7 }}>
               {T.suryaDesc}
               {beginner && <span style={{ color: C.amber }}>{T.suryaBeg}</span>}
@@ -1866,7 +1866,7 @@ export default function AshtangaGuide() {
             const SM = secMeta(sec, lang);
             return (
             <section key={sec.id} id={sec.id} style={{ marginBottom: 64 }}>
-              <h2 className="display" style={{ fontSize: 26, marginBottom: 6, fontWeight: 800, letterSpacing: "-0.02em" }}>{SM.title}</h2>
+              <h2 className="display" style={{ fontSize: 26, marginBottom: 6, fontWeight: 400 }}>{SM.title}</h2>
               {SM.note && <p style={{ color: C.sub, fontSize: 14, marginBottom: 22, fontWeight: 300 }}>{SM.note}</p>}
               <div style={{ display: "grid", gap: 14, marginTop: SM.note ? 0 : 22 }}>
                 {sec.poses.map((p) => {
@@ -1878,7 +1878,7 @@ export default function AshtangaGuide() {
                         <PoseVisual pose={p} size={140} />
                         <div style={{ flex: 1 }}>
                           <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
-                            <h3 className="display" style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.01em" }}>{L.name}</h3>
+                            <h3 className="display" style={{ fontSize: 19, fontWeight: 700 }}>{L.name}</h3>
                             <span style={{ fontSize: 12.5, color: C.sub, fontStyle: "italic" }}>{p.sk}</span>
                           </div>
                           <div style={{ margin: "10px 0 12px" }}>
