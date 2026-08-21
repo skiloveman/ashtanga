@@ -1618,6 +1618,7 @@ export default function AshtangaGuide() {
           display:flex; gap:20px; align-items:flex-start; transition: border-color .25s; }
         .card:hover { border-color: rgba(217,160,91,0.35); }
         .cardbtn { all:unset; cursor:pointer; display:flex; gap:20px; align-items:flex-start; flex:1; }
+        .cardfoot { padding-inline-start: 160px; } /* 사진(140) + 간격(20) — 도움말을 제목 라인에 정렬 */
         .chip { display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px;
           border:1px solid ${C.line}; color:${C.sub}; margin-right:6px; }
         .chip.b { border-color: rgba(217,160,91,0.5); color:${C.amber}; font-weight:600; background:${C.amberDim}; }
@@ -1639,6 +1640,7 @@ export default function AshtangaGuide() {
           .railtop .pbtn { white-space:nowrap; }
           .navbtn { white-space:nowrap; width:auto; }
           .card, .cardbtn { flex-direction:column; align-items:center; text-align:center; }
+          .cardfoot { padding-inline-start: 0 !important; } /* 모바일 세로 배치에선 들여쓰기 해제 */
           .surya { overflow-x:auto; -webkit-overflow-scrolling:touch; }
           /* 여백 축소 */
           .hrow { padding:8px 12px !important; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
@@ -1954,18 +1956,18 @@ export default function AshtangaGuide() {
                           <EntryVideo src={poseVid(p.ko)} lang={lang} onClose={() => setEntryVid(null)} />
                         </div>
                       )}
-                      {/* 하단 행: 도움말(왼쪽, 남는 폭) + 수련 마침 체크(오른쪽) */}
-                      <div style={{ flexBasis: "100%", display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 12, marginTop: 6 }}>
+                      {/* 하단 행: 도움말(제목 라인에 정렬, 글자 폭만큼) + 수련 마침 체크(오른쪽 끝) */}
+                      <div className="cardfoot" style={{ flexBasis: "100%", display: "flex", alignItems: "center", gap: 12, marginTop: 6 }}>
                         {beginner && (
                           <p style={{
-                            flex: 1, fontSize: 13.5, lineHeight: 1.6, padding: "8px 14px",
+                            width: "fit-content", fontSize: 13.5, lineHeight: 1.6, padding: "8px 14px",
                             background: C.amberDim, borderLeft: `2px solid rgba(217,160,91,0.5)`,
                             borderRadius: "0 8px 8px 0", color: "#CBB289", fontWeight: 300,
                           }}>
                             🌙 {L.tip}
                           </p>
                         )}
-                        <span style={{ fontSize: 12.5, color: done[k] ? C.amber : C.sub, fontWeight: done[k] ? 700 : 400, whiteSpace: "nowrap" }}>
+                        <span style={{ marginInlineStart: "auto", fontSize: 12.5, color: done[k] ? C.amber : C.sub, fontWeight: done[k] ? 700 : 400, whiteSpace: "nowrap" }}>
                           {lang === "ko" ? "수련 마침" : "Practiced"}
                         </span>
                         <button
