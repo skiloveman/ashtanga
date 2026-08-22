@@ -1342,8 +1342,9 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       ko: `${T.sunSal} · ${lang !== "ko" ? s.nameEn : s.name}`,
       short: `${lang !== "ko" ? s.cntEn : s.cnt} · ${lang !== "ko" ? s.nameEn : s.name}`,
       sk: lang !== "ko" ? s.breathEn : s.breath, target: s.n, drishti: drishtiLoc("코끝", lang),
-      /* 태양경배 소개문은 첫 단계에서 한 번만 — 이후 단계는 호흡 큐만 */
-      desc: i === 0 ? T.suryaDesc : (lang !== "ko" ? s.breathEn : s.breath),
+      /* 설명란에는 전 단계 공통으로 소개문 표시 — 낭독은 첫 단계만 전문, 이후는 호흡 큐만 */
+      desc: T.suryaDesc,
+      ttsDesc: i === 0 ? T.suryaDesc : (lang !== "ko" ? s.breathEn : s.breath),
       ttsLang: TTS_LANG[lang] || "en-US",
     }));
     const poses = level.sections.flatMap((sec) =>
@@ -1413,7 +1414,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       const synth = window.speechSynthesis;
       if (!synth || !item) return;
       synth.cancel();
-      const u = new SpeechSynthesisUtterance([item.ko, item.desc, item.tip].filter(Boolean).join(". "));
+      const u = new SpeechSynthesisUtterance([item.ko, item.ttsDesc ?? item.desc, item.tip].filter(Boolean).join(". "));
       u.lang = item.ttsLang;
       u.rate = 0.95;
       const vs = synth.getVoices();
