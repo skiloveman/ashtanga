@@ -70,12 +70,20 @@ const poseImg = (koName) =>
    파일이 아직 없으면 EntryVideo가 "준비 중" 안내를 보여줍니다. */
 const poseVid = (koName) =>
   koName ? `/videos/poses/${encodeURIComponent(koName.split(" · ")[0].trim())}.mp4` : null;
-const PoseVisual = ({ pose, size = 96, glow = false, video = false }) => {
+const PoseVisual = ({ pose, size = 96, glow = false, video = false, holdVideo = false, onVideoPlay, onVideoEnd }) => {
   const src = pose.photo || poseImg(pose.ko || pose.name);
   const [failed, setFailed] = useState(false);
   const [vidFailed, setVidFailed] = useState(false);
+  const vref = useRef(null);
   useEffect(() => setFailed(false), [src]);
   useEffect(() => setVidFailed(false), [pose.vid]);
+  /* holdVideo: 음성 안내 낭독 동안 영상을 0초에서 대기, 풀리면 처음부터 재생 */
+  useEffect(() => {
+    const el = vref.current;
+    if (!el) return;
+    if (holdVideo) { el.pause(); try { el.currentTime = 0; } catch { /* 무시 */ } }
+    else if (el.paused && !el.ended) { el.play().catch(() => { /* 자동재생 차단 등 */ }); }
+  }, [holdVideo]);
   const box = {
     width: size, height: size, objectFit: "contain", background: C.photoBg, borderRadius: 12,
     border: `1px solid ${C.cardEdge}`, flexShrink: 0, filter: C.photoFilter,
@@ -87,13 +95,15 @@ const PoseVisual = ({ pose, size = 96, glow = false, video = false }) => {
         key={pose.vid}
         className="pv"
         src={pose.vid}
-        autoPlay
+        autoPlay={!holdVideo}
         playsInline
         muted
-        ref={(el) => { if (el) el.muted = true; }} /* React가 muted 속성을 DOM에 안 쓰는 문제 대비 */
+        ref={(el) => { vref.current = el; if (el) el.muted = true; }} /* React가 muted 속성을 DOM에 안 쓰는 문제 대비 */
         poster={src || undefined}
         aria-label={pose.ko || pose.name || ""}
-        onError={() => setVidFailed(true)}
+        onPlay={() => onVideoPlay?.()}
+        onEnded={() => onVideoEnd?.()}
+        onError={() => { setVidFailed(true); onVideoEnd?.(); }}
         style={{ ...box, objectFit: "cover" }}
       />
     );
@@ -1359,13 +1369,18 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
   const cur = seq[idx];
   const next = seq[idx + 1];
 
-  /* 음성 안내 낭독 중 여부 — 낭독하는 동안 호흡 타이머가 대기한다 */
-  const speakingRef = useRef(false);
+  /* 음성 안내 동기화 — 낭독 중(narrating)과 낭독 직후 영상 재생 중(vidWait)에는 호흡 타이머 대기 */
+  const [narrating, setNarrating] = useState(false);
+  const narratingRef = useRef(false);
+  const setNarr = (v) => { narratingRef.current = v; setNarrating(v); };
+  const voiceRef = useRef(false);
+  const vidWaitRef = useRef(false);
+  const uttRef = useRef(null); // cancel()이 이전 발화의 이벤트를 늦게 쏘는 경합 방지
 
   useEffect(() => {
     if (!playing) return;
     const t = setInterval(() => {
-      if (speakingRef.current) return; // 음성 안내가 끝날 때까지 호흡 카운트 보류
+      if (narratingRef.current || vidWaitRef.current) return; // 낭독·시연이 끝날 때까지 보류
       setBreath((b) => {
         if (b + 1 >= cur.target) {
           setIdx((i) => {
@@ -1404,20 +1419,24 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       const vs = synth.getVoices();
       const v = vs.find((x) => x.lang === item.ttsLang) || vs.find((x) => x.lang.startsWith(item.ttsLang.split("-")[0]));
       if (v) u.voice = v;
-      /* 낭독 중에는 호흡 타이머 대기 — 시작 이벤트에서만 켜서, 발화가 안 되면 타이머가 정상 진행 */
-      u.onstart = () => { speakingRef.current = true; };
-      u.onend = () => { speakingRef.current = false; };
-      u.onerror = () => { speakingRef.current = false; };
+      uttRef.current = u;
+      setNarr(true); // 낭독 준비 시점부터 영상·타이머 대기 (영상이 먼저 출발하는 것 방지)
+      const done = () => { if (uttRef.current === u) setNarr(false); };
+      u.onend = done;
+      u.onerror = done;
       synth.speak(u);
-    } catch { speakingRef.current = false; }
+    } catch { setNarr(false); }
   };
-  useEffect(() => { if (voice) speak(cur); }, [cur, voice]); // 자세가 바뀌면 자동 낭독
+  useEffect(() => { vidWaitRef.current = false; if (voice) speak(cur); }, [cur, voice]); // 자세가 바뀌면 자동 낭독
   useEffect(() => () => { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } }, []);
   const toggleVoice = () => setVoice((v) => {
     const n = !v;
+    voiceRef.current = n;
     if (!n) {
       try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ }
-      speakingRef.current = false; // 끄면 즉시 호흡 속도로 복귀
+      uttRef.current = null;
+      setNarr(false); // 끄면 즉시 호흡 속도로 복귀
+      vidWaitRef.current = false;
     }
     return n;
   });
@@ -1497,7 +1516,11 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
             border: "1px solid rgba(217,160,91,0.25)",
             animationDuration: `${pace}s`,
           }} />
-          <PoseVisual pose={cur} size={250} glow video />
+          <PoseVisual pose={cur} size={250} glow video
+            holdVideo={narrating}
+            onVideoPlay={() => { if (voiceRef.current) vidWaitRef.current = true; }}
+            onVideoEnd={() => { vidWaitRef.current = false; }}
+          />
         </div>
 
         <h2 className="display pname" style={{ fontSize: "clamp(20px, 4vw, 30px)", marginTop: 20, fontWeight: 400 }}>{cur.ko}</h2>
