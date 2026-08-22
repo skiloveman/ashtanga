@@ -1342,6 +1342,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       ko: `${T.sunSal} · ${lang !== "ko" ? s.nameEn : s.name}`,
       short: `${lang !== "ko" ? s.cntEn : s.cnt} · ${lang !== "ko" ? s.nameEn : s.name}`,
       sk: lang !== "ko" ? s.breathEn : s.breath, target: s.n, drishti: drishtiLoc("코끝", lang),
+      breathLabel: lang !== "ko" ? s.breathEn : s.breath,
       /* 설명란에는 전 단계 공통으로 소개문 표시 — 낭독은 첫 단계만 전문, 이후는 호흡 큐만 */
       desc: T.suryaDesc,
       ttsDesc: i === 0 ? T.suryaDesc : (lang !== "ko" ? s.breathEn : s.breath),
@@ -1353,6 +1354,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         return {
           fig: p.fig, photo: poseImg(p.ko), ko: L.name, short: L.name, sk: p.sk,
           target: parseBreaths(p.breath), drishti: drishtiLoc(p.drishti, lang),
+          breathLabel: T.breaths(p.breath),
           desc: L.desc, tip: L.tip,
           ttsLang: lang === "ko" ? "ko-KR" : "en-US", /* 자세 설명 원문은 ko/en뿐 */
         };
@@ -1564,6 +1566,11 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         borderInlineStart: `1px solid ${C.line}`,
       }}>
         <p className="display" style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4 }}>{cur.ko}</p>
+        {cur.breathLabel && (
+          <p style={{ marginTop: 8 }}>
+            <span className="chip b" style={{ marginRight: 0 }}>{cur.breathLabel}</span>
+          </p>
+        )}
         {cur.desc && (
           <p style={{ fontSize: 13, lineHeight: 1.85, fontWeight: 300, color: C.ink, marginTop: 14 }}>{cur.desc}</p>
         )}
