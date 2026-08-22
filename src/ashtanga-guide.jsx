@@ -1327,12 +1327,14 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
   const [levelId, setLevelId] = useState(initialLevel.id);
   const level = LEVELS.find((l) => l.id === levelId);
   const seq = useMemo(() => {
-    const surya = SURYA_A.map((s) => ({
+    const surya = SURYA_A.map((s, i) => ({
       fig: s.fig, photo: poseImg(s.name), vid: s.vid,
       ko: `${T.sunSal} · ${lang !== "ko" ? s.nameEn : s.name}`,
       short: `${lang !== "ko" ? s.cntEn : s.cnt} · ${lang !== "ko" ? s.nameEn : s.name}`,
       sk: lang !== "ko" ? s.breathEn : s.breath, target: s.n, drishti: drishtiLoc("코끝", lang),
-      desc: T.suryaDesc, ttsLang: TTS_LANG[lang] || "en-US",
+      /* 태양경배 소개문은 첫 단계에서 한 번만 — 이후 단계는 호흡 큐만 */
+      desc: i === 0 ? T.suryaDesc : (lang !== "ko" ? s.breathEn : s.breath),
+      ttsLang: TTS_LANG[lang] || "en-US",
     }));
     const poses = level.sections.flatMap((sec) =>
       sec.poses.map((p) => {
@@ -1462,14 +1464,14 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       <div className="pbody" style={{ flex: 1, display: "flex", minHeight: 0 }}>
       {/* 왼쪽: 레벨 전체 자세 리스트 */}
       <nav ref={listRef} className="plist" aria-label={T.ofPractice(lvMeta(level, lang).tab)} style={{
-        width: 240, flexShrink: 0, overflowY: "auto", padding: "14px 10px 20px",
+        width: 310, flexShrink: 0, overflowY: "auto", padding: "14px 10px 20px",
         borderInlineEnd: `1px solid ${C.line}`,
       }}>
         {/* 태양경배 11단계는 한 항목으로 묶음 — 진행 중이면 현재 단계 표시 */}
         <button className={`plitem ${idx < SURYA_A.length ? "on" : ""}`} onClick={() => jumpTo(0)}
           aria-current={idx < SURYA_A.length ? "true" : undefined}>
           <span style={{ width: 22, flexShrink: 0, textAlign: "end", fontSize: 11, opacity: 0.7 }}>1</span>
-          <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          <span style={{ minWidth: 0, lineHeight: 1.45 }}>
             {T.sunSal}{idx < SURYA_A.length ? ` · ${idx + 1}/${SURYA_A.length}` : ""}
           </span>
         </button>
@@ -1479,7 +1481,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
             <button key={at} className={`plitem ${at === idx ? "on" : ""}`} onClick={() => jumpTo(at)}
               aria-current={at === idx ? "true" : undefined}>
               <span style={{ width: 22, flexShrink: 0, textAlign: "end", fontSize: 11, opacity: 0.7 }}>{i + 2}</span>
-              <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.short}</span>
+              <span style={{ minWidth: 0, lineHeight: 1.45 }}>{s.short}</span>
             </button>
           );
         })}
@@ -1518,19 +1520,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         width: 350, flexShrink: 0, overflowY: "auto", padding: "18px 22px 24px",
         borderInlineStart: `1px solid ${C.line}`,
       }}>
-        <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-          <p className="display" style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4, flex: 1 }}>{cur.ko}</p>
-          <button className="pbtn" onClick={toggleVoice} aria-pressed={voice}
-            aria-label={lang === "ko" ? "음성 안내 켜기/끄기" : "Toggle voice guide"}
-            style={{
-              fontSize: 22, padding: "9px 13px", lineHeight: 1, flexShrink: 0,
-              borderColor: voice ? "rgba(217,160,91,0.5)" : C.line,
-              background: voice ? C.amberDim : C.card,
-            }}>
-            {voice ? "🔊" : "🔇"}
-          </button>
-        </div>
-        <p style={{ color: C.sub, fontSize: 12, fontStyle: "italic", marginTop: 3 }}>{cur.sk} · {T.drishtiChip(cur.drishti)}</p>
+        <p className="display" style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4 }}>{cur.ko}</p>
         {cur.desc && (
           <p style={{ fontSize: 13, lineHeight: 1.85, fontWeight: 300, color: C.ink, marginTop: 14 }}>{cur.desc}</p>
         )}
