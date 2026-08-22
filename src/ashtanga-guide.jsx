@@ -1419,7 +1419,13 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       const synth = window.speechSynthesis;
       if (!synth || !item) return;
       synth.cancel();
-      const u = new SpeechSynthesisUtterance([item.ko, item.ttsDesc ?? item.desc, item.tip].filter(Boolean).join(". "));
+      /* TTS가 기호를 그대로 읽는 것 방지: "3~5회"→"3에서 5회"(ko)/"3 to 5"(en), "5×4"→"5회씩 4번"/"5 by 4" */
+      const raw = [item.ko, item.ttsDesc ?? item.desc, item.tip].filter(Boolean).join(". ");
+      const isKo = item.ttsLang.startsWith("ko");
+      const spoken = raw
+        .replace(/(\d)\s*[~〜]\s*(\d)/g, isKo ? "$1에서 $2" : "$1 to $2")
+        .replace(/(\d)\s*[×x]\s*(\d)/g, isKo ? "$1회씩 $2번" : "$1 by $2");
+      const u = new SpeechSynthesisUtterance(spoken);
       u.lang = item.ttsLang;
       u.rate = 0.95;
       const vs = synth.getVoices();
