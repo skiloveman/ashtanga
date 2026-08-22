@@ -1486,14 +1486,18 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         width: 310, flexShrink: 0, overflowY: "auto", padding: "14px 10px 20px",
         borderInlineEnd: `1px solid ${C.line}`,
       }}>
-        {/* 태양경배 11단계는 한 항목으로 묶음 — 진행 중이면 현재 단계 표시 */}
-        <button className={`plitem ${idx < SURYA_A.length ? "on" : ""}`} onClick={() => jumpTo(0)}
-          aria-current={idx < SURYA_A.length ? "true" : undefined}>
+        {/* 태양경배: 그룹 제목 + 11단계 들여쓰기 하위 목록 */}
+        <button className={`plitem ${idx < SURYA_A.length ? "on" : ""}`} onClick={() => jumpTo(0)}>
           <span style={{ width: 22, flexShrink: 0, textAlign: "end", fontSize: 11, opacity: 0.7 }}>1</span>
-          <span style={{ minWidth: 0, lineHeight: 1.45 }}>
-            {T.sunSal}{idx < SURYA_A.length ? ` · ${idx + 1}/${SURYA_A.length}` : ""}
-          </span>
+          <span style={{ minWidth: 0, lineHeight: 1.45 }}>{T.sunSal}</span>
         </button>
+        {SURYA_A.map((s, i) => (
+          <button key={`su${i}`} className={`plitem sub ${idx === i ? "on" : ""}`} onClick={() => jumpTo(i)}
+            aria-current={idx === i ? "true" : undefined}>
+            <span aria-hidden="true" style={{ flexShrink: 0, opacity: 0.55 }}>–</span>
+            <span style={{ minWidth: 0, lineHeight: 1.45 }}>{lang !== "ko" ? s.nameEn : s.name}</span>
+          </button>
+        ))}
         {seq.slice(SURYA_A.length).map((s, i) => {
           const at = SURYA_A.length + i;
           return (
@@ -2263,6 +2267,7 @@ export default function AshtangaGuide() {
         .plitem.on { background:${C.amberDim}; color:${C.amber}; font-weight:600; }
         .plist { scrollbar-width:none; }
         .plist::-webkit-scrollbar { display:none; }
+        .plitem.sub { padding:3px 10px; padding-inline-start:40px; font-size:12px; }
         /* 로고 폭 고정: 헤더 패딩 20 + 222 + 갭 12 = 254 → 레벨 탭이 본문 텍스트 라인(레일 210+갭 20+패딩 24)과 정렬 */
         .logo { width:222px; flex-shrink:0; }
         @keyframes flicker { 0%,100%{opacity:1} 50%{opacity:.65} }
