@@ -244,6 +244,7 @@ const STR = {
     breaths: (n) => `호흡 ${n}회`, drishtiChip: (d) => `응시점 · ${d}`, detailChip: "상세 보기 →",
     stepsH: "진입 단계", mistakesH: "흔한 실수", closeL: "닫기",
     progress: (tab, a, b) => `${tab} 수련 ${a} / ${b}`,
+    dashT: "진도 현황", dashNext: "다음 자세", dashAll: "전 과정 완료 🎉",
     finishBtn: "수련 마치기 ✕", ofPractice: (tab) => `${tab} 수련`,
     breathing: "호흡", pausedTxt: "일시 정지", nextPrefix: "다음 · ",
     prevB: "← 이전", pauseB: "❚❚ 정지", resumeB: "▶ 재개", nextB: "다음 →",
@@ -284,6 +285,7 @@ const STR = {
     breaths: (n) => `${n} breaths`, drishtiChip: (d) => `Gaze · ${d}`, detailChip: "Details →",
     stepsH: "How to Enter", mistakesH: "Common Mistakes", closeL: "Close",
     progress: (tab, a, b) => `${tab} practice ${a} / ${b}`,
+    dashT: "Progress", dashNext: "Next pose", dashAll: "All poses complete 🎉",
     finishBtn: "End practice ✕", ofPractice: (tab) => `${tab} practice`,
     breathing: "Breathe", pausedTxt: "Paused", nextPrefix: "Next · ",
     prevB: "← Prev", pauseB: "❚❚ Pause", resumeB: "▶ Resume", nextB: "Next →",
@@ -324,6 +326,7 @@ const STR = {
     breaths: (n) => `${n} respiraciones`, drishtiChip: (d) => `Mirada · ${d}`, detailChip: "Detalles →",
     stepsH: "Cómo entrar", mistakesH: "Errores comunes", closeL: "Cerrar",
     progress: (tab, a, b) => `Práctica ${tab} ${a} / ${b}`,
+    dashT: "Progreso", dashNext: "Siguiente postura", dashAll: "¡Todas completadas! 🎉",
     finishBtn: "Terminar ✕", ofPractice: (tab) => `Práctica ${tab}`,
     breathing: "Respira", pausedTxt: "En pausa", nextPrefix: "Siguiente · ",
     prevB: "← Anterior", pauseB: "❚❚ Pausa", resumeB: "▶ Continuar", nextB: "Siguiente →",
@@ -364,6 +367,7 @@ const STR = {
     breaths: (n) => `呼吸${n}回`, drishtiChip: (d) => `視点 · ${d}`, detailChip: "詳細 →",
     stepsH: "入り方", mistakesH: "よくある間違い", closeL: "閉じる",
     progress: (tab, a, b) => `${tab}の練習 ${a} / ${b}`,
+    dashT: "進捗状況", dashNext: "次のポーズ", dashAll: "全ポーズ完了 🎉",
     finishBtn: "練習を終える ✕", ofPractice: (tab) => `${tab}の練習`,
     breathing: "呼吸", pausedTxt: "一時停止", nextPrefix: "次 · ",
     prevB: "← 前へ", pauseB: "❚❚ 停止", resumeB: "▶ 再開", nextB: "次へ →",
@@ -404,6 +408,7 @@ const STR = {
     breaths: (n) => `${n} Atemzüge`, drishtiChip: (d) => `Blick · ${d}`, detailChip: "Details →",
     stepsH: "Der Einstieg", mistakesH: "Häufige Fehler", closeL: "Schließen",
     progress: (tab, a, b) => `${tab}-Praxis ${a} / ${b}`,
+    dashT: "Fortschritt", dashNext: "Nächste Haltung", dashAll: "Alle Haltungen geschafft 🎉",
     finishBtn: "Beenden ✕", ofPractice: (tab) => `${tab}-Praxis`,
     breathing: "Atmen", pausedTxt: "Pausiert", nextPrefix: "Weiter · ",
     prevB: "← Zurück", pauseB: "❚❚ Pause", resumeB: "▶ Weiter", nextB: "Weiter →",
@@ -444,6 +449,7 @@ const STR = {
     breaths: (n) => `${n} respirations`, drishtiChip: (d) => `Regard · ${d}`, detailChip: "Détails →",
     stepsH: "Comment entrer", mistakesH: "Erreurs fréquentes", closeL: "Fermer",
     progress: (tab, a, b) => `Pratique ${tab} ${a} / ${b}`,
+    dashT: "Progression", dashNext: "Posture suivante", dashAll: "Toutes les postures faites 🎉",
     finishBtn: "Terminer ✕", ofPractice: (tab) => `Pratique ${tab}`,
     breathing: "Respirez", pausedTxt: "En pause", nextPrefix: "Suivant · ",
     prevB: "← Précédent", pauseB: "❚❚ Pause", resumeB: "▶ Reprendre", nextB: "Suivant →",
@@ -484,6 +490,7 @@ const STR = {
     breaths: (n) => `呼吸${n}次`, drishtiChip: (d) => `凝视 · ${d}`, detailChip: "详情 →",
     stepsH: "进入步骤", mistakesH: "常见错误", closeL: "关闭",
     progress: (tab, a, b) => `${tab}练习 ${a} / ${b}`,
+    dashT: "进度概览", dashNext: "下一体式", dashAll: "全部完成 🎉",
     finishBtn: "结束练习 ✕", ofPractice: (tab) => `${tab}练习`,
     breathing: "呼吸", pausedTxt: "已暂停", nextPrefix: "下一个 · ",
     prevB: "← 上一个", pauseB: "❚❚ 暂停", resumeB: "▶ 继续", nextB: "下一个 →",
@@ -524,6 +531,7 @@ const STR = {
     breaths: (n) => `${n} respirações`, drishtiChip: (d) => `Olhar · ${d}`, detailChip: "Detalhes →",
     stepsH: "Como entrar", mistakesH: "Erros comuns", closeL: "Fechar",
     progress: (tab, a, b) => `Prática ${tab} ${a} / ${b}`,
+    dashT: "Progresso", dashNext: "Próxima postura", dashAll: "Todas concluídas 🎉",
     finishBtn: "Encerrar ✕", ofPractice: (tab) => `Prática ${tab}`,
     breathing: "Respire", pausedTxt: "Pausado", nextPrefix: "Próxima · ",
     prevB: "← Anterior", pauseB: "❚❚ Pausar", resumeB: "▶ Retomar", nextB: "Próxima →",
@@ -564,6 +572,7 @@ const STR = {
     breaths: (n) => `${n} सांसें`, drishtiChip: (d) => `दृष्टि · ${d}`, detailChip: "विवरण →",
     stepsH: "प्रवेश के चरण", mistakesH: "सामान्य गलतियाँ", closeL: "बंद करें",
     progress: (tab, a, b) => `${tab} अभ्यास ${a} / ${b}`,
+    dashT: "प्रगति", dashNext: "अगला आसन", dashAll: "सभी आसन पूर्ण 🎉",
     finishBtn: "अभ्यास समाप्त ✕", ofPractice: (tab) => `${tab} अभ्यास`,
     breathing: "सांस लें", pausedTxt: "रुका हुआ", nextPrefix: "अगला · ",
     prevB: "← पिछला", pauseB: "❚❚ रोकें", resumeB: "▶ जारी रखें", nextB: "अगला →",
@@ -604,6 +613,7 @@ const STR = {
     breaths: (n) => `${n} أنفاس`, drishtiChip: (d) => `النظر · ${d}`, detailChip: "التفاصيل ←",
     stepsH: "خطوات الدخول", mistakesH: "أخطاء شائعة", closeL: "إغلاق",
     progress: (tab, a, b) => `تمرين ${tab} ${a} / ${b}`,
+    dashT: "التقدم", dashNext: "الوضعية التالية", dashAll: "اكتملت كل الوضعيات 🎉",
     finishBtn: "إنهاء التمرين ✕", ofPractice: (tab) => `تمرين ${tab}`,
     breathing: "تنفَّس", pausedTxt: "متوقف مؤقتًا", nextPrefix: "التالي · ",
     prevB: "السابق", pauseB: "❚❚ إيقاف", resumeB: "▶ متابعة", nextB: "التالي",
@@ -2242,6 +2252,22 @@ export default function AshtangaGuide() {
     () => level.sections.reduce((n, s) => n + s.poses.filter((p) => done[`${s.id}-${p.sk}`]).length, 0),
     [done, level]
   );
+  /* 진도 대시보드 — 현재 레벨의 섹션별 진행 상황과 "지금 여기"(다음 자세) */
+  const dash = useMemo(() => {
+    const secs = level.sections.map((s) => {
+      const items = s.poses.map((p) => {
+        const k = `${s.id}-${p.sk}`;
+        return { k, name: loc(p, lang).name.split(" · ")[0], done: !!done[k] };
+      });
+      return { id: s.id, title: secMeta(s, lang).title, items, n: items.filter((i) => i.done).length, total: items.length };
+    });
+    let next = null;
+    for (const s of secs) {
+      const i = s.items.find((x) => !x.done);
+      if (i) { next = { secId: s.id, key: i.k, name: i.name }; break; }
+    }
+    return { secs, next };
+  }, [level, done, lang]);
   const toggle = (k) => setDone((d) => ({ ...d, [k]: !d[k] }));
   const changeLevel = (id) => { setLevelId(id); setActive("surya"); window.scrollTo({ top: 0, behavior: "smooth" }); };
   const go = (id) => {
@@ -2286,6 +2312,20 @@ export default function AshtangaGuide() {
           display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; transition: border-color .25s; }
         .card:hover { border-color: rgba(217,160,91,0.35); }
         .rail { position:sticky; top:60px; align-self:flex-start; max-height:calc(100vh - 60px); }
+        /* 진도 대시보드 (좌측 레일) */
+        .raildash { padding:16px 14px 4px; margin-top:14px; border-top:1px solid ${C.line}; }
+        .dashnextb { display:block; width:100%; text-align:start; background:${C.card}; border:1px solid ${C.cardEdge};
+          border-radius:8px; padding:7px 9px; font:inherit; cursor:pointer; }
+        .dashnextb:hover { border-color: rgba(217,160,91,0.6); }
+        .dashsec { display:block; width:100%; text-align:start; background:none; border:none; font:inherit;
+          cursor:pointer; padding:7px 6px; margin:0 -6px; border-radius:8px; }
+        .dashsec:hover, .dashsec.on { background:${C.card}; }
+        .dashdot { display:inline-block; width:9px; height:9px; border-radius:3px; background:${C.line};
+          border:1px solid transparent; }
+        .dashdot.on { background:${C.amber}; box-shadow:0 0 6px rgba(217,160,91,0.45); }
+        .dashdot.next { background:transparent; border-color:${C.amber}; animation: dashpulse 1.8s ease-in-out infinite; }
+        @keyframes dashpulse { 0%,100% { box-shadow:0 0 0 0 rgba(217,160,91,0.5); } 50% { box-shadow:0 0 0 3px rgba(217,160,91,0); } }
+        .dashnextb:focus-visible, .dashsec:focus-visible { outline:2px solid ${C.amber}; outline-offset:2px; }
         /* 섹션 이동 시 고정 헤더에 제목이 가리지 않게 */
         section[id] { scroll-margin-top: 74px; }
         /* 수련 마침 카드: 앰버 톤으로 완료 표시 */
@@ -2349,7 +2389,7 @@ export default function AshtangaGuide() {
           .layout { flex-direction:column; gap:0 !important; }
           .rail { width:100% !important; display:flex; flex-direction:row; overflow-x:auto; overflow-y:hidden !important; gap:4px; padding:8px 12px !important; border-bottom:1px solid ${C.line};
             top:50px !important; max-height:none !important; z-index:30; background:${C.bg}; }
-          .railprog { display:none; }
+          .railprog, .raildash { display:none; }
           .railtop { display:flex !important; padding:0 !important; gap:6px !important; }
           .railtop .pbtn { white-space:nowrap; }
           .navbtn { white-space:nowrap; width:auto; }
@@ -2512,6 +2552,54 @@ export default function AshtangaGuide() {
                 >↺</button>
               )}
             </div>
+          </div>
+
+          {/* 진도 현황 대시보드 — 현재 레벨 전 자세 중 어디까지 왔는지 한눈에 */}
+          <div className="raildash">
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 8 }}>
+              <p style={{ fontSize: 11, color: C.sub, letterSpacing: 0.6, flex: 1 }}>{T.dashT}</p>
+              <p className="display" style={{ fontSize: 15, fontWeight: 700, color: doneCount ? C.amber : C.sub }}>
+                {Math.round((doneCount / levelTotal) * 100)}%
+              </p>
+            </div>
+
+            <div className="dashnext" style={{ marginBottom: 12 }}>
+              {dash.next ? (
+                <button className="dashnextb" onClick={() => go(dash.next.secId)} title={dash.next.name}>
+                  <span style={{ fontSize: 10, color: C.sub, letterSpacing: 0.4 }}>{T.dashNext}</span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 3 }}>
+                    <i className="dashdot next" style={{ flexShrink: 0 }} />
+                    <span style={{ fontSize: 12, color: C.ink, fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      {dash.next.name}
+                    </span>
+                  </span>
+                </button>
+              ) : (
+                <p style={{ fontSize: 11.5, color: C.amber, lineHeight: 1.5 }}>{T.dashAll}</p>
+              )}
+            </div>
+
+            {dash.secs.map((s) => (
+              <button key={s.id} className={`dashsec${active === s.id ? " on" : ""}`} onClick={() => go(s.id)}>
+                <span style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+                  <span style={{ fontSize: 11.5, color: active === s.id ? C.ink : C.sub, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {s.title}
+                  </span>
+                  <span style={{ fontSize: 11, color: s.n ? C.amber : C.sub, fontWeight: s.n ? 600 : 400, whiteSpace: "nowrap" }}>
+                    {s.n}/{s.total}
+                  </span>
+                </span>
+                <span style={{ display: "flex", flexWrap: "wrap", gap: 3, marginTop: 5 }}>
+                  {s.items.map((i) => (
+                    <i
+                      key={i.k}
+                      title={`${i.name}${i.done ? " ✓" : ""}`}
+                      className={`dashdot${i.done ? " on" : ""}${dash.next && dash.next.key === i.k ? " next" : ""}`}
+                    />
+                  ))}
+                </span>
+              </button>
+            ))}
           </div>
         </nav>
 
