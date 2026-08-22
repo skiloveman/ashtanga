@@ -1494,6 +1494,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
   });
 
   /* 왼쪽 리스트에서 현재 자세가 항상 보이게 */
+  const [suryaOpen, setSuryaOpen] = useState(true);
   const listRef = useRef(null);
   useEffect(() => {
     listRef.current?.querySelector(".plitem.on")?.scrollIntoView({ block: "nearest" });
@@ -1538,12 +1539,16 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         width: 310, flexShrink: 0, overflowY: "auto", padding: "14px 10px 20px",
         borderInlineEnd: `1px solid ${C.line}`,
       }}>
-        {/* 태양경배: 그룹 제목 + 11단계 들여쓰기 하위 목록 */}
-        <button className={`plitem ${idx < SURYA_A.length ? "on" : ""}`} onClick={() => jumpTo(0)}>
+        {/* 태양경배: 접고 펼치는 그룹 제목 + 11단계 들여쓰기 하위 목록 */}
+        <button className={`plitem ${idx < SURYA_A.length ? "on" : ""}`} aria-expanded={suryaOpen}
+          onClick={() => setSuryaOpen((o) => !o)}>
           <span style={{ width: 22, flexShrink: 0, textAlign: "end", fontSize: 11, opacity: 0.7 }}>1</span>
-          <span style={{ minWidth: 0, lineHeight: 1.45 }}>{T.sunSal}</span>
+          <span style={{ minWidth: 0, lineHeight: 1.45, flex: 1 }}>
+            {T.sunSal}{!suryaOpen && idx < SURYA_A.length ? ` · ${idx + 1}/${SURYA_A.length}` : ""}
+          </span>
+          <span aria-hidden="true" style={{ flexShrink: 0, fontSize: 10, opacity: 0.7 }}>{suryaOpen ? "▾" : "▸"}</span>
         </button>
-        {SURYA_A.map((s, i) => (
+        {suryaOpen && SURYA_A.map((s, i) => (
           <button key={`su${i}`} className={`plitem sub ${idx === i ? "on" : ""}`} onClick={() => jumpTo(i)}
             aria-current={idx === i ? "true" : undefined}>
             <span aria-hidden="true" style={{ flexShrink: 0, opacity: 0.55 }}>–</span>
