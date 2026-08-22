@@ -1429,7 +1429,9 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
         .replace(/(\d)\s*[×x]\s*(\d)(회)?/g, isKo ? "$1회씩 $2번" : "$1 by $2")
         .replace(/(\d)\+회?/g, isKo ? "$1회 이상" : "$1 or more")
         .replace(/분\+회?/g, isKo ? "분 이상" : " minutes or more");
-      const u = new SpeechSynthesisUtterance(spoken);
+      /* 호흡을 여러 번 하는 자세는 낭독 끝에 첫 카운트("하나")로 이어준다 */
+      const withCount = item.target > 1 ? `${spoken}. ${isKo ? "하나" : "One"}` : spoken;
+      const u = new SpeechSynthesisUtterance(withCount);
       u.lang = item.ttsLang;
       u.rate = 0.95;
       const vs = synth.getVoices();
@@ -1443,6 +1445,27 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       synth.speak(u);
     } catch { setNarr(false); }
   };
+  /* 호흡 카운트 낭독 — 매 호흡 틱마다 "둘, 셋, …" (첫 "하나"는 본 낭독 끝에 붙음) */
+  const KO_NUMS = ["하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟", "아홉", "열"];
+  const speakNum = (n) => {
+    try {
+      const synth = window.speechSynthesis;
+      if (!synth) return;
+      const isKo = (cur.ttsLang || "").startsWith("ko");
+      const u = new SpeechSynthesisUtterance(isKo ? (KO_NUMS[n - 1] || String(n)) : String(n));
+      u.lang = cur.ttsLang;
+      u.rate = 0.95;
+      const vs = synth.getVoices();
+      const v = vs.find((x) => x.lang === cur.ttsLang) || vs.find((x) => x.lang.startsWith(cur.ttsLang.split("-")[0]));
+      if (v) u.voice = v;
+      synth.speak(u);
+    } catch { /* 미지원 브라우저 */ }
+  };
+  useEffect(() => {
+    if (!voice || breath === 0 || turningRef.current || cur.target <= 1) return;
+    speakNum(breath + 1);
+  }, [breath]);
+
   /* 자세가 바뀌면: 페이지 넘김(0.8초) → 낭독(켜져 있으면) → 영상 → 호흡 */
   useEffect(() => {
     vidWaitRef.current = false;
