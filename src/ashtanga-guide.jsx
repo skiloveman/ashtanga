@@ -815,6 +815,8 @@ const lvMeta = (l, lang) => {
   const tab = STR[lang].tabs?.[l.id] || m.tab;
   return { ...m, tab };
 };
+/* 자세 카드의 DOM id — 완료 키(`섹션id-sk`)를 공백 없는 문자열로 (대시보드에서 스크롤 이동) */
+const poseDomId = (k) => "pose-" + k.replace(/[^A-Za-z0-9-]+/g, "-");
 const secMeta = (s, lang) => (lang !== "ko" && META.sections[s.id] ? { title: META.sections[s.id].t, note: META.sections[s.id].n } : { title: s.title, note: s.note });
 
 /* ── 수리야 나마스카라 A ── */
@@ -2268,6 +2270,19 @@ export default function AshtangaGuide() {
     }
     return { secs, next };
   }, [level, done, lang]);
+  const [flash, setFlash] = useState(null); // 이동 직후 잠깐 강조할 자세
+  const flashT = useRef(null);
+  useEffect(() => () => clearTimeout(flashT.current), []);
+  /* 대시보드 "다음 자세" → 해당 자세 카드로 직접 이동 */
+  const goPose = (secId, key) => {
+    setActive(secId);
+    const el = document.getElementById(poseDomId(key));
+    if (!el) { go(secId); return; }
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    setFlash(key);
+    clearTimeout(flashT.current);
+    flashT.current = setTimeout(() => setFlash(null), 2000);
+  };
   const toggle = (k) => setDone((d) => ({ ...d, [k]: !d[k] }));
   const changeLevel = (id) => { setLevelId(id); setActive("surya"); window.scrollTo({ top: 0, behavior: "smooth" }); };
   const go = (id) => {
@@ -2326,6 +2341,13 @@ export default function AshtangaGuide() {
         .dashdot.next { background:transparent; border-color:${C.amber}; animation: dashpulse 1.8s ease-in-out infinite; }
         @keyframes dashpulse { 0%,100% { box-shadow:0 0 0 0 rgba(217,160,91,0.5); } 50% { box-shadow:0 0 0 3px rgba(217,160,91,0); } }
         .dashnextb:focus-visible, .dashsec:focus-visible { outline:2px solid ${C.amber}; outline-offset:2px; }
+        .card.flash { animation: cardflash 2s ease-out; }
+        @keyframes cardflash {
+          0% { box-shadow:0 0 0 0 rgba(217,160,91,0.55); border-color:${C.amber}; }
+          35% { box-shadow:0 0 0 6px rgba(217,160,91,0.18); border-color:${C.amber}; }
+          100% { box-shadow:0 0 0 0 rgba(217,160,91,0); }
+        }
+        @media (prefers-reduced-motion: reduce) { .card.flash { animation:none; } .dashdot.next { animation:none; } }
         /* 섹션 이동 시 고정 헤더에 제목이 가리지 않게 */
         section[id] { scroll-margin-top: 74px; }
         /* 수련 마침 카드: 앰버 톤으로 완료 표시 */
@@ -2565,7 +2587,7 @@ export default function AshtangaGuide() {
 
             <div className="dashnext" style={{ marginBottom: 12 }}>
               {dash.next ? (
-                <button className="dashnextb" onClick={() => go(dash.next.secId)} title={dash.next.name}>
+                <button className="dashnextb" onClick={() => goPose(dash.next.secId, dash.next.key)} title={dash.next.name}>
                   <span style={{ fontSize: 10, color: C.sub, letterSpacing: 0.4 }}>{T.dashNext}</span>
                   <span style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 3 }}>
                     <i className="dashdot next" style={{ flexShrink: 0 }} />
@@ -2753,7 +2775,7 @@ export default function AshtangaGuide() {
                   const k = `${sec.id}-${p.sk}`;
                   const L = loc(p, lang);
                   return (
-                    <article key={k} className={`card${done[k] ? " done" : ""}`} style={{ position: "relative" }}>
+                    <article key={k} id={poseDomId(k)} className={`card${done[k] ? " done" : ""}${flash === k ? " flash" : ""}`} style={{ position: "relative" }}>
                       {/* 우측 상단 액션: 자세잡기 · 상세 보기 */}
                       <div className="cardact" style={{ position: "absolute", top: 10, insetInlineEnd: 10, zIndex: 2, display: "flex", gap: 6 }}>
                         <button className="pbtn" onClick={() => setEntryVid(entryVid === k ? null : k)}
