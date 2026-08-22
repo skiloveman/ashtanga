@@ -1377,11 +1377,14 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
   const voiceRef = useRef(false);
   const vidWaitRef = useRef(false);
   const uttRef = useRef(null); // cancel()이 이전 발화의 이벤트를 늦게 쏘는 경합 방지
+  /* 자세 전환 시 페이지 넘김 애니메이션 동안 한 템포 쉼 */
+  const [turning, setTurning] = useState(false);
+  const turningRef = useRef(false);
 
   useEffect(() => {
     if (!playing) return;
     const t = setInterval(() => {
-      if (narratingRef.current || vidWaitRef.current) return; // 낭독·시연이 끝날 때까지 보류
+      if (narratingRef.current || vidWaitRef.current || turningRef.current) return; // 전환·낭독·시연이 끝날 때까지 보류
       setBreath((b) => {
         if (b + 1 >= cur.target) {
           setIdx((i) => {
@@ -1428,11 +1431,21 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       synth.speak(u);
     } catch { setNarr(false); }
   };
-  useEffect(() => { vidWaitRef.current = false; if (voice) speak(cur); }, [cur, voice]); // 자세가 바뀌면 자동 낭독
+  /* 자세가 바뀌면: 페이지 넘김(0.8초) → 낭독(켜져 있으면) → 영상 → 호흡 */
+  useEffect(() => {
+    vidWaitRef.current = false;
+    turningRef.current = true; setTurning(true);
+    const t = setTimeout(() => {
+      turningRef.current = false; setTurning(false);
+      if (voiceRef.current) speak(cur);
+    }, 800);
+    return () => clearTimeout(t);
+  }, [cur]);
   useEffect(() => () => { try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ } }, []);
   const toggleVoice = () => setVoice((v) => {
     const n = !v;
     voiceRef.current = n;
+    if (n && !turningRef.current) speak(cur); // 켜면 현재 자세부터 바로 낭독
     if (!n) {
       try { window.speechSynthesis?.cancel(); } catch { /* 무시 */ }
       uttRef.current = null;
@@ -1521,11 +1534,13 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
             border: "1px solid rgba(217,160,91,0.25)",
             animationDuration: `${pace}s`,
           }} />
-          <PoseVisual pose={cur} size={250} glow video
-            holdVideo={narrating}
-            onVideoPlay={() => { if (voiceRef.current) vidWaitRef.current = true; }}
-            onVideoEnd={() => { vidWaitRef.current = false; }}
-          />
+          <div key={idx} className="pageflip" style={{ display: "flex" }}>
+            <PoseVisual pose={cur} size={250} glow video
+              holdVideo={narrating || turning}
+              onVideoPlay={() => { if (voiceRef.current) vidWaitRef.current = true; }}
+              onVideoEnd={() => { vidWaitRef.current = false; }}
+            />
+          </div>
         </div>
 
         <h2 className="display pname" style={{ fontSize: "clamp(20px, 4vw, 30px)", marginTop: 20, fontWeight: 400 }}>{cur.ko}</h2>
@@ -2273,6 +2288,13 @@ export default function AshtangaGuide() {
         .logo { width:222px; flex-shrink:0; }
         @keyframes flicker { 0%,100%{opacity:1} 50%{opacity:.65} }
         .candle.live { animation: flicker 3.2s ease-in-out infinite; }
+        /* 자세 전환: 페이지 넘김 */
+        @keyframes pageflipAnim {
+          0% { transform: perspective(900px) rotateY(-85deg); opacity: 0; }
+          55% { transform: perspective(900px) rotateY(7deg); opacity: 1; }
+          100% { transform: perspective(900px) rotateY(0deg); opacity: 1; }
+        }
+        .pageflip { animation: pageflipAnim .8s ease-out; transform-origin: left center; }
         @keyframes breatheAnim { 0%,100%{ transform: scale(0.82); opacity:.75 } 50%{ transform: scale(1.06); opacity:1 } }
         .breathe { animation-name: breatheAnim; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
         @media (max-width: 760px) {
@@ -2339,7 +2361,7 @@ export default function AshtangaGuide() {
         }
         @media (prefers-reduced-motion: reduce) {
           html { scroll-behavior:auto; }
-          .candle.live, .breathe { animation:none; }
+          .candle.live, .breathe, .pageflip { animation:none; }
         }
       `}</style>
 
