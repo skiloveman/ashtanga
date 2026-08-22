@@ -1355,6 +1355,8 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
           fig: p.fig, photo: poseImg(p.ko), ko: L.name, short: L.name, sk: p.sk,
           target: parseBreaths(p.breath), drishti: drishtiLoc(p.drishti, lang),
           breathLabel: T.breaths(p.breath),
+          /* 낭독 마지막에 문장형 호흡 안내 — "호흡은 5회 합니다" (태양경배는 큐로 대체) */
+          ttsBreath: lang === "ko" ? `호흡은 ${p.breath}회 합니다` : `Hold for ${p.breath} breaths`,
           desc: L.desc, tip: L.tip,
           ttsLang: lang === "ko" ? "ko-KR" : "en-US", /* 자세 설명 원문은 ko/en뿐 */
         };
@@ -1420,11 +1422,13 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       if (!synth || !item) return;
       synth.cancel();
       /* TTS가 기호를 그대로 읽는 것 방지: "3~5회"→"3에서 5회"(ko)/"3 to 5"(en), "5×4"→"5회씩 4번"/"5 by 4" */
-      const raw = [item.ko, item.ttsDesc ?? item.desc, item.tip].filter(Boolean).join(". ");
+      const raw = [item.ko, item.ttsDesc ?? item.desc, item.tip, item.ttsBreath].filter(Boolean).join(". ");
       const isKo = item.ttsLang.startsWith("ko");
       const spoken = raw
         .replace(/(\d)\s*[~〜]\s*(\d)/g, isKo ? "$1에서 $2" : "$1 to $2")
-        .replace(/(\d)\s*[×x]\s*(\d)/g, isKo ? "$1회씩 $2번" : "$1 by $2");
+        .replace(/(\d)\s*[×x]\s*(\d)(회)?/g, isKo ? "$1회씩 $2번" : "$1 by $2")
+        .replace(/(\d)\+회?/g, isKo ? "$1회 이상" : "$1 or more")
+        .replace(/분\+회?/g, isKo ? "분 이상" : " minutes or more");
       const u = new SpeechSynthesisUtterance(spoken);
       u.lang = item.ttsLang;
       u.rate = 0.95;
