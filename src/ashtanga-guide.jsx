@@ -1433,7 +1433,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       const withCount = item.target > 1 ? `${spoken}. ${isKo ? "하나" : "One"}` : spoken;
       const u = new SpeechSynthesisUtterance(withCount);
       u.lang = item.ttsLang;
-      u.rate = 0.95;
+      u.rate = ttsRate;
       const vs = synth.getVoices();
       const v = vs.find((x) => x.lang === item.ttsLang) || vs.find((x) => x.lang.startsWith(item.ttsLang.split("-")[0]));
       if (v) u.voice = v;
@@ -1445,6 +1445,9 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       synth.speak(u);
     } catch { setNarr(false); }
   };
+  /* 낭독 속도를 호흡 속도에 연동 — 빠르게 4초 ≈ 1.05배, 보통 5초 ≈ 0.95배, 아주 느리게 8초 ≈ 0.75배 */
+  const ttsRate = pace <= 4 ? 1.05 : pace <= 5 ? 0.95 : pace <= 6 ? 0.85 : 0.75;
+
   /* 호흡 카운트 낭독 — 매 호흡 틱마다 "둘, 셋, …" (첫 "하나"는 본 낭독 끝에 붙음) */
   const KO_NUMS = ["하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟", "아홉", "열"];
   const speakNum = (n) => {
@@ -1454,7 +1457,7 @@ function PracticeMode({ level: initialLevel, lang, onExit, theme, onToggleTheme 
       const isKo = (cur.ttsLang || "").startsWith("ko");
       const u = new SpeechSynthesisUtterance(isKo ? (KO_NUMS[n - 1] || String(n)) : String(n));
       u.lang = cur.ttsLang;
-      u.rate = 0.95;
+      u.rate = ttsRate;
       const vs = synth.getVoices();
       const v = vs.find((x) => x.lang === cur.ttsLang) || vs.find((x) => x.lang.startsWith(cur.ttsLang.split("-")[0]));
       if (v) u.voice = v;
